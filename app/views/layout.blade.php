@@ -28,7 +28,7 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">Home</a></li>
 						<li><a href="#">Voertuigen</a></li>
 						<li><a href="#">Prijzen</a></li>
 						<li class="dropdown">
