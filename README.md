@@ -1,6 +1,6 @@
 # LeenMeij Web Application
 
-The fictional LeenMeij vehicle rental company wants to have a web applicaton running besides it's already existing desktop application to lure more domestic and foreign customers to the company. This is a project created for a course from the Hogeschool Leiden in the Netherlands. The web application is made with the [Laravel](http://www.laravel.com) PHP Framework, check out the website for the documentation.
+The fictional LeenMeij vehicle rental company wants to have a web applicaton running besides it's already existing desktop application to lure more domestic and foreign customers to the company. This is a project created for a course from the Hogeschool Leiden in the Netherlands. The web application is made with the [Laravel PHP Framework](http://www.laravel.com), check out the website for the documentation.
 
 ### Features
 - Localization
