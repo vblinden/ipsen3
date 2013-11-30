@@ -45,7 +45,7 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./">Inloggen</a></li>
+						<li><a href="/user/login">Inloggen</a></li>
 						<li><a href="./">Registreren</a></li>
 					</ul>
 				</div>
