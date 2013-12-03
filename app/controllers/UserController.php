@@ -41,8 +41,8 @@ class UserController extends BaseController {
 			// Attempt to login user.
 			if (Auth::attempt($userdata)) {
 				// The validation is successful.
-				// TODO: Redirect to admin page or whatever, for now we return success.
-				echo 'succes!';
+				// TODO: Redirect to admin page or whatever, for now we return to homepage.
+				return Redirect::to('/');
 			}
 
 			else {

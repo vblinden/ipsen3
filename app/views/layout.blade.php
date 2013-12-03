@@ -1,61 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="LeenMeij">
-		<meta name="author" content="">
-		<link rel="shortcut icon" href="/favicon.png">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="LeenMeij">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="/favicon.png">
 
-		<title>LeenMeij Voertuigverhuur Bedrijf</title>
+	<title>LeenMeij Voertuigverhuur Bedrijf</title>
 
-		<link href="/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/css/style.css" rel="stylesheet">
-	</head>
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+</head>
 
-	<body>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
-			<div class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">LeenMeij</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Voertuigen</a></li>
-						<li><a href="#">Prijzen</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Klantenservice <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li class="dropdown-header">Nav header</li>
-								<li><a href="#">Separated link</a></li>
-								<li><a href="#">One more separated link</a></li>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">LeenMeij</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Startpagina</a></li>
+					<li><a href="#">Voertuigen</a></li>
+					<li><a href="#">Prijzen</a></li>
+					<li><a href="#">FAQ</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/user/login">Inloggen</a></li>
+					<li><a href="./">Registreren</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		@yield('content')
+	</div>
+
+	<div id="footer" style="padding-top:20px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">LeenMeij</div>
+						<div class="panel-body">
+							<ul class="bulletless">
+								<li><a href="#">Reseveer nu</a></li>
+								<li><a href="#">Langer huren</a></li>
+								<li><a href="#">Extra services</a></li>
+								<li><a href="#">Vestigingen</a></li>
+								<li><a href="#">Wagenpark</a></li>
+								<li><a href="#">Over LeenMeij</a></li>
 							</ul>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/user/login">Inloggen</a></li>
-						<li><a href="./">Registreren</a></li>
-					</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">Diensten</div>
+						<div class="panel-body">
+							<ul class="bulletless">
+								<li><a href="#">Personenauto</a></li>
+								<li><a href="#">Bedrijfswagens</a></li>
+								<li><a href="#">Motoren</a></li>
+								<li><a href="#">Scooters</a></li>
+								<li><a href="#">Accessoires</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">Contact</div>
+						<div class="panel-body" style="padding: 0px;">
+							<div id="footer-maps" style="height: 200px;"></div>
+						</div>
+					</div>
 				</div>
 			</div>
-
-			@yield('content')
-		
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; <?php echo date("Y"); ?> LeenMeij. Alle rechten voorbehouden. Gemaakt door: Koning Keizer Admiraal Hofnar</p>
+				</div>
+			</div>
 		</div>
+	</div>
 
-		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script src="/js/bootstrap.js"></script>
-	</body>
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="/js/gmaps.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var map = new GMaps({
+				div: '#footer-maps',
+				lat: 52.16662,
+				lng: 4.47184
+			});
+
+			var mapOptions = {
+				draggable: false,
+				scrollwheel: false,
+				panControl: false,
+				zoomControl: false,
+				scaleControl: false,
+				mapTypeControl: false,
+				streetViewControl: false,
+				overviewMapControl: false
+			};
+
+			map.setOptions(mapOptions);
+
+			map.addMarker({
+				lat: 52.16662,
+				lng: 4.47184,
+				infoWindow: {
+					content: '<p>Nepstraat 123<br/>2233AB Leiden<br/>010-1923994<br/>info@leenmeij.tk</br></p>'
+				}
+			});
+		});
+	</script>
+</body>
 </html>

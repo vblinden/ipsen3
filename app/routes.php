@@ -15,4 +15,3 @@ Route::get('/', 'HomeController@getIndex');
 
 Route::controller('user', 'UserController');
 Route::controller('home', 'HomeController');
-
