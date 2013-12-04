@@ -29,6 +29,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="#">Startpagina</a></li>
+					<li><a href="#">Reserveren</a></li>
 					<li><a href="#">Voertuigen</a></li>
 					<li><a href="#">Prijzen</a></li>
 					<li><a href="#">FAQ</a></li>
