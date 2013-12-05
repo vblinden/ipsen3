@@ -12,6 +12,11 @@ body {
   margin-bottom: 20px;
 }
 
+.btn-right {
+	position: relative;
+	bottom: 5px;
+}
+
 #footer {
 	position: relative;
 	display: block;

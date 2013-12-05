@@ -40,6 +40,13 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('auth.admin', function()
+{
+	if (Auth::user()->role['role'] != 'admin') {
+		return Redirect::to('user/login');
+	}
+});
+
 
 Route::filter('auth.basic', function()
 {
