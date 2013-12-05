@@ -63,7 +63,7 @@
 		@yield('content')
 	</div>
 
-	<div id="footer" style="padding-top:20px;">
+	<div id="footer" style="padding-top: 20px; margin-top: 20px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">

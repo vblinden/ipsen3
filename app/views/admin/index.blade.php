@@ -38,16 +38,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					@for ($i = 0; $i < 5; $i++)
-					<tr>
-						<td>{{ $i + 1 }}</td>
-						<td>Audi</td>
-						<td>A6</td>
-						<td>12-2A-NC</td>
-						<td>Personenauto</td>
-						<td><button class="btn btn-primary btn-sm">Bewerken</button> <button class="btn btn-danger btn-sm">Verwijderen</button></td>
+					@foreach ($vehicles as $vehicle)
+					    <tr>
+						<td>{{ $vehicle->id }}</td>
+						<td>{{ $vehicle->brand }}</td>
+						<td>{{ $vehicle->model }}</td>
+						<td>{{ $vehicle->licenseplate }}</td>
+						<td>{{ $vehicle->category }}</td>
+						<td><a href='/vehicle/edit/{{ $vehicle->id }}' class="btn btn-primary btn-sm">Bewerken</a> <button class="btn btn-danger btn-sm">Verwijderen</button></td>
 					</tr>
-					@endfor
+					@endforeach
 				</tbody>
 			</table>
 		</div>

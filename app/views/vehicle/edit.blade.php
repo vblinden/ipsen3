@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 	<div class='col-lg-12'>
-		<h1>Voertuig toevoegen</h1>
+		<h1>Voertuig bewerken</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -13,7 +13,7 @@
 		</p>
 
 
-		{{ Form::open(array('action' => 'VehicleController@postAdd', 'files' => true)) }}
+		{{ Form::model($vehicle, array('action' => 'VehicleController@postAdd', 'files' => true)) }}
 
 		{{ $errors->first('email') }}
 		{{ $errors->first('password') }}
@@ -85,6 +85,8 @@
 		<div class="page-header">
 			<h1>Voertuig afbeelding </h1>
 		</div>
+
+		<img src='{{ $vehicle['image'] }}' alt='Afbeelding van de geslecteerde auto.' />
 
 		<p>Selecteer hieronder de afbeelding die u wilt toevoegen.</p>
 		<p>{{ Form::file('image'); }} </p>

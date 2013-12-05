@@ -42,7 +42,11 @@ Route::filter('auth', function()
 
 Route::filter('auth.admin', function()
 {
-	if (Auth::user()->role['role'] != 'admin') {
+	if (Auth::check()) {
+		if (Auth::user()->role['role'] != 'admin') {
+			return Redirect::to('user/login');
+		}
+	} else {
 		return Redirect::to('user/login');
 	}
 });
