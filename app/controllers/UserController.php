@@ -83,6 +83,35 @@ class UserController extends BaseController {
 		return Redirect::to('user/success');
 	}
 
+	public function getAccount() 
+	{
+		return View::make('user.account');
+	}
+
+	public function postAccount() 
+	{
+		$data = Input::all();
+
+		$user = Auth::user();
+		$user->email = $data['email'];
+		$user->password = Hash::make($data['password']);
+		$user->firstname = $data['firstname'];
+		$user->lastname = $data['lastname'];
+		$user->zipcode = $data['zipcode'];
+		$user->addresslineone = $data['addresslineone'];
+		$user->city = $data['city'];
+		$user->country = $data['country'];
+		$user->phonenumber = $data['phonenumber'];
+		$user->licensenumber = $data['licensenumber'];
+		$user->passportnumber = $data['passportnumber'];
+		$user->kvknumber = $data['kvknumber'];
+		$user->vatnumber = $data['vatnumber'];
+
+		$user->save();
+
+		return Redirect::to('/user/account');
+	}
+
 	public function getSuccess() 
 	{
 		return View::make('user.success');

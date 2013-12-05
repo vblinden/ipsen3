@@ -44,7 +44,8 @@
 						@endif
 						{{ Auth::user()->firstname; }}<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Profiel</a></li>
+							<li><a href="/user/account">Mijn account</a></li>
+							@if(Auth::user()->role['role'] == 'admin') <li><a href='/admin/'>Administrator</a></li>@endif
 							<li class="divider"></li>
 							<li><a href="/user/logout">Uitloggen</a></li>
 						</ul>
