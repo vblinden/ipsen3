@@ -35,8 +35,24 @@
 					<li><a href="#">FAQ</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					@if(Auth::check())
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						@if(date("H") < "12") Goedemorgen,
+						@elseif(date("H") < "18") Goedemiddag,
+						@else Goedenavond,
+						@endif
+						{{ Auth::user()->firstname; }}<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Profiel</a></li>
+							<li class="divider"></li>
+							<li><a href="/user/logout">Uitloggen</a></li>
+						</ul>
+					</li>
+					@else
 					<li><a href="/user/login">Inloggen</a></li>
-					<li><a href="./">Registreren</a></li>
+					<li><a href="/user/register">Registreren</a></li>
+					@endif
 				</ul>
 			</div>
 		</div>
