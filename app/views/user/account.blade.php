@@ -159,7 +159,7 @@
 						Uw betaling gegevens worden niet opgeslagen.
 					</li>
 					<li>
-						Als er daadwerkelijk een inbraan is wordt u meteen ingelicht.
+						Als er daadwerkelijk een inbraak is wordt u meteen ingelicht.
 					</li>
 				</ul>
 				<p>
