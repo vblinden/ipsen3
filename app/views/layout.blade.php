@@ -29,9 +29,9 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Startpagina</a></li>
+						<li><a href="/">Startpagina</a></li>
 						<li><a href="#">Reserveren</a></li>
-						<li><a href="#">Voertuigen</a></li>
+						<li><a href="/vehicle">Voertuigen</a></li>
 						<li><a href="#">Prijzen</a></li>
 						<li><a href="#">FAQ</a></li>
 					</ul>
@@ -109,7 +109,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<p>Copyright &copy; <?php echo date("Y"); ?> LeenMeij. Alle rechten voorbehouden. Gemaakt door: Koning Keizer Admiraal Hofnar</p>
+						<p class='text-muted'>Copyright &copy; <?php echo date("Y"); ?> LeenMeij. Alle rechten voorbehouden. <span class='pull-right'>Gemaakt door: Koning, Keizer, Admiraal en Hofnar</span></p>
 					</div>
 				</div>
 			</div>
