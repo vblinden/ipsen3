@@ -61,4 +61,22 @@ class VehicleController extends BaseController {
 		return View::make('vehicle.edit', array('vehicle' => $vehicle));
 	}
 
+	public function postEdit($id) 
+	{
+		$data = Input::all();
+
+		$vehicle = Vehicle::find($id);
+		$vehicle->brand = $data['brand'];
+		$vehicle->model = $data['model'];
+		$vehicle->milage = $data['milage'];
+		$vehicle->licenseplate = $data['license'];
+		$vehicle->comment = $data['comment'];
+		$vehicle->color = $data['color'];
+		$vehicle->hourlyrate = $data['hourlyrate'];
+
+		// TODO: Add image or not.
+
+		return Redirect::to('vehicle/edit/' . $id);
+	}
+
 }

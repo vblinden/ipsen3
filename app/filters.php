@@ -43,7 +43,9 @@ Route::filter('auth', function()
 Route::filter('auth.admin', function()
 {
 	if (Auth::check()) {
-		if (Auth::user()->role['role'] != 'admin') {
+		$role = Role::find(Auth::user()->role['role_id']);
+
+		if ($role['name'] != 'admin') {
 			return Redirect::to('user/login');
 		}
 	} else {

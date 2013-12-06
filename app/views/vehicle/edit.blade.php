@@ -13,7 +13,7 @@
 		</p>
 
 
-		{{ Form::model($vehicle, array('action' => 'VehicleController@postAdd', 'files' => true)) }}
+		{{ Form::model($vehicle, array('action' => 'VehicleController@postEdit', 'files' => true)) }}
 
 		{{ $errors->first('email') }}
 		{{ $errors->first('password') }}
@@ -90,7 +90,7 @@
 
 		<p>Selecteer hieronder de afbeelding die u wilt toevoegen.</p>
 		<p>{{ Form::file('image'); }} </p>
-		{{ Form::submit('Toevoegen', array('class' => 'btn btn-primary')); }}
+		{{ Form::submit('Bewerken', array('class' => 'btn btn-primary')); }}
 	</div>
 </div>
 

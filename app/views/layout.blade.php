@@ -45,7 +45,7 @@
 						{{ Auth::user()->firstname; }}<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="/user/account">Mijn account</a></li>
-							@if(Auth::user()->role['role'] == 'admin') <li><a href='/admin/'>Administrator</a></li>@endif
+							@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') <li><a href='/admin/'>Administrator</a></li>@endif
 							<li class="divider"></li>
 							<li><a href="/user/logout">Uitloggen</a></li>
 						</ul>
@@ -112,7 +112,7 @@
 		</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap.js"></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 	<script src="/js/gmaps.js"></script>

@@ -123,4 +123,10 @@ class UserController extends BaseController {
 
 		return Redirect::to('/');
 	}
+
+	public function getTest() {
+		$role = Role::find(Auth::user()->role['role_id']);
+
+		return $role['name'];
+	}
 }
