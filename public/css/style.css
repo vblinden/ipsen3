@@ -4,12 +4,24 @@
           border-radius: 0 !important;
 }
 
+html {
+	height: 100%;
+}
+
 body {
-  padding-top: 70px;
+	height: 100%;
+  	padding-top: 70px;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -320px;
 }
 
 .navbar {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .btn-right {
@@ -18,9 +30,12 @@ body {
 }
 
 #footer {
-	position: relative;
-	display: block;
+	height: 320px;
 	background-color: #eee!important;
+}
+
+.push {
+	height: 320px;
 }
 
 .bulletless {
