@@ -2,6 +2,20 @@
 
 @section('content')
 <div class='row'>
+	<div class='col-lg-12'>
+		@if(Session::has('success'))
+		<div class="alert alert-success">
+			<p><strong>Succes!</strong> {{ Session::get('success') }}</p>
+		</div>
+		@endif
+		@if(Session::has('failed'))
+		<div class="alert alert-danger">
+			<p><strong>Fout!</strong> {{ Session::get('failed') }}</p>
+		</div>
+		@endif
+	</div>
+</div>
+<div class='row'>
 	<div class='col-lg-3'>
 		<ul class="nav nav-pills nav-stacked" style="border: 1px solid #ddd;">
 			<li class='active'><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
@@ -18,7 +32,11 @@
 				</div>
 				<p>Hieronder vind u de laatste vijf toegevoegde voertuigen. U kunt de voertuigen bewerken, verwijderen of een nieuwe voertuig aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle voertuigen.</p>
 				<div class="panel panel-default">
-					<div class="panel-heading">Voertuigen <a href="/vehicle/add" class="btn btn-success btn-sm pull-right btn-right"><span class="glyphicon glyphicon-plus"></span></a> <button class="btn btn-success btn-sm pull-right btn-right" style="margin-right: 5px;">Alle voertuigen</button> </div>
+					<div class="panel-heading">
+						Voertuigen 
+						<a href="/vehicle/add" class="btn btn-success btn-sm pull-right btn-right">Nieuw voertuig</a> 
+						<a href="#" class="btn btn-primary btn-sm pull-right btn-right" style="margin-right: 5px;">Alle voertuigen</a> 
+					</div>
 
 					<!-- Vehicle table -->
 					<table class="table table-striped">
@@ -39,8 +57,11 @@
 								<td>{{ $vehicle->brand }}</td>
 								<td>{{ $vehicle->model }}</td>
 								<td>{{ $vehicle->licenseplate }}</td>
-								<td>{{ $vehicle->category }}</td>
-								<td><a href='/vehicle/edit/{{ $vehicle->id }}' class="btn btn-primary btn-sm">Bewerken</a> <button class="btn btn-danger btn-sm">Verwijderen</button></td>
+								<td>{{ $vehicle->category['name'] }}</td>
+								<td>
+									<a href='/vehicle/edit/{{ $vehicle->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
+									<a href='/vehicle/delete/{{ $vehicle->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u dit voertuig wilt verwijderen?')">Verwijderen</a>
+								</td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -81,7 +102,10 @@
 								<td>{{ $user->lastname }}</td>
 								<td>{{ $user->email }}</td>
 								<td>{{ $user->business }}</td>
-								<td><a href='/user/edit/{{ $user->id }}' class="btn btn-primary btn-sm">Bewerken</a> <button class="btn btn-danger btn-sm">Verwijderen</button></td>
+								<td>
+									<a href='/user/edit/{{ $user->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
+									<a href='/user/delete/{{ $user->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze klant wilt verwijderen?')">Verwijderen</a>
+								</td>
 							</tr>
 							@endforeach
 						</tbody>

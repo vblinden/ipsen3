@@ -4,9 +4,7 @@ class AdminController extends BaseController {
 
 	public function __construct() 
 	{
-		$this->beforeFilter('auth', array(
-			'except' => 'getIndex'
-		));
+		$this->beforeFilter('auth.admin');
 	}
 
 	public function getIndex() 

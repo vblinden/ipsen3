@@ -31,6 +31,7 @@ class VehicleController extends BaseController {
 		$vehicle->comment = $data['comment'];
 		$vehicle->color = $data['color'];
 		$vehicle->hourlyrate = $data['hourlyrate'];
+		$vehicle->vehiclecategoryid = $data['category'];
 
 		$file = Input::file('image');
 
@@ -77,6 +78,14 @@ class VehicleController extends BaseController {
 		// TODO: Add image or not.
 
 		return Redirect::to('vehicle/edit/' . $id);
+	}
+
+	public function getDelete($id) 
+	{
+		$vehicle = Vehicle::find($id);
+		$vehicle->delete();
+
+		return Redirect::to('/admin#vehicles')->with('success', 'Het voertuig is succesvol verwijderd.');
 	}
 
 }
