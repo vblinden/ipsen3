@@ -19,6 +19,7 @@
 	<div class='col-lg-3'>
 		<ul class="nav nav-pills nav-stacked" style="border: 1px solid #ddd;">
 			<li class='active'><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
+			<li><a href="#vehiclesoptions" data-toggle='pill'>Voertuigen opties</a></li>
 			<li><a href="#reservations" data-toggle="pill">Reserveringen</a></li>
 			<li><a href="#invoices" data-toggle="pill">Facturen</a></li>
 			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Klanten</a></li>
@@ -67,6 +68,9 @@
 						</tbody>
 					</table>
 				</div>
+			</div>
+			<div class="tab-pane" id="vehiclesoptions">
+				
 			</div>
 			<div class="tab-pane" id="reservations">
 				

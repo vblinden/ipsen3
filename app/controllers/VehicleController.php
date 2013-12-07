@@ -11,7 +11,37 @@ class VehicleController extends BaseController {
 
 	public function getIndex() 
 	{
-		return View::make('vehicle.index');
+		$vehicles = Vehicle::paginate(1);
+
+		return View::make('vehicle.index', array('vehicles' => $vehicles));
+	}
+
+	public function getPerson() 
+	{
+		$vehicles = Vehicle::where('vehiclecategoryid', '=', '1')->paginate(5);
+
+		return View::make('vehicle.index', array('vehicles' => $vehicles));
+	}
+
+	public function getCompany() 
+	{
+		$vehicles = Vehicle::where('vehiclecategoryid', '=', '2')->paginate(5);
+
+		return View::make('vehicle.index', array('vehicles' => $vehicles));
+	}
+
+	public function getMotor() 
+	{
+		$vehicles = Vehicle::where('vehiclecategoryid', '=', '3')->paginate(5);
+
+		return View::make('vehicle.index', array('vehicles' => $vehicles));
+	}
+
+	public function getScooter() 
+	{
+		$vehicles = Vehicle::where('vehiclecategoryid', '=', '4')->paginate(5);
+
+		return View::make('vehicle.index', array('vehicles' => $vehicles));
 	}
 
 	public function getAdd() 
