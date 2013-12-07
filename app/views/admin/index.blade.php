@@ -47,7 +47,7 @@
 								<th>Model</th>
 								<th>Kenteken</th>
 								<th>Categorie</th>
-								<th width="180px"></th>
+								<th width="185px"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -91,7 +91,7 @@
 								<th>Achternaam</th>
 								<th>E-mail</th>
 								<th>Zakelijk</th>
-								<th width="180px"></th>
+								<th width="185px"></th>
 							</tr>
 						</thead>
 						<tbody>

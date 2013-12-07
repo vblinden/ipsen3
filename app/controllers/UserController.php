@@ -216,9 +216,12 @@ class UserController extends BaseController {
 		return Redirect::to('/');
 	}
 
-	public function getTest() {
-		$role = Role::find(Auth::user()->role['role_id']);
+	public function getDelete($id) 
+	{
+		$user = User::find($id);
+		$user->delete();
 
-		return $role['name'];
+		return Redirect::to('/admin#users')->with('success', 'De klant is succesvol verwijderd.');
 	}
+
 }
