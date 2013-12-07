@@ -74,7 +74,7 @@
 
 					{{-- Hourly rate field ---------------------------------------------------}}
 					<div class='form-group'>
-						{{ Form::label('hourlyrate', 'Per uur kosten'); }}
+						{{ Form::label('hourlyrate', 'Kosten per uur'); }}
 						{{ Form::text('hourlyrate', null, array('class' => 'form-control')); }}
 					</div>
 

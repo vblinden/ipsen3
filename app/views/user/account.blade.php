@@ -14,7 +14,7 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>Account <small>De persoonlijke LeenMeij account van {{ Auth::user()->firstname; }} {{ Auth::user()->lastname; }}</small></h1>
+			<h1>Account <small>van {{ Auth::user()->firstname; }} {{ Auth::user()->lastname; }}</small></h1>
 		</div>
 		<p>Hier onder vind u de gegevens die bekend zijn bij LeenMeij, u kunt op deze pagina uw gegevens bijwerken of er voor kiezen om uw wachtwoord te wijzigen.</p>
 	</div>
