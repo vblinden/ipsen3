@@ -1,102 +1,133 @@
 @extends('layout')
 
 @section('content')
+<div class='row'>
+	<div class='col-lg-12'>
+		@if(Session::has('success'))
+		<div class="alert alert-success">
+			<p><strong>Succes!</strong> {{ Session::get('success') }}</p>
+		</div>
+		@endif
+		@if(Session::has('failed'))
+		<div class="alert alert-danger">
+			<p><strong>Fout!</strong> {{ Session::get('failed') }}</p>
+		</div>
+		@endif
+		<div class="page-header">
+			<h1>Voertuig aanpassen <small>{{ $vehicle->brand }} {{ $vehicle->model }} met het kenteken {{ $vehicle->licenseplate }} aanpassen</small></h1>
+		</div>
+		<p>Hieronder kunt u een al bestaand voertuig aanpassen.</p>
+	</div>
+</div>
 <div class="row">
 	<div class='col-lg-12'>
-		<h1>Voertuig bewerken</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
-
-
 		{{ Form::model($vehicle, array('action' => 'VehicleController@postEdit', 'files' => true)) }}
+		<div class="panel panel-default">
+			<div class="panel-heading">Voertuig gegevens</div>
+			<div class="panel-body">
+				<div class='col-lg-6'>
+					{{ Form::hidden('id', $vehicle->id); }}
 
-		{{ $errors->first('email') }}
-		{{ $errors->first('password') }}
+					{{-- Category field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('category', 'Categorie'); }}
+						{{ Form::select('category', VehicleCategory::lists('name', 'id'), null, array('class' => 'form-control')); }}
+					</div>
 
-		<div class="page-header">
-			<h1>Voertuig gegevens </h1>
-		</div>
-		<div class='col-lg-6'>
-			{{-- Category field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('category', 'Categorie'); }}
-				{{ Form::text('category', null, array('class' => 'form-control')); }}
-			</div>
+					{{-- Brand field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('brand', 'Merk'); }}
+						{{ Form::text('brand', null, array('class' => 'form-control')); }}
+					</div>
 
-			{{-- Brand field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('brand', 'Merk'); }}
-				{{ Form::text('brand', null, array('class' => 'form-control')); }}
-			</div>
+					{{-- Model field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('model', 'Model'); }}
+						{{ Form::text('model', null, array('class' => 'form-control')); }}
+					</div>
 
-			{{-- Model field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('model', 'Model'); }}
-				{{ Form::text('model', null, array('class' => 'form-control')); }}
-			</div>
+					{{-- License plate field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('licenseplate', 'Kenteken'); }}
+						{{ Form::text('licenseplate', null, array('class' => 'form-control')); }}
+					</div>
 
-			{{-- License plate field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('license', 'Kenteken'); }}
-				{{ Form::text('license', null, array('class' => 'form-control')); }}
-			</div>
+					{{-- Milage field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('milage', 'Kilometerstand'); }}
+						{{ Form::text('milage', null, array('class' => 'form-control')); }}
+					</div>
 
-			{{-- Milage field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('milage', 'Kilometerstand'); }}
-				{{ Form::text('milage', null, array('class' => 'form-control')); }}
-			</div>
+				</div>
+				<div class='col-lg-6'>
+					{{-- Usage field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('usage', 'Verbruik'); }}
+						{{ Form::text('usage', null, array('class' => 'form-control')); }}
+					</div>
 
-		</div>
-		<div class='col-lg-6'>
-			{{-- Usage field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('usage', 'Verbruik'); }}
-				{{ Form::text('usage', null, array('class' => 'form-control')); }}
-			</div>
+					{{-- Color field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('color', 'Kleur'); }}
+						{{ Form::text('color', null, array('class' => 'form-control')); }}
+					</div>
 
-			{{-- Color field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('color', 'Kleur'); }}
-				{{ Form::text('color', null, array('class' => 'form-control')); }}
-			</div>
+					{{-- Hourly rate field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('hourlyrate', 'Per uur kosten'); }}
+						{{ Form::text('hourlyrate', null, array('class' => 'form-control')); }}
+					</div>
 
-			{{-- Hourly rate field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('hourlyrate', 'Per uur kosten'); }}
-				{{ Form::text('hourlyrate', null, array('class' => 'form-control')); }}
-			</div>
-
-			{{-- Comment field ---------------------------------------------------}}
-			<div class='form-group'>
-				{{ Form::label('comment', 'Opmerkingen'); }}
-				{{ Form::textarea('comment', null, array('class' => 'form-control', 'style' => 'height: 110px;')); }}
+					{{-- Comment field ---------------------------------------------------}}
+					<div class='form-group'>
+						{{ Form::label('comment', 'Opmerkingen'); }}
+						{{ Form::textarea('comment', null, array('class' => 'form-control', 'style' => 'height: 110px;')); }}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class='row'>
 	<div class='col-lg-12'>
-		<div class="page-header">
-			<h1>Voertuig afbeelding </h1>
+		<div class="panel panel-default">
+			<div class="panel-heading">Voertuig afbeelding</div>
+			<div class="panel-body">
+				<div class='col-lg-6'>
+					<p>Selecteer hieronder de afbeelding die u wilt toevoegen.</p>
+
+					<p>{{ Form::file('image', array('id' => 'vehicleImageUpload')); }} </p>
+				</div>
+				<div class='col-lg-6'>
+					<a class="thumbnail">
+						<img id='vehicleImage' src="/uploaded/vehicles/{{ $vehicle->image }}" alt="Voertuig afbeelding">
+					</a>
+				</div>
+			</div>
 		</div>
-
-		<a href='/uploaded/vehicles/{{ $vehicle['image'] }}' target="_blank">
-		<img src='/uploaded/vehicles/{{ $vehicle['image'] }}' style='width: 20%;' alt='Afbeelding van de geselecteerde auto.' />
-		</a>
-
-		<p>Selecteer hieronder de afbeelding die u wilt toevoegen.</p>
-		<p>{{ Form::file('image'); }} </p>
-		{{ Form::submit('Bewerken', array('class' => 'btn btn-primary')); }}
+		<p>
+		{{ Form::submit('Bijwerken', array('class' => 'btn btn-primary btn-full')); }}
+		</p>
 	</div>
 </div>
 
 {{ Form::close() }}
-</div>
-</div>
+
+@stop
+
+@section('scripts')
+<script>
+
+	$("#vehicleImageUpload").change(function(){
+		if (this.files && this.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#vehicleImage').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(this.files[0]);
+		}
+	});
+</script>
 @stop

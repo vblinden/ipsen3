@@ -6,7 +6,7 @@ class VehicleController extends BaseController {
 	{
 		$this->beforeFilter('auth.admin', array(
 			'except' => 'getIndex'
-		));
+			));
 	}
 
 	public function getIndex() 
@@ -28,13 +28,13 @@ class VehicleController extends BaseController {
 		$rules = array(
 			'brand' => 'required',
 			'model' => 'required',
-			'license' => 'required',
+			'licenseplate' => 'required',
 			'milage' => 'required',
 			'usage' => 'required',
 			'color' => 'required',
 			'hourlyrate' => 'required',
 			'image' => 'mimes:jpeg,jpg,gif,bmp,png'
-		);
+			);
 
 		// Run the validator rules on the inputs from the form.
 		$validator = Validator::make($data, $rules);
@@ -56,9 +56,10 @@ class VehicleController extends BaseController {
 			$vehicle->brand = $data['brand'];
 			$vehicle->model = $data['model'];
 			$vehicle->milage = $data['milage'];
-			$vehicle->licenseplate = $data['license'];
+			$vehicle->licenseplate = $data['licenseplate'];
 			$vehicle->comment = $data['comment'];
 			$vehicle->color = $data['color'];
+			$vehicle->usage = $data['usage'];
 			$vehicle->hourlyrate = $data['hourlyrate'];
 			$vehicle->vehiclecategoryid = $data['category'];
 
@@ -85,22 +86,64 @@ class VehicleController extends BaseController {
 		return View::make('vehicle.edit', array('vehicle' => $vehicle));
 	}
 
-	public function postEdit($id) 
+	public function postEdit() 
 	{
+		// Save all the input data.
 		$data = Input::all();
 
-		$vehicle = Vehicle::find($id);
-		$vehicle->brand = $data['brand'];
-		$vehicle->model = $data['model'];
-		$vehicle->milage = $data['milage'];
-		$vehicle->licenseplate = $data['license'];
-		$vehicle->comment = $data['comment'];
-		$vehicle->color = $data['color'];
-		$vehicle->hourlyrate = $data['hourlyrate'];
+		// Set validation rules.
+		$rules = array(
+			'brand' => 'required',
+			'model' => 'required',
+			'licenseplate' => 'required',
+			'milage' => 'required',
+			'usage' => 'required',
+			'color' => 'required',
+			'hourlyrate' => 'required',
+			'image' => 'mimes:jpeg,jpg,gif,bmp,png'
+		);
 
-		// TODO: Add image or not.
+		// Run the validator rules on the inputs from the form.
+		$validator = Validator::make($data, $rules);
 
-		return Redirect::to('vehicle/edit/' . $id);
+		// If validator fails, show error message.
+		if ($validator->fails()) {
+			if ($validator->messages()->has('image')) {
+				return Redirect::to('/vehicle/edit/' . $data['id'])->with('failed', 'De afbeelding moet van het type "png", "jpg", "bmp" of "gif" zijn. Probeer het opniew.')->withInput();
+			}
+
+			else {
+				return Redirect::to('/vehicle/edit/' . $data['id'])->with('failed', 'U moet alle velden invullen, behalve opmerkingen. Probeer het opnieuw.')->withInput();
+			}
+		}
+
+		// Else show succes message.
+		else {
+			$vehicle = Vehicle::find($data['id']);
+			$vehicle->brand = $data['brand'];
+			$vehicle->model = $data['model'];
+			$vehicle->milage = $data['milage'];
+			$vehicle->licenseplate = $data['licenseplate'];
+			$vehicle->comment = $data['comment'];
+			$vehicle->color = $data['color'];
+			$vehicle->usage = $data['usage'];
+			$vehicle->hourlyrate = $data['hourlyrate'];
+			$vehicle->vehiclecategoryid = $data['category'];
+
+			$file = Input::file('image');
+
+			if ($file != null) {
+				$fileName = Str::random(20) .'.'. $file->getClientOriginalExtension();
+				$fileDestination = '/users/vblinden/documents/work/school/ipsen3/public/uploaded/vehicles/';
+				$file->move($fileDestination, $fileName);
+
+				$vehicle->image = $fileName;
+			}
+
+			$vehicle->save();
+
+			return Redirect::to('/vehicle/edit/'.$data['id'])->with('success', 'Het voertuig is succesvol bijgewerkt.');
+		}
 	}
 
 	public function getDelete($id) 

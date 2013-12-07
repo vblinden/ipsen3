@@ -46,8 +46,8 @@
 
 					{{-- License plate field ---------------------------------------------------}}
 					<div class='form-group'>
-						{{ Form::label('license', 'Kenteken'); }}
-						{{ Form::text('license', null, array('class' => 'form-control')); }}
+						{{ Form::label('licenseplate', 'Kenteken'); }}
+						{{ Form::text('licenseplate', null, array('class' => 'form-control')); }}
 					</div>
 
 					{{-- Milage field ---------------------------------------------------}}
