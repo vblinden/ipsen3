@@ -44,14 +44,14 @@ class VehicleController extends BaseController {
 			$fileDestination = '/users/vblinden/documents/work/school/ipsen3/public/uploaded/vehicles/';
 			$file->move($fileDestination, $fileName);
 
-			$vehicle->image = $fileDestination . $fileName;
+			$vehicle->image = $fileName;
 
 			$vehicle->save();
 		} else {
 			return 'Not an image.';
 		}
 
-		return Redirect::to('admin/');
+		return Redirect::to('admin#vehicles/');
 	}
 
 	public function getEdit($id) 

@@ -86,7 +86,9 @@
 			<h1>Voertuig afbeelding </h1>
 		</div>
 
-		<img src='{{ $vehicle['image'] }}' alt='Afbeelding van de geslecteerde auto.' />
+		<a href='/uploaded/vehicles/{{ $vehicle['image'] }}' target="_blank">
+		<img src='/uploaded/vehicles/{{ $vehicle['image'] }}' style='width: 20%;' alt='Afbeelding van de geselecteerde auto.' />
+		</a>
 
 		<p>Selecteer hieronder de afbeelding die u wilt toevoegen.</p>
 		<p>{{ Form::file('image'); }} </p>
