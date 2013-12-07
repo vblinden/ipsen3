@@ -20,4 +20,5 @@ Bugs and new features should be submitted using [Github issues](https://github.c
 
 Please keep your branch up to date by rebasing upstream changes from master.
 
+### Running
 You can use your own choice of development server (XAMPP, MAMP, etc), but if you want to use the PHP's internal development server (PHP 5.4+ required) you can open up a console and run `php artisan serve` in the root directory of the application to start the development server.
