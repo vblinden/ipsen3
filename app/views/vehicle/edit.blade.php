@@ -30,8 +30,8 @@
 
 					{{-- Category field ---------------------------------------------------}}
 					<div class='form-group'>
-						{{ Form::label('category', 'Categorie'); }}
-						{{ Form::select('category', VehicleCategory::lists('name', 'id'), null, array('class' => 'form-control')); }}
+						{{ Form::label('vehiclecategoryid', 'Categorie'); }}
+						{{ Form::select('vehiclecategoryid', VehicleCategory::lists('name', 'id'), null, array('class' => 'form-control')); }}
 					</div>
 
 					{{-- Brand field ---------------------------------------------------}}

@@ -5,7 +5,7 @@ class VehicleController extends BaseController {
 	public function __construct() 
 	{
 		$this->beforeFilter('auth.admin', array(
-			'except' => 'getIndex'
+			'except' => array('getIndex' , 'getPerson', 'getCompany', 'getMotor', 'getScooter')
 			));
 	}
 
@@ -91,7 +91,7 @@ class VehicleController extends BaseController {
 			$vehicle->color = $data['color'];
 			$vehicle->usage = $data['usage'];
 			$vehicle->hourlyrate = $data['hourlyrate'];
-			$vehicle->vehiclecategoryid = $data['category'];
+			$vehicle->vehiclecategoryid = $data['vehiclecategoryid'];
 
 			$file = Input::file('image');
 
@@ -158,7 +158,7 @@ class VehicleController extends BaseController {
 			$vehicle->color = $data['color'];
 			$vehicle->usage = $data['usage'];
 			$vehicle->hourlyrate = $data['hourlyrate'];
-			$vehicle->vehiclecategoryid = $data['category'];
+			$vehicle->vehiclecategoryid = $data['vehiclecategoryid'];
 
 			$file = Input::file('image');
 
