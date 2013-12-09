@@ -40,7 +40,6 @@
 									<li><a href="/vehicle/scooter">Scooter</a></li>
 								</ul>
 							</li>
-						<li><a href="#">Prijzen</a></li>
 						<li><a href="/home/faq">FAQ</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
