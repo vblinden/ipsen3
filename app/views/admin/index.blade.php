@@ -29,7 +29,7 @@
 	<div class='col-lg-9'>
 		<div class="tab-content">
 
-			<div class="tab-pane active" id="vehiclesoptions">
+			<div class="tab-pane active" id="general">
 				<div class="page-header">
 					<h1>Algemeen <small></small></h1>
 				</div>
