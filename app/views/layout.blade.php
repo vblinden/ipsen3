@@ -117,7 +117,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<p class='text-muted'>Copyright &copy; <?php echo date("Y"); ?> LeenMeij. Alle rechten voorbehouden. <span class='pull-right'>Gemaakt door: Koning, Keizer, Admiraal en Hofnar</span></p>
+						<p class='text-muted'>Copyright &copy; <?php echo date("Y"); ?> Leenmeij Autoverhuur BV. Alle rechten voorbehouden. <span class='pull-right'>KVK: 987654321</span></p>
 					</div>
 				</div>
 			</div>
@@ -152,11 +152,12 @@
 					lat: 52.16662,
 					lng: 4.47184,
 					infoWindow: {
-						content: '<p>Nepstraat 123<br/>2233AB Leiden<br/>010-1923994<br/>info@leenmeij.tk</br></p>'
+						content: '<p>Zijlldijk 130<br/>2352 AB Leiderdorp<br/>071-7503299<br/>info@leenmeij.com</br></p>'
 					}
 				});
 			});
 		</script>
+
 		@yield('scripts')
 	</body>
 	</html>
