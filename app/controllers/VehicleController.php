@@ -190,5 +190,4 @@ class VehicleController extends BaseController {
 
 		return Redirect::to('/admin#vehicles')->with('success', 'Het voertuig is succesvol verwijderd.');
 	}
-
 }

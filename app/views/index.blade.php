@@ -55,24 +55,19 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Laatste nieuws</div>
 			<div class="panel-body">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				De afgelopen maanden zijn wij druk bezig geweest met het ontwikkelen van een nieuwe website, die binnenkort volledig online zal komen.
+				De website heeft een nieuwe frisse uitstraling gekregen, en beschikt over talloze nieuwe functies en mogelijkheden om u als klant nog beter van dienst te kunnen zijn.
+				<br><br>
+				De nieuwe website voor LeenMeij is ontwikkeld in samenwerking met Vinnie&Deampie enterprises, een full-service internetbureau dat gespecialiseerd is in het bedenken, ontwerpen en bouwen van hoogwaardige internetapplicaties. De nieuwe website is overzichtelijker en gebruiksvriendelijker, waar we er blij mee zijn.
 			</div>
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">Waarom LeenMeij</div>
 			<div class="panel-body">
 				<div class="col-lg-8" style="padding: 0px;">
-				 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				 LeenMeij heeft een uitgebreid wagenpark, waardoor we een completer aanbod hebben voor de klanten. Hierdoor kunnen wij het u als klant een stuk makkelijker maken in het maken van een keuze. 
+				 <br><br>
+				 Daarbij garanderen wij een actueel aanbod op de website tegen scherpe prijzen. Hierdoor proberen we de kwaliteit te waarborgen, en het u als klant zo makkelijk mogelijk te maken. Daarboven op hebben we de 6 sterren garantie van de BOVAG verkregen, dit betekend alleen maar meer zekerheid en service voor u!
 				</div>
 				<div class="col-lg-4">
 					<ul class="bulletless">

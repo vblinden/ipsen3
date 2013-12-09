@@ -153,10 +153,10 @@
 						op beveiligingslekken. 
 					</li>
 					<li>
-						Uw wachtwoord wordt <strong><a href="http://nl.wikipedia.org/wiki/Encryptie" target="_blank">geëncrypt</a></strong> opgeslagen. 
+						Uw wachtwoord wordt <strong><a href="http://nl.wikipedia.org/wiki/Encryptie" target="_blank">versleuteld</a></strong> opgeslagen. 
 					</li>
 					<li>
-						Uw betaling gegevens worden niet opgeslagen.
+						Uw betalingsgegevens worden niet opgeslagen.
 					</li>
 					<li>
 						Als er daadwerkelijk een inbraak is wordt u meteen ingelicht.
