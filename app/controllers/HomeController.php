@@ -17,16 +17,9 @@ class HomeController extends BaseController {
 		return View::make('index');
 	}
 
-	public function getSecret() 
+	public function getFaq() 
 	{
-		$vehicle = Vehicle::find(1);
-
-		return $vehicle;
-	}
-
-	public function postSecret() 
-	{
-		$data = Input::all();
+		return View::make('faq');
 	}
 
 }

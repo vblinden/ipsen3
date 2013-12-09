@@ -41,7 +41,7 @@
 								</ul>
 							</li>
 						<li><a href="#">Prijzen</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/home/faq">FAQ</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						@if(Auth::check())
