@@ -51,7 +51,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<a href='' class='btn btn-success'>Reserveren</a>
+					<a href='/vehicle/detail/{{ $vehicle->id }}' class='btn btn-success'>Bekijken</a>
 					@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
 					<a href='/vehicle/edit/{{ $vehicle->id }}' class='btn btn-primary'>Bewerken</a>
 					@endif

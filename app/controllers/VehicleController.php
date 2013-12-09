@@ -44,6 +44,13 @@ class VehicleController extends BaseController {
 		return View::make('vehicle.index', array('vehicles' => $vehicles));
 	}
 
+	public function getDetail($id)
+	{
+		$vehicle = Vehicle::find($id);
+
+		return View::make('vehicle.detail', array('vehicle' => $vehicle));
+	}
+
 	public function getAdd() 
 	{
 		return View::make('vehicle.add');
