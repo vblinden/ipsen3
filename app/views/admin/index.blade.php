@@ -18,7 +18,8 @@
 <div class='row'>
 	<div class='col-lg-3'>
 		<ul class="nav nav-pills nav-stacked" style="border: 1px solid #ddd;">
-			<li class='active'><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
+			<li class='active'><a href="#general" data-toggle="pill">Algemeen</a></li>
+			<li><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
 			<li><a href="#vehiclesoptions" data-toggle='pill'>Voertuigen opties</a></li>
 			<li><a href="#reservations" data-toggle="pill">Reserveringen</a></li>
 			<li><a href="#invoices" data-toggle="pill">Facturen</a></li>
@@ -27,7 +28,29 @@
 	</div>
 	<div class='col-lg-9'>
 		<div class="tab-content">
-			<div class="tab-pane active" id="vehicles">
+
+			<div class="tab-pane active" id="vehiclesoptions">
+				<div class="page-header">
+					<h1>Algemeen <small></small></h1>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Belasting Toegevoegde Waarde (BTW)</div>
+					<div class="panel-body">
+						{{ Form::open(array('action' => 'AdminController@postVat')) }}
+
+						{{-- Username field ---------------------------------------------------}}
+						<div class='form-group'>
+							{{ Form::label('vat', 'Belasting Toegevoegde Waarde (BTW) in procenten'); }}
+							{{ Form::text('vat', $general->vat, array('class' => 'form-control')); }}
+						</div>
+
+						{{ Form::submit('Belasting Toegevoegde Waarde (BTW) wijzigen', array('class' => 'btn btn-primary btn-full')); }}
+						{{ Form::close() }}
+					</div>
+					
+				</div>
+			</div>
+			<div class="tab-pane" id="vehicles">
 				<div class="page-header">
 					<h1>Voertuigen <small></small></h1>
 				</div>
