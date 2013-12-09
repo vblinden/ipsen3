@@ -97,7 +97,7 @@ class VehicleController extends BaseController {
 
 			if ($file != null) {
 				$fileName = Str::random(20) .'.'. $file->getClientOriginalExtension();
-				$fileDestination = '/users/vblinden/documents/work/school/ipsen3/public/uploaded/vehicles/';
+				$fileDestination = base_path().'/public/uploaded/vehicles/';
 				$file->move($fileDestination, $fileName);
 
 				$vehicle->image = $fileName;
@@ -164,7 +164,7 @@ class VehicleController extends BaseController {
 
 			if ($file != null) {
 				$fileName = Str::random(20) .'.'. $file->getClientOriginalExtension();
-				$fileDestination = '/users/vblinden/documents/work/school/ipsen3/public/uploaded/vehicles/';
+				$fileDestination = base_path().'/public/uploaded/vehicles/';
 				$file->move($fileDestination, $fileName);
 
 				$vehicle->image = $fileName;
