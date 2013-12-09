@@ -14,16 +14,20 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img src="/img/slide2.png" alt="De allergekste AUDI!">
-					<div class="carousel-caption">
-						Nieuwe Suzuki GSX-R 1000 is vanaf nu te huur!
-					</div>
+				<a href="/vehicle/detail/13">
+						<img src="/img/slide2.png" alt="De allergekste AUDI!">
+						<div class="carousel-caption">
+							Nieuwe Suzuki GSX-R 1000 is vanaf nu te huur!
+						</div>
+					</a>
 				</div>
 				<div class="item">
-					<img src="/img/slide1.png" alt="De allergekste AUDI!">
-					<div class="carousel-caption">
-						Reseveer nu de nieuwe Audi A6 2013! Voor maar €299,00 per dag! 
-					</div>
+					<a href="/vehicle/detail/17">
+						<img src="/img/slide1.png" alt="De allergekste AUDI!">
+						<div class="carousel-caption">
+							Reseveer nu de nieuwe Audi A6 2013! Voor maar €299,00 per dag! 
+						</div>
+					</a>
 				</div>
 				<div class="item">
 					<img src="/img/slide3.png" alt="De allergekste AUDI!">
