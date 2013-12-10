@@ -16,10 +16,12 @@
 		<div class="page-header">
 			<h1>{{ $vehicle->brand }} {{ $vehicle->model }}
 				<small class="pull-right">
-					<a href='/vehicle/detail/{{ $vehicle->id }}' class='btn btn-success'>Reserveren</a>
+					<a href='/reservation/make/{{ $vehicle->id }}' class='btn btn-success'>Reserveren</a>
+					@if(Auth::check()) 
 					@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
 					<a href='/vehicle/edit/{{ $vehicle->id }}' class='btn btn-primary'>Bewerken</a>
 					<a href='/vehicle/delete/{{ $vehicle->id }}' class="btn btn-danger" onclick="return confirm('Weet u zeker dat u dit voertuig wilt verwijderen?')">Verwijderen</a>
+					@endif
 					@endif
 				</small>
 			</h1>

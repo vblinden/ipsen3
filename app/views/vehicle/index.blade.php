@@ -52,9 +52,11 @@
 						</tbody>
 					</table>
 					<a href='/vehicle/detail/{{ $vehicle->id }}' class='btn btn-success'>Bekijken</a>
-					@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
+					@if(Auth::check()) 
+					@if (Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
 					<a href='/vehicle/edit/{{ $vehicle->id }}' class='btn btn-primary pull-right' style='margin-left: 5px'>Bewerken</a>
 					<a href='/vehicle/delete/{{ $vehicle->id }}' class="btn btn-danger pull-right" onclick="return confirm('Weet u zeker dat u dit voertuig wilt verwijderen?')">Verwijderen</a>
+					@endif
 					@endif
 				</div>
 			</div>

@@ -17,3 +17,4 @@ Route::controller('user', 'UserController');
 Route::controller('home', 'HomeController');
 Route::controller('admin', 'AdminController');
 Route::controller('vehicle', 'VehicleController');
+Route::controller('reservation', 'ReservationController');
