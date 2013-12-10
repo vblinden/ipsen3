@@ -24,36 +24,42 @@
 				</small>
 			</h1>
 		</div>
-		<div class="panel-body">
-			<div class='col-lg-6'>
-				<a class="thumbnail">
-					<img src="/uploaded/vehicles/{{ $vehicle->image }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
-			    </a>
-			</div>
-			<div class="col-lg-2">
-				<p><strong>Merk</strong> </p>
-				<p><strong>Model </strong></p>
-				<p><strong>Kilometerstand</strong> </p>
-				<p><strong>Kenteken </strong></p>
-				<p><strong>Voertuigkleur </strong></p>
-				<p><strong>Verbruik per kilometer </strong></p>
-				<p><strong>Prijs per uur </strong></p>
-				<p><strong>Prijs per dag </strong></p>
-				<p><strong>Opmerkingen </strong></p>
-			</div>
-			<div class="col-lg-4">
-				<p> {{ $vehicle->brand }} </p>
-				<p> {{ $vehicle->model }} </p>
-				<p> {{ $vehicle->milage }} kilometer</p>
-				<p> {{ $vehicle->licenseplate }} </p>
-				<p> {{ $vehicle->color }} </p>
-				<p> {{ $vehicle->usage }} </p>
-				<p> € {{ $vehicle->hourlyrate }}</p>
-				<p> € {{ $vehicle->hourlyrate * 24 }}</p>
-				<p> {{ $vehicle->comment }} </p>
+		<div class='col-lg-6'>
+			<a class="thumbnail">
+				<img src="/uploaded/vehicles/{{ $vehicle->image }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
+			</a>
+		</div>
+		<div class='col-lg-6'>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Voertuig gegevens
+				</div>
+				<div class='panel-body'>
+				<div class="col-lg-5">
+						<p><strong>Merk</strong> </p>
+						<p><strong>Model </strong></p>
+						<p><strong>Kilometerstand</strong> </p>
+						<p><strong>Kenteken </strong></p>
+						<p><strong>Voertuigkleur </strong></p>
+						<p><strong>Verbruik per kilometer </strong></p>
+						<p><strong>Prijs per uur </strong></p>
+						<p><strong>Prijs per dag </strong></p>
+						<p><strong>Opmerkingen </strong></p>
+					</div>
+					<div class="col-lg-7">
+						<p> {{ $vehicle->brand }} </p>
+						<p> {{ $vehicle->model }} </p>
+						<p> {{ $vehicle->milage }} kilometer</p>
+						<p> {{ $vehicle->licenseplate }} </p>
+						<p> {{ $vehicle->color }} </p>
+						<p> {{ $vehicle->usage }} </p>
+						<p> € {{ $vehicle->hourlyrate }}</p>
+						<p> € {{ $vehicle->hourlyrate * 24 }}</p>
+						<p> {{ $vehicle->comment }} </p>
+					</div>
+				</div>
 			</div>
 		</div>
-		
 	</div>
 </div>
 

@@ -134,7 +134,13 @@
 								<td>{{ $user->firstname }}</td>
 								<td>{{ $user->lastname }}</td>
 								<td>{{ $user->email }}</td>
-								<td>{{ $user->business }}</td>
+								<td>
+									@if ($user->business == 1)
+										Ja
+									@else
+										Nee
+									@endif
+								</td>
 								<td>
 									<a href='/user/edit/{{ $user->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
 									<a href='/user/delete/{{ $user->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze klant wilt verwijderen?')">Verwijderen</a>

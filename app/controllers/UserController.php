@@ -112,6 +112,11 @@ class UserController extends BaseController {
 			$user->passportnumber = $data['passportnumber'];
 			$user->kvknumber = $data['kvknumber'];
 			$user->vatnumber = $data['vatnumber'];
+			$user->business = 0;
+
+			if (isset($user->kvknumber) || isset($user->vatnumber)) {
+				$user->business = 1;
+			}
 
 			$user->save();
 
@@ -168,6 +173,11 @@ class UserController extends BaseController {
 			$user->passportnumber = $data['passportnumber'];
 			$user->kvknumber = $data['kvknumber'];
 			$user->vatnumber = $data['vatnumber'];
+			$user->business = 0;
+
+			if (isset($user->kvknumber) || isset($user->vatnumber)) {
+				$user->business = 1;
+			}
 
 			$user->save();
 
