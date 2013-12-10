@@ -105,6 +105,7 @@ class UserController extends BaseController {
 			$user->lastname = $data['lastname'];
 			$user->zipcode = $data['zipcode'];
 			$user->addresslineone = $data['addresslineone'];
+			$user->addresslinetwo = $data['addresslinetwo'];
 			$user->city = $data['city'];
 			$user->country = $data['country'];
 			$user->phonenumber = $data['phonenumber'];
@@ -180,6 +181,7 @@ class UserController extends BaseController {
 			$user->lastname = $data['lastname'];
 			$user->zipcode = $data['zipcode'];
 			$user->addresslineone = $data['addresslineone'];
+			$user->addresslinetwo = $data['addresslinetwo'];
 			$user->city = $data['city'];
 			$user->country = $data['country'];
 			$user->phonenumber = $data['phonenumber'];

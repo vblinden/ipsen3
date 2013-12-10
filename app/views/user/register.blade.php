@@ -24,7 +24,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Uw gegevens</div>
 			<div class="panel-body">
-				{{ Form::open(array('action' => 'UserController@postRegister')) }}
+				{{ Form::open(array('action' => 'UserController@postRegister', 'class' => 'address')) }}
 				<div class='row'>
 					<div class='col-lg-6'>
 						{{-- Email field ---------------------------------------------------}}
@@ -58,13 +58,21 @@
 						</div>
 						{{-- Zipcode field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('zipcode', 'Postcode'); }}
-							{{ Form::text('zipcode', null, array('class' => 'form-control')); }}
+							<div class='row'>
+								<div class='col-lg-8'>
+									{{ Form::label('zipcode', 'Postcode'); }}
+									{{ Form::text('zipcode', null, array('class' => 'form-control postcode')); }}
+								</div>
+								<div class='col-lg-4'>
+									{{ Form::label('addresslinetwo', 'Huisnummer'); }}
+									{{ Form::text('addresslinetwo', null, array('class' => 'form-control streetnumber')); }}
+								</div>
+							</div>
 						</div>
 						{{-- Address field ---------------------------------------------------}}
 						<div class='form-group required'>
 							{{ Form::label('addresslineone', 'Adres 1'); }}
-							{{ Form::text('addresslineone', null, array('class' => 'form-control')); }}
+							{{ Form::text('addresslineone', null, array('class' => 'form-control street')); }}
 						</div>
 					</div>
 
@@ -72,7 +80,7 @@
 						{{-- City field ---------------------------------------------------}}
 						<div class='form-group required'>
 							{{ Form::label('city', 'Woonplaats'); }}
-							{{ Form::text('city', null, array('class' => 'form-control')); }}
+							{{ Form::text('city', null, array('class' => 'form-control city')); }}
 						</div>
 
 						{{-- Country field ---------------------------------------------------}}
@@ -123,4 +131,14 @@
 	</div>
 </div>
 
+@stop
+
+@section('scripts')
+<script type="text/javascript" src="/js/zipcode.js"></script>
+<script type="text/javascript">
+  var pro6pp_auth_key = "UWYghPakHXTzpvFM";
+  $(document).ready(function() {
+      $(".address").applyAutocomplete();
+  });
+</script>
 @stop

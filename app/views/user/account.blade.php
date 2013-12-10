@@ -53,8 +53,16 @@
 				</div>
 				{{-- Address field ---------------------------------------------------}}
 				<div class='form-group required'>
-					{{ Form::label('addresslineone', 'Adres 1'); }}
-					{{ Form::text('addresslineone', null, array('class' => 'form-control')); }}
+					<div class='row'>
+						<div class='col-lg-8'>
+							{{ Form::label('addresslineone', 'Straat'); }}
+							{{ Form::text('addresslineone', null, array('class' => 'form-control postcode')); }}
+						</div>
+						<div class='col-lg-4'>
+							{{ Form::label('addresslinetwo', 'Huisnummer'); }}
+							{{ Form::text('addresslinetwo', null, array('class' => 'form-control streetnumber')); }}
+						</div>
+					</div>
 				</div>
 
 				{{-- City field ---------------------------------------------------}}
