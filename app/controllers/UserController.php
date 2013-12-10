@@ -112,10 +112,14 @@ class UserController extends BaseController {
 			$user->passportnumber = $data['passportnumber'];
 			$user->kvknumber = $data['kvknumber'];
 			$user->vatnumber = $data['vatnumber'];
-			$user->business = 0;
+			$user->business = 1;
 
-			if (isset($user->kvknumber) || isset($user->vatnumber)) {
-				$user->business = 1;
+			if (!isset($data['kvknumber']) || trim($data['kvknumber']) === '') {
+				$user->business = 0;
+			}
+
+			else if (!isset($data['vatnumber']) || trim($data['vatnumber']) === '') {
+				$user->business = 0;
 			}
 
 			$user->save();
@@ -147,7 +151,9 @@ class UserController extends BaseController {
 			'country' => 'required',
 			'phonenumber' => 'required',
 			'licensenumber' => 'required',
-			'passportnumber' => 'required'
+			'passportnumber' => 'required',
+			'vatnumber' => 'required_with:kvknumber',
+			'kvknumber' => 'required_with:vatnumber'
 		);
 
 		// Run the validator rules on the inputs from the form.
@@ -155,7 +161,15 @@ class UserController extends BaseController {
 
 		// If validator fails, show error message.
 		if ($validator->fails()) {
-			return Redirect::to('/user/account')->with('failed', 'U moet alle velden invullen die rood gemarkeerd zijn.');
+			if ($validator->messages()->has('vatnumber')) {
+				return Redirect::to('/user/account')->with('failed', 'U moet als bedrijf zijnde ook een BTW nummer invullen. Probeer het opnieuw.')->withInput();
+			} else if ($validator->messages()->has('kvknumber')) {
+				return Redirect::to('/user/account')->with('failed', 'U moet als bedrijf zijnde ook een KVK nummer invullen. Probeer het opnieuw.')->withInput();
+			}
+
+			else {
+				return Redirect::to('/user/account')->with('failed', 'U moet alle velden invullen die rood gemarkeerd zijn.');
+			}
 		}
 
 		// Else show succes message and save the password.
@@ -173,10 +187,10 @@ class UserController extends BaseController {
 			$user->passportnumber = $data['passportnumber'];
 			$user->kvknumber = $data['kvknumber'];
 			$user->vatnumber = $data['vatnumber'];
-			$user->business = 0;
-
-			if (isset($user->kvknumber) || isset($user->vatnumber)) {
-				$user->business = 1;
+			$user->business = 1;
+			
+			if (!isset($data['vatnumber']) || trim($data['vatnumber']) ==='') {
+				$user->business = 0;
 			}
 
 			$user->save();
