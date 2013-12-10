@@ -30,14 +30,15 @@
 			    </a>
 			</div>
 			<div class="col-lg-2">
-				<p>Merk: </p>
-				<p>Model: </p>
-				<p>Kilometerstand: </p>
-				<p>Kenteken: </p>
-				<p>Voertuigkleur: </p>
-				<p>Verkruik per kilometer: </p>
-				<p>Prijs per uur: </p>
-				<p>Opmerkingen: </p>
+				<p><strong>Merk</strong> </p>
+				<p><strong>Model </strong></p>
+				<p><strong>Kilometerstand</strong> </p>
+				<p><strong>Kenteken </strong></p>
+				<p><strong>Voertuigkleur </strong></p>
+				<p><strong>Verbruik per kilometer </strong></p>
+				<p><strong>Prijs per uur </strong></p>
+				<p><strong>Prijs per dag </strong></p>
+				<p><strong>Opmerkingen </strong></p>
 			</div>
 			<div class="col-lg-4">
 				<p> {{ $vehicle->brand }} </p>
@@ -46,7 +47,8 @@
 				<p> {{ $vehicle->licenseplate }} </p>
 				<p> {{ $vehicle->color }} </p>
 				<p> {{ $vehicle->usage }} </p>
-				<p> € {{ $vehicle->hourlyrate }} per uur</p>
+				<p> € {{ $vehicle->hourlyrate }}</p>
+				<p> € {{ $vehicle->hourlyrate * 24 }}</p>
 				<p> {{ $vehicle->comment }} </p>
 			</div>
 		</div>
@@ -55,9 +57,5 @@
 </div>
 
 {{ Form::close() }}
-
-@stop
-
-@section('scripts')
 
 @stop

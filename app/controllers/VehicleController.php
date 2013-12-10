@@ -5,8 +5,8 @@ class VehicleController extends BaseController {
 	public function __construct() 
 	{
 		$this->beforeFilter('auth.admin', array(
-			'except' => array('getIndex' , 'getPerson', 'getCompany', 'getMotor', 'getScooter')
-			));
+			'except' => array('getIndex' , 'getPerson', 'getCompany', 'getMotor', 'getScooter', 'getDetail')
+		));
 	}
 
 	public function getIndex() 
@@ -179,7 +179,7 @@ class VehicleController extends BaseController {
 
 			$vehicle->save();
 
-			return Redirect::to('/vehicle/edit/'.$data['id'])->with('success', 'Het voertuig is succesvol bijgewerkt.');
+			return Redirect::to('/vehicle/detail/'.$data['id'])->with('success', 'Het voertuig is succesvol bijgewerkt.');
 		}
 	}
 
