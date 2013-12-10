@@ -58,8 +58,6 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						Voertuigen 
-						<a href="/vehicle/add" class="btn btn-success btn-sm pull-right btn-right">Nieuw voertuig</a> 
-						<a href="#" class="btn btn-primary btn-sm pull-right btn-right" style="margin-right: 5px;">Alle voertuigen</a> 
 					</div>
 
 					<!-- Vehicle table -->
@@ -90,6 +88,14 @@
 							@endforeach
 						</tbody>
 					</table>
+					<div class='panel-body'>
+						<div class='col-lg-6'>
+							<a href="#" class="btn btn-primary btn-full">Alle voertuigen</a>
+						</div>
+						<div class='col-lg-6'>
+							<a href="/vehicle/add" class="btn btn-success btn-full">Nieuw voertuig</a> 
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="tab-pane" id="vehiclesoptions">
