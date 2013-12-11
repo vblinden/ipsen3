@@ -11,8 +11,9 @@ class ReservationController extends BaseController {
 
 	public function getMake($id)
 	{
-		return $id;
-		
+		$vehicle = Vehicle::find($id);
+
+		return View::make('reservation.make', array('vehicle' => $vehicle));	
 	}
 
 }
