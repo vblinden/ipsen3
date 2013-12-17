@@ -65,7 +65,7 @@ class UserController extends BaseController {
 		// Set validation rules.
 		$rules = array(
 			'email' => 'required|unique:users,email|email',
-			'password' => 'required|min:3',
+			'password' => array('required', 'min:3', 'regex:/^(?=.*[A-Z])(?=.*\d).*$/'),
 			'passwordconfirm' => 'same:password',
 			'firstname' => 'required',
 			'lastname' => 'required',
@@ -88,8 +88,12 @@ class UserController extends BaseController {
 				return Redirect::to('/user/register')->with('failed', 'Het e-mail adres wat u probeert te gebruiken is al in gebruik of is geen geldig e-mail adres. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
+			else if ($validator->messages()->has('password')) {
+				return Redirect::to('/user/register')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens, een hoofdletter hebben en een cijfer bevatten. Ook moeten de wachtwoorden overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
+			}
+
 			else if ($validator->messages()->has('passwordconfirm')) {
-				return Redirect::to('/user/register')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens en de wachtwoorden moeten overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
+				return Redirect::to('/user/register')->with('failed', 'Uw wachtwoorden komen niet overeen. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
 			else if ($validator->messages()->has('recaptcha_response_field')) {
