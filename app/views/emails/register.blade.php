@@ -17,7 +17,7 @@
 			</p>
 			<p>
 				<strong>E-mail:</strong> {{ $user->email }}<br/>
-				<strong>Wachtwword:</strong> Uw persoonlijk gekozen wachtwoord.
+				<strong>Wachtwoord:</strong> Uw persoonlijk gekozen wachtwoord.
 			</p>
 
 			<p>

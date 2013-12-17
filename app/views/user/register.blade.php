@@ -107,17 +107,7 @@
 							{{ Form::text('passportnumber', null, array('class' => 'form-control')); }}
 						</div>
 
-						{{-- KVK number field ---------------------------------------------------}}
-						<div class='form-group'>
-							{{ Form::label('kvknumber', 'KVK nummer'); }}
-							{{ Form::text('kvknumber', null, array('class' => 'form-control', 'placeholder' => 'Niet verplicht')); }}
-						</div>
-
-						{{-- VAT number field ---------------------------------------------------}}
-						<div class='form-group'>
-							{{ Form::label('vatnumber', 'BTW nummer'); }}
-							{{ Form::text('vatnumber', null, array('class' => 'form-control', 'placeholder' => 'Niet verplicht')); }}
-						</div>
+						{{ Form::captcha(array('theme' => 'clean')); }}
 					</div>
 				</div>
 				<div class='row'>

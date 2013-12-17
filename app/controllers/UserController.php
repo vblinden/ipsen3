@@ -75,7 +75,8 @@ class UserController extends BaseController {
 			'country' => 'required',
 			'phonenumber' => 'required',
 			'licensenumber' => 'required',
-			'passportnumber' => 'required'
+			'passportnumber' => 'required',
+			'recaptcha_response_field' => 'required|recaptcha'
 		);
 
 		// Run the validator rules on the inputs from the form.
@@ -89,6 +90,10 @@ class UserController extends BaseController {
 
 			else if ($validator->messages()->has('passwordconfirm')) {
 				return Redirect::to('/user/register')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens en de wachtwoorden moeten overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
+			}
+
+			else if ($validator->messages()->has('recaptcha_response_field')) {
+				return Redirect::to('/user/register')->with('failed', 'Uw CAPTCHA invoer is incorrect. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
 			else {
@@ -111,17 +116,17 @@ class UserController extends BaseController {
 			$user->phonenumber = $data['phonenumber'];
 			$user->licensenumber = $data['licensenumber'];
 			$user->passportnumber = $data['passportnumber'];
-			$user->kvknumber = $data['kvknumber'];
-			$user->vatnumber = $data['vatnumber'];
+			// $user->kvknumber = $data['kvknumber'];
+			// $user->vatnumber = $data['vatnumber'];
 			$user->business = 1;
 
-			if (!isset($data['kvknumber']) || trim($data['kvknumber']) === '') {
-				$user->business = 0;
-			}
+			// if (!isset($data['kvknumber']) || trim($data['kvknumber']) === '') {
+			// 	$user->business = 0;
+			// }
 
-			else if (!isset($data['vatnumber']) || trim($data['vatnumber']) === '') {
-				$user->business = 0;
-			}
+			// else if (!isset($data['vatnumber']) || trim($data['vatnumber']) === '') {
+			// 	$user->business = 0;
+			// }
 
 			$user->save();
 
