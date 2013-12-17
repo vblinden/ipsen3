@@ -125,6 +125,11 @@ class UserController extends BaseController {
 
 			$user->save();
 
+			Mail::send('emails.register', array('user' => $user), function($message) use ($user)
+			{
+			    $message->to($user->email)->subject('Welkom bij LeenMeij!');
+			});
+
 			Auth::login($user);
 
 			return Redirect::to('/');
