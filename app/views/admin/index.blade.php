@@ -90,7 +90,7 @@
 					</table>
 					<div class='panel-body'>
 						<div class='col-lg-6'>
-							<a href="#" class="btn btn-primary btn-full">Alle voertuigen</a>
+							<a href="/admin/vehicles" class="btn btn-primary btn-full">Alle voertuigen</a>
 						</div>
 						<div class='col-lg-6'>
 							<a href="/vehicle/add" class="btn btn-success btn-full">Nieuw voertuig</a> 

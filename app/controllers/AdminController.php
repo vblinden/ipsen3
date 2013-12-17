@@ -16,9 +16,9 @@ class AdminController extends BaseController {
 		return View::make('admin.index', array('vehicles' => $vehicles, 'users' => $users, 'general' => $general));
 	}
 
-	public function getVehicle() 
+	public function getVehicles() 
 	{
-		return View::make('admin.vehicle');
+		return View::make('admin.vehicles', array('vehicles' => Vehicle::all()));
 	}
 
 	public function postVat() 
