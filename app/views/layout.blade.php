@@ -52,9 +52,11 @@
 								@endif
 								{{ Auth::user()->firstname; }}<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/user/account">Mijn account</a></li>
-									@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') <li><a href='/admin/'>Administrator</a></li>@endif
+									<!-- <li><a href="/user/account">Mijn account</a></li> -->
+									@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
+									<li><a href='/admin/'>Administrator</a></li>
 									<li class="divider"></li>
+									@endif
 									<li><a href="/user/logout">Uitloggen</a></li>
 								</ul>
 							</li>

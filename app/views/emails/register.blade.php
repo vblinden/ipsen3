@@ -12,7 +12,7 @@
 				kunnen zijn bij het zoeken naar een voertuig. 
 			</p>
 			<p>
-				Je kunt nu inloggen op <a href="http://localhost:8000" target="_blank">de LeenMeij website</a> met
+				Je kunt nu inloggen op <a href="http://leenmeij.vblinden.com" target="_blank">de LeenMeij website</a> met
 				de volgende gegevens.
 			</p>
 			<p>
