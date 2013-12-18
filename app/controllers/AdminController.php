@@ -10,15 +10,21 @@ class AdminController extends BaseController {
 	public function getIndex() 
 	{
 		$vehicles = Vehicle::orderBy('id', 'DESC')->get();
+		$vehicleoptions = VehicleOption::orderby('id','DESC')->get();
 		$users = User::orderBy('id', 'DESC')->get();
 		$general = General::find(1);
 
-		return View::make('admin.index', array('vehicles' => $vehicles, 'users' => $users, 'general' => $general));
+		return View::make('admin.index', array('vehicles' => $vehicles, 'users' => $users, 'general' => $general, 'vehicleoptions' => $vehicleoptions));
 	}
 
 	public function getVehicles() 
 	{
 		return View::make('admin.vehicles', array('vehicles' => Vehicle::all()));
+	}
+
+	public function getVehicleoptions()
+	{
+		return View::make('admin.vehicleoptions', array('vehicleoptions' => VehicleOption::all()));
 	}
 
 	public function postVat() 

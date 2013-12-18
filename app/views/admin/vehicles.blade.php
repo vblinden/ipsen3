@@ -20,7 +20,7 @@
 						<th>Model</th>
 						<th>Kenteken</th>
 						<th>Categorie</th>
-						<th width="180px"></th>
+						<th width="185px"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,7 +32,7 @@
 						<td>{{ $vehicle->licenseplate }}</td>
 						<td>{{ $vehicle->category['name'] }}</td>
 						<td><a href='/vehicle/edit/{{ $vehicle->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
-									<a href='/vehicle/delete/{{ $vehicle->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u dit voertuig wilt verwijderen?')">Verwijderen</a></td>
+						<a href='/vehicle/delete/{{ $vehicle->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u dit voertuig wilt verwijderen?')">Verwijderen</a></td>
 					</tr>
 					@endforeach
 				</tbody>

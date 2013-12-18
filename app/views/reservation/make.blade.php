@@ -28,8 +28,9 @@
 						<ul class="nav navbar-nav">
 							<li><a href="#tab1" data-toggle="tab">Persoonsgegevens</a></li>
 							<li><a href="#tab2" data-toggle="tab">Voertuiggegevens</a></li>
-							<li><a href="#tab3" data-toggle="tab">Verhuur periode</a></li>
-							<li><a href="#tab4" data-toggle="tab">Betaalgegevens</a></li>
+							<li><a href="#tab3" data-toggle="tab">Voertuigopties</a></li>
+							<li><a href="#tab4" data-toggle="tab">Verhuur periode</a></li>
+							<li><a href="#tab5" data-toggle="tab">Betaalgegevens</a></li>
 						</ul>
 					</div>
 				</div>
@@ -135,6 +136,30 @@
 				</div>
 				<div class="tab-pane" id="tab3">
 					<div class="panel panel-default">
+						<div class="panel-heading">Voertuig opties </div>
+							<table class="table table-striped">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Naam</th>
+								<th>Prijs per dag</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($vehicleoptions as $vehicleoption)
+							<tr>
+								<td><input type='checkbox'></td>
+								<td>{{ $vehicleoption->name }}</td>
+								<td>€ {{ $vehicleoption->price * 24 }}</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					
+						</div>
+				</div>
+				<div class="tab-pane" id="tab4">
+					<div class="panel panel-default">
 						<div class="panel-heading">Datums </div>
 						<div class='panel-body'>
 							<div class='row'>
@@ -150,7 +175,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane" id="tab4">
+				<div class="tab-pane" id="tab5">
 					<div class="panel panel-default">
 					<div class="panel-heading">Uw betaalgegevens</div>
 						<div class='panel-body'>

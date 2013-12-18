@@ -20,7 +20,7 @@
 		<ul class="nav nav-pills nav-stacked" style="border: 1px solid #ddd;">
 			<li class='active'><a href="#general" data-toggle="pill">Algemeen</a></li>
 			<li><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
-			<li><a href="#vehiclesoptions" data-toggle='pill'>Voertuigen opties</a></li>
+			<li><a href="#vehiclesoptions" data-toggle='pill'><span class="badge pull-right">{{ $vehicleoptions->count() }}</span>Voertuigen opties</a></li>
 			<li><a href="#reservations" data-toggle="pill">Reserveringen</a></li>
 			<li><a href="#invoices" data-toggle="pill">Facturen</a></li>
 			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Klanten</a></li>
@@ -99,7 +99,48 @@
 				</div>
 			</div>
 			<div class="tab-pane" id="vehiclesoptions">
-				
+				<div class="page-header">
+					<h1>Voertuigen opties <small></small></h1>
+				</div>
+				<p>Hieronder vind u de laatste vijf toegevoegde voertuig opties. U kunt de voertuig opties bewerken, verwijderen of een nieuwe voertuig aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle voertuig opties.</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Voertuig opties 
+					</div>
+
+					<!-- Vehicle table -->
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Naam</th>
+								<th>Prijs per dag</th>
+								<th width="185px"></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($vehicleoptions->take(5) as $vehicleoption)
+							<tr>
+								<td>{{ $vehicleoption->id }}</td>
+								<td>{{ $vehicleoption->name }}</td>
+								<td>€ {{ $vehicleoption->price * 24}}</td>
+								<td>
+									<a href='/vehicleoption/edit/{{ $vehicleoption->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
+									<a href='/vehicleoption/delete/{{ $vehicleoption->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze voertuig optie wilt verwijderen?')">Verwijderen</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					<div class='panel-body'>
+						<div class='col-lg-6'>
+							<a href="/admin/vehicleoptions" class="btn btn-primary btn-full">Alle voertuig opties</a>
+						</div>
+						<div class='col-lg-6'>
+							<a href="/vehicleoption/add" class="btn btn-success btn-full">Nieuwe voertuig optie</a> 
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="tab-pane" id="reservations">
 				
@@ -113,7 +154,7 @@
 				</div>
 				<p>Hieronder vind u de laatste vijf toegevoegde klanten. U kunt de klanten bewerken, verwijderen of een nieuwe klant aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle klanten.</p>
 				<div class="panel panel-default">
-					<div class="panel-heading">Voertuigen <a href="/user/add" class="btn btn-success btn-sm pull-right btn-right"><span class="glyphicon glyphicon-plus"></span></a> <button class="btn btn-primary btn-sm pull-right btn-right" style="margin-right: 5px;">Alle klanten</button> </div>
+					<div class="panel-heading">Klanten <a href="/user/add" class="btn btn-success btn-sm pull-right btn-right"><span class="glyphicon glyphicon-plus"></span></a> <button class="btn btn-primary btn-sm pull-right btn-right" style="margin-right: 5px;">Alle klanten</button> </div>
 
 					<!-- Vehicle table -->
 					<table class="table table-striped">

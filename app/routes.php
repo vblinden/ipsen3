@@ -18,3 +18,4 @@ Route::controller('home', 'HomeController');
 Route::controller('admin', 'AdminController');
 Route::controller('vehicle', 'VehicleController');
 Route::controller('reservation', 'ReservationController');
+Route::controller('vehicleoption', 'VehicleOptionController');
