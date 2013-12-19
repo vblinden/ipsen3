@@ -84,8 +84,12 @@
 			</div>
 		</div>
 	</div>
+</div>
 
-	{{ Form::submit('Bijwerken', array('class' => 'btn btn-primary btn-full')); }}
+<div class='row'>
+	<div class='col-lg-12'>
+		<p>{{ Form::submit('Bijwerken', array('class' => 'btn btn-primary btn-full')); }}</p>
+	</div>
 </div>
 
 {{ Form::close() }}
