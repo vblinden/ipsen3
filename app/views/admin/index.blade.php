@@ -21,7 +21,7 @@
 			<li class='active'><a href="#general" data-toggle="pill">Algemeen</a></li>
 			<li><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
 			<li><a href="#vehiclesoptions" data-toggle='pill'><span class="badge pull-right">{{ $vehicleoptions->count() }}</span>Voertuigen opties</a></li>
-			<li><a href="#reservations" data-toggle="pill">Reserveringen</a></li>
+			<li><a href="#reservations" data-toggle="pill"><span class="badge pull-right">{{ $reservations->count() }}</span>Reserveringen</a></li>
 			<li><a href="#invoices" data-toggle="pill">Facturen</a></li>
 			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Klanten</a></li>
 		</ul>
@@ -143,7 +143,49 @@
 				</div>
 			</div>
 			<div class="tab-pane" id="reservations">
-				
+				<div class="page-header">
+					<h1>Reserveringen <small></small></h1>
+				</div>
+				<p>Hieronder vind u de laatste vijf toegevoegde reserveringen. U kunt de reserveringen bewerken, verwijderen. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle reserveringen.</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Reserveringen
+					</div>
+
+					<!-- Vehicle table -->
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Naam</th>
+								<th>Voertuig</th>
+								<th>Begin datum</th>
+								<th>Eind datum</th>
+								<th width="185px"></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($reservations->take(5) as $reservation)
+							<tr>
+								<td>{{ $reservation->id }}</td>
+								<td>{{ $reservation->user->firstname }} {{ $reservation->user->lastname }}</td>
+								<td>{{ $reservation->vehicle->brand }} {{ $reservation->vehicle->model }}</td>
+								<td>{{ $reservation->startdate }}</td>
+								<td>{{ $reservation->enddate }}</td>
+								<td>
+									<a href='/reservation/edit/{{ $reservation->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
+									<a href='/reservation/delete/{{ $reservation->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze reservering wilt verwijderen?')">Verwijderen</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					<div class='panel-body'>
+						<div class='col-lg-12'>
+							<a href="/admin/reservations" class="btn btn-primary btn-full">Alle reserveringen</a>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="tab-pane" id="invoices">
 				
@@ -155,9 +197,6 @@
 				<p>Hieronder vind u de laatste vijf toegevoegde klanten. U kunt de klanten bewerken, verwijderen of een nieuwe klant aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle klanten.</p>
 				<div class="panel panel-default">
 					<div class="panel-heading">Klanten </div>
-
-
-
 					<table class="table table-striped">
 						<thead>
 							<tr>

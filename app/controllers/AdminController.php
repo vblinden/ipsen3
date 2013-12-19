@@ -12,9 +12,10 @@ class AdminController extends BaseController {
 		$vehicles = Vehicle::orderBy('id', 'DESC')->get();
 		$vehicleoptions = VehicleOption::orderby('id','DESC')->get();
 		$users = User::orderBy('id', 'DESC')->get();
+		$reservations = Reservation::orderby('id', 'DESC')->get();
 		$general = General::find(1);
 
-		return View::make('admin.index', array('vehicles' => $vehicles, 'users' => $users, 'general' => $general, 'vehicleoptions' => $vehicleoptions));
+		return View::make('admin.index', array('vehicles' => $vehicles, 'users' => $users, 'general' => $general, 'vehicleoptions' => $vehicleoptions, 'reservations' => $reservations));
 	}
 
 	public function getVehicles() 
