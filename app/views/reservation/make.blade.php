@@ -33,6 +33,9 @@
 							<li><a href="#tab4" data-toggle="tab">Verhuur periode</a></li>
 							<li><a href="#tab5" data-toggle="tab">Betaalgegevens</a></li>
 						</ul>
+						<ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
+							<li><a href="#">€ <span id='totalPrice'>{{ $vehicle->hourlyrate * 24 }}</span></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -150,7 +153,7 @@
 						<tbody>
 							@foreach ($vehicleoptions as $vehicleoption)
 							<tr>
-								<td><input tabindex="1" type="checkbox" name="vehicleoption[]" id="{{$vehicleoption->name}}" value="{{$vehicleoption->id}}"></td>
+								<td><input tabindex="1" type="checkbox" name="vehicleoption[]" id="{{$vehicleoption->name}}" value="{{$vehicleoption->price}}"></td>
 								<td>{{ $vehicleoption->name }}</td>
 								<td>€ {{ $vehicleoption->price * 24 }}</td>
 							</tr>
@@ -208,6 +211,30 @@
 <script type="text/javascript" src='/js/wizard.js'></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		var totalPrice = 0;
+
+
+	    // cache the inputs and bind the events
+	    var $inputs = $('input[type="checkbox"]')
+	    $inputs.on('change', function () {
+	      
+	        $inputs.each(function() {
+	        // iterate and add it to sum only if checked
+	           if(this.checked) {
+	               totalPrice += this.value * 24;
+	           console.log(this.value * 24) 
+	       }
+		        });
+
+	        $("#totalPrice").text(totalPrice);
+	    });
+
+
+
+
+
+
+
 		$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
 			var $total = navigation.find('li').length;
 			var $current = index+1;
