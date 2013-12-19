@@ -4,12 +4,12 @@
 <div class='row'>
 	<div class='col-lg-12'>
 		<div class="page-header">
-			<h1>Totaal overzicht klanten <small></small></h1>
+			<h1>Totaal overzicht gebruikers <small></small></h1>
 		</div>
-		<p>Hieronder vind u een overzicht van alle klanten in de database.</p>
+		<p>Hieronder vind u een overzicht van alle gebruikers in de database.</p>
 
 		<div class="panel panel-default">
-			<div class="panel-heading">Klanten</div>
+			<div class="panel-heading">Gebruikers</div>
 
 			<!-- Vehicle table -->
 			<table class="table table-striped">
@@ -35,7 +35,7 @@
 						<td>{{ $user->email }}</td>
 						<td>
 							<a href='/user/edit/{{ $user->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
-							<a href='/user/delete/{{ $user->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze voertuig optie wilt verwijderen?')">Verwijderen</a>
+							<a href='/user/delete/{{ $user->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze gebruiker wilt verwijderen?')">Verwijderen</a>
 						</td>
 					</tr>
 					@endforeach

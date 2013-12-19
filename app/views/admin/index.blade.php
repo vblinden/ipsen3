@@ -23,12 +23,12 @@
 			<li><a href="#vehiclesoptions" data-toggle='pill'><span class="badge pull-right">{{ $vehicleoptions->count() }}</span>Voertuigen opties</a></li>
 			<li><a href="#reservations" data-toggle="pill"><span class="badge pull-right">{{ $reservations->count() }}</span>Reserveringen</a></li>
 			<li><a href="#invoices" data-toggle="pill">Facturen</a></li>
-			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Klanten</a></li>
+			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Gebruikers</a></li>
+			<li><a href="#invoices" data-toggle="pill">Gebruikers rollen</a></li>
 		</ul>
 	</div>
 	<div class='col-lg-9'>
 		<div class="tab-content">
-
 			<div class="tab-pane active" id="general">
 				<div class="page-header">
 					<h1>Algemeen <small></small></h1>
@@ -192,11 +192,11 @@
 			</div>
 			<div class="tab-pane" id="users">
 				<div class="page-header">
-					<h1>Klanten <small></small></h1>
+					<h1>Gebruikers <small></small></h1>
 				</div>
-				<p>Hieronder vind u de laatste vijf toegevoegde klanten. U kunt de klanten bewerken, verwijderen of een nieuwe klant aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle klanten.</p>
+				<p>Hieronder vind u de laatste vijf toegevoegde gebruikers. U kunt de gebruikers bewerken, verwijderen of een nieuwe gebruiker aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle gebruikers.</p>
 				<div class="panel panel-default">
-					<div class="panel-heading">Klanten </div>
+					<div class="panel-heading">Gebruikers </div>
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -224,7 +224,7 @@
 								</td>
 								<td>
 									<a href='/user/edit/{{ $user->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
-									<a href='/user/delete/{{ $user->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze klant wilt verwijderen?')">Verwijderen</a>
+									<a href='/user/delete/{{ $user->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze gebruiker wilt verwijderen?')">Verwijderen</a>
 								</td>
 							</tr>
 							@endforeach
@@ -232,7 +232,7 @@
 					</table>
 					<div class='panel-body'>
 						<div class='col-lg-12'>
-							<a href="/admin/users" class="btn btn-primary btn-full">Alle klanten</a>
+							<a href="/admin/users" class="btn btn-primary btn-full">Alle gebruikers</a>
 						</div>
 					</div>
 				</div>
