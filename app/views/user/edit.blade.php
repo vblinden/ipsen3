@@ -24,7 +24,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Uw gegevens</div>
 			<div class="panel-body">
-				{{ Form::model(Auth::user(), array('action' => 'UserController@postEdit')) }}
+				{{ Form::model($user, array('action' => 'UserController@postEdit')) }}
 
 				{{ $errors->first('email') }}
 				{{ $errors->first('password') }}

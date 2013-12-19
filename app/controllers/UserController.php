@@ -145,9 +145,9 @@ class UserController extends BaseController {
 		}
 	}
 
-	public function getEdit() 
+	public function getEdit($id) 
 	{
-		return View::make('user.edit');
+		return View::make('user.edit', array('user'=>User::find($id)));
 	}
 
 	public function postEdit() 
