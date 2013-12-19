@@ -27,6 +27,11 @@ class AdminController extends BaseController {
 		return View::make('admin.vehicleoptions', array('vehicleoptions' => VehicleOption::all()));
 	}
 
+	public function getUsers()
+	{
+		return View::make('admin.users', array('users' => User::all()));
+	}
+
 	public function postVat() 
 	{
 		$general = General::find(1);

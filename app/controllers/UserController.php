@@ -145,12 +145,12 @@ class UserController extends BaseController {
 		}
 	}
 
-	public function getAccount() 
+	public function getEdit() 
 	{
-		return View::make('user.account');
+		return View::make('user.edit');
 	}
 
-	public function postAccount() 
+	public function postEdit() 
 	{
 		// Save all the input data.
 		$data = Input::all();
@@ -177,13 +177,13 @@ class UserController extends BaseController {
 		// If validator fails, show error message.
 		if ($validator->fails()) {
 			if ($validator->messages()->has('vatnumber')) {
-				return Redirect::to('/user/account')->with('failed', 'U moet als bedrijf zijnde ook een BTW nummer invullen. Probeer het opnieuw.')->withInput();
+				return Redirect::to('/user/edit')->with('failed', 'U moet als bedrijf zijnde ook een BTW nummer invullen. Probeer het opnieuw.')->withInput();
 			} else if ($validator->messages()->has('kvknumber')) {
-				return Redirect::to('/user/account')->with('failed', 'U moet als bedrijf zijnde ook een KVK nummer invullen. Probeer het opnieuw.')->withInput();
+				return Redirect::to('/user/edit')->with('failed', 'U moet als bedrijf zijnde ook een KVK nummer invullen. Probeer het opnieuw.')->withInput();
 			}
 
 			else {
-				return Redirect::to('/user/account')->with('failed', 'U moet alle velden invullen die rood gemarkeerd zijn.');
+				return Redirect::to('/user/edit')->with('failed', 'U moet alle velden invullen die rood gemarkeerd zijn.');
 			}
 		}
 
@@ -211,7 +211,7 @@ class UserController extends BaseController {
 
 			$user->save();
 
-			return Redirect::to('/user/account')->with('success', 'Uw gegevens zijn succesvol bijgewerkt.');
+			return Redirect::to('/user/edit')->with('success', 'Uw gegevens zijn succesvol bijgewerkt.');
 		}
 	}
 

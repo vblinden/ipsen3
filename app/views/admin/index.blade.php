@@ -154,9 +154,10 @@
 				</div>
 				<p>Hieronder vind u de laatste vijf toegevoegde klanten. U kunt de klanten bewerken, verwijderen of een nieuwe klant aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle klanten.</p>
 				<div class="panel panel-default">
-					<div class="panel-heading">Klanten <a href="/user/add" class="btn btn-success btn-sm pull-right btn-right"><span class="glyphicon glyphicon-plus"></span></a> <button class="btn btn-primary btn-sm pull-right btn-right" style="margin-right: 5px;">Alle klanten</button> </div>
+					<div class="panel-heading">Klanten </div>
 
-					<!-- Vehicle table -->
+
+
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -190,6 +191,11 @@
 							@endforeach
 						</tbody>
 					</table>
+					<div class='panel-body'>
+						<div class='col-lg-12'>
+							<a href="/admin/users" class="btn btn-primary btn-full">Alle klanten</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

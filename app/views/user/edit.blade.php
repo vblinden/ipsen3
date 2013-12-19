@@ -24,7 +24,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Uw gegevens</div>
 			<div class="panel-body">
-				{{ Form::model(Auth::user(), array('action' => 'UserController@postAccount')) }}
+				{{ Form::model(Auth::user(), array('action' => 'UserController@postEdit')) }}
 
 				{{ $errors->first('email') }}
 				{{ $errors->first('password') }}
@@ -145,34 +145,6 @@
 				</div>
 
 				{{ Form::close() }}
-			</div>
-		</div>
-		<div class="panel panel-info">
-			<div class="panel-heading">Zijn mijn gegevens veilig?</div>
-			<div class="panel-body">
-				<p>
-					LeenMeij doet er alles aan om uw gegevens veilig op te slaan. Wij hebben daarom een aantal
-					maatregelen genomen waarmee wij uw gegevens veiliger opslaan. Het wordt dus moeilijker voor inbrekers
-					om in te breken en bij uw gegevens te komen. 
-				</p>
-				<ul>
-					<li>
-						Uw gegevens worden opgeslagen in een centrale database die goed is beveiligd en vaak wordt gecontroleerd
-						op beveiligingslekken. 
-					</li>
-					<li>
-						Uw wachtwoord wordt <strong><a href="http://nl.wikipedia.org/wiki/Encryptie" target="_blank">versleuteld</a></strong> opgeslagen. 
-					</li>
-					<li>
-						Uw betalingsgegevens worden niet opgeslagen.
-					</li>
-					<li>
-						Als er daadwerkelijk een inbraak is wordt u meteen ingelicht.
-					</li>
-				</ul>
-				<p>
-					Als u meer vragen heeft kunt u altijd e-mailen naar <strong>info@leenmeij.tk</strong>.
-				</p>
 			</div>
 		</div>
 	</div>
