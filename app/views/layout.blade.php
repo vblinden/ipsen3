@@ -30,16 +30,16 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="/">Startpagina</a></li>
-						<li><a href="#">Reserveren</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Voertuigen<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="/vehicle/person">Personenauto</a></li>
-									<li><a href="/vehicle/company">Bedrijfswagen</a></li>
-									<li><a href="/vehicle/motor">Motor</a></li>
-									<li><a href="/vehicle/scooter">Scooter</a></li>
-								</ul>
-							</li>
+							<ul class="dropdown-menu">
+								<li><a href="/vehicle/person">Personenauto</a></li>
+								<li><a href="/vehicle/company">Bedrijfswagen</a></li>
+								<li><a href="/vehicle/motor">Motor</a></li>
+								<li><a href="/vehicle/scooter">Scooter</a></li>
+							</ul>
+						</li>
+						<li><a href="/vehicleoption">Voertuigen opties</a></li>
 						<li><a href="/home/faq">FAQ</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

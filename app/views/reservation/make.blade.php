@@ -20,6 +20,7 @@
 	</div>
 </div>
 <div class='row'>
+	{{ Form::open(array('action' => 'ReservationController@postMake')) }}
 	<div class='col-lg-12'>
 		<div id="rootwizard">
 			<div class="navbar navbar-default" role="navigation" style='margin-bottom: 0px;'>
@@ -119,6 +120,7 @@
 										<p><strong>Opmerkingen </strong></p>
 									</div>
 									<div class="col-lg-7">
+										{{ Form::hidden('vehicleid', $vehicle->id); }}
 										<p> {{ $vehicle->brand }} </p>
 										<p> {{ $vehicle->model }} </p>
 										<p> {{ $vehicle->milage }} kilometer</p>
@@ -148,7 +150,7 @@
 						<tbody>
 							@foreach ($vehicleoptions as $vehicleoption)
 							<tr>
-								<td><input type='checkbox'></td>
+								<td><input tabindex="1" type="checkbox" name="vehicleoption[]" id="{{$vehicleoption->name}}" value="{{$vehicleoption->id}}"></td>
 								<td>{{ $vehicleoption->name }}</td>
 								<td>€ {{ $vehicleoption->price * 24 }}</td>
 							</tr>
@@ -164,8 +166,8 @@
 						<div class='panel-body'>
 							<div class='row'>
 								<div class='col-lg-6'>
-									{{ Form::label('begindate', 'Begin datum'); }}
-									{{ Form::text('begindate', null, array('class' => 'form-control', 'id' => 'dpd1')); }}
+									{{ Form::label('startdate', 'Begin datum'); }}
+									{{ Form::text('startdate', null, array('class' => 'form-control', 'id' => 'dpd1')); }}
 								</div>
 								<div class='col-lg-6'>
 									{{ Form::label('enddate', 'Eind datum'); }}
@@ -179,12 +181,25 @@
 					<div class="panel panel-default">
 					<div class="panel-heading">Uw betaalgegevens</div>
 						<div class='panel-body'>
+							<div class="row">
+								<div class="col-lg-8">
+									<p>Selecteer hieronder uw betaalmethode.</p>
+									<p>{{ Form::select('paymentmethod', array('ideal' => 'iDeal', 'paypal' => 'PayPal', 'creditcard' => 'Creditcard'), null, array('class' => 'form-control')); }}</p>
+
+									<p>{{ Form::submit('Reservering plaatsen', array('class' => 'btn btn-primary btn-full')); }}</p>
+	
+								</div>
+								<div class="col-lg-4">
+									<img src="/img/ideal.jpg" alt="iDeal betaling" width="60%"/>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>	
 		</div>
 	</div>
+	{{ Form::close() }}
 </div>
 @stop
 
