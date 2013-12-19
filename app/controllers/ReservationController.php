@@ -30,11 +30,14 @@ class ReservationController extends BaseController {
 
 		$reservation->save();
 
-		foreach($data['vehicleoption'] as $vehicleoption)
-		{
-			$vo = VehicleOption::find($vehicleoption);
+		if (isset($data['vehicleoption'])) {
 
-			$reservation->vehicleoptions()->save($vo);
+			foreach($data['vehicleoption'] as $vehicleoption)
+			{
+				$vo = VehicleOption::find($vehicleoption);
+
+				$reservation->vehicleoptions()->save($vo);
+			}
 		}
 
 		return Redirect::to('/reservation/success')->with('success', 'De reservering is succesvol verstuurd.');

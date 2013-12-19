@@ -153,7 +153,7 @@
 						<tbody>
 							@foreach ($vehicleoptions as $vehicleoption)
 							<tr>
-								<td><input tabindex="1" type="checkbox" name="vehicleoption[]" id="{{$vehicleoption->name}}" value="{{$vehicleoption->price}}"></td>
+								<td><input tabindex="1" type="checkbox" name="vehicleoption[]" id="{{$vehicleoption->name}}" value="{{$vehicleoption->id}}"></td>
 								<td>{{ $vehicleoption->name }}</td>
 								<td>€ {{ $vehicleoption->price * 24 }}</td>
 							</tr>
