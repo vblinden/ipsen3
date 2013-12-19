@@ -14,30 +14,23 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>Voertuig optie aanpassen <small>Een voertuig optie aanpassen</small></h1>
+			<h1>Gebruikers rol toevoegen <small>Een gebruikers rol toevoegen</small></h1>
 		</div>
-		<p>Hieronder kunt u een al bestaand voertuig optie aanpassen.</p>
+		<p>Hieronder kunt u een nieuwe gebruikers rol aanmaken.</p>
 	</div>
 </div>
 <div class="row">
 	<div class='col-lg-12'>
-		{{ Form::model($vehicleoption, array('action' => 'VehicleOptionController@postEdit')) }}
+		{{ Form::open(array('action' => 'UserRoleController@postAdd')) }}
 		<div class="panel panel-default">
-			<div class="panel-heading">Optie gegevens</div>
+			<div class="panel-heading">Gebruikers rol gegevens</div>
 			<div class="panel-body">
-				{{ Form::hidden('id', $vehicleoption->id); }}
 				<div class='form-group'>
 					{{ Form::label('name', 'Naam'); }}
 					{{ Form::text('name', null, array('class' => 'form-control')); }}
 				</div>
-				<div class='form-group'>
-					{{ Form::label('price', 'Bedrag per uur'); }}
-					{{ Form::text('price', null, array('class' => 'form-control')); }}
-				</div>
 
-				{{ Form::submit('Bewerken', array('class' => 'btn btn-primary btn-full')); }}
-
-
+				{{ Form::submit('Toevoegen', array('class' => 'btn btn-primary btn-full')); }}
 			</div>
 		</div>
 	</div>

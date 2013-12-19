@@ -19,12 +19,15 @@
 	<div class='col-lg-3'>
 		<ul class="nav nav-pills nav-stacked" style="border: 1px solid #ddd;">
 			<li class='active'><a href="#general" data-toggle="pill">Algemeen</a></li>
+			 <li class="nav-divider"></li>
 			<li><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
 			<li><a href="#vehiclesoptions" data-toggle='pill'><span class="badge pull-right">{{ $vehicleoptions->count() }}</span>Voertuigen opties</a></li>
+			 <li class="nav-divider"></li>
 			<li><a href="#reservations" data-toggle="pill"><span class="badge pull-right">{{ $reservations->count() }}</span>Reserveringen</a></li>
 			<li><a href="#invoices" data-toggle="pill">Facturen</a></li>
+			 <li class="nav-divider"></li>
 			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Gebruikers</a></li>
-			<li><a href="#invoices" data-toggle="pill">Gebruikers rollen</a></li>
+			<li><a href="#userroles" data-toggle="pill"><span class="badge pull-right">{{ $userroles->count() }}</span>Gebruikers rollen</a></li>
 		</ul>
 	</div>
 	<div class='col-lg-9'>
@@ -233,6 +236,44 @@
 					<div class='panel-body'>
 						<div class='col-lg-12'>
 							<a href="/admin/users" class="btn btn-primary btn-full">Alle gebruikers</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="userroles">
+				<div class="page-header">
+					<h1>Gebruikers rollen<small></small></h1>
+				</div>
+				<p>Hieronder vind u de laatste vijf toegevoegde gebruikers rollen. U kunt de gebruikers rollen bewerken, verwijderen of een nieuwe gebruikers rol aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle gebruikers rollen.</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">Gebruikers rollen</div>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Naam</th>
+								<th width="185px"></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($userroles->take(5) as $userrole)
+							<tr>
+								<td>{{ $userrole->id }}</td>
+								<td>{{ $userrole->name }}</td>
+								<td>
+									<a href='/userrole/edit/{{ $userrole->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
+									<a href='/userrole/delete/{{ $userrole->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze gebruikers rol wilt verwijderen?')">Verwijderen</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					<div class='panel-body'>
+						<div class='col-lg-6'>
+							<a href="/admin/userroles" class="btn btn-primary btn-full">Alle gebruikers rollen</a>
+						</div>
+						<div class='col-lg-6'>
+							<a href="/userrole/add" class="btn btn-success btn-full">Nieuwe gebruikers rol</a>
 						</div>
 					</div>
 				</div>

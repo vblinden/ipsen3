@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@getIndex');
 
 Route::controller('user', 'UserController');
+Route::controller('userrole', 'UserRoleController');
 Route::controller('home', 'HomeController');
 Route::controller('admin', 'AdminController');
 Route::controller('vehicle', 'VehicleController');
