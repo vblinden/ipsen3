@@ -73,7 +73,6 @@ class ReservationController extends BaseController {
 
 		return Redirect::to('/admin#reservations')->with('success', 'De reservering is succesvol verwijderd.');
 	}
-	
 
 	public function getSuccess() 
 	{

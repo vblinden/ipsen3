@@ -33,6 +33,11 @@ class AdminController extends BaseController {
 		return View::make('admin.users', array('users' => User::all()));
 	}
 
+	public function getReservations() 
+	{
+		return View::make('admin.reservations', array('reservations' => Reservation::all()));
+	}
+
 	public function postVat() 
 	{
 		$general = General::find(1);
