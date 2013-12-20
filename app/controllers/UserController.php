@@ -41,7 +41,7 @@ class UserController extends BaseController {
 			// Attempt to login user.
 			if (Auth::attempt($userdata)) {
 				// The validation is successful.
-				return Redirect::to('/');
+				return Redirect::intended('/');
 			}
 
 			else {
