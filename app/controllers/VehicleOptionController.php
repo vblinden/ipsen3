@@ -2,6 +2,12 @@
 
 class VehicleOptionController extends BaseController
 {
+	public function getIndex()
+	{
+		$vehicleoption = VehicleOption::paginate(15);
+
+		return View::make('vehicleoption.index', array('vehicleoption' => $vehicleoption));
+	}
 
 	public function getAdd()
 	{
