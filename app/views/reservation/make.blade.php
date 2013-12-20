@@ -43,7 +43,7 @@
 					<ul class="pager wizard">
 					<li class="previous"><a href="#">Vorige</a></li>
 					<li class="next"><a href="#">Volgende</a></li>
-					<li class="next finish" style="display:none;">{{ Form::submit('Afronden', array('class' => 'btn btn-default pull-right')); }}</li>
+					<li class="next finish" style="display:none;">{{ Form::submit('Afronden', array('class' => 'btn btn-success pull-right')); }}</li>
 				</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab1">

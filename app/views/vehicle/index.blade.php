@@ -16,54 +16,29 @@
 		</div>
 	</div>
 </div>
-<div class='row'>
-	<div class='col-lg-12'>
-		@foreach ($vehicles as $vehicle)
-		<div class="panel panel-default">
-			<div class="panel-heading">{{ $vehicle->brand }} {{ $vehicle->model }} <strong class='pull-right'>€ {{ $vehicle->hourlyrate * 24 }} per dag</strong></div>
-			<div class="panel-body">
-				<div class='col-lg-3'>
-					<a class="thumbnail">
-						<img src="/uploaded/vehicles/{{ $vehicle->image }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
-				    </a>
-				</div>
-				<div class='col-lg-9'>
-					<p>
-						{{ $vehicle->comment }}
-					</p>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Merk</th>
-								<th>Model</th>
-								<th>Kenteken</th>
-								<th>Verbruik</th>
-								<th>Kleur</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>{{ $vehicle->brand }}</td>
-								<td>{{ $vehicle->model }}</td>
-								<td>{{ $vehicle->licenseplate }}</td>
-								<td>{{ $vehicle->milage }}</td>
-								<td>{{ $vehicle->color }}</td>
-							</tr>
-						</tbody>
-					</table>
-					<a href='/vehicle/detail/{{ $vehicle->id }}' class='btn btn-success'>Bekijken</a>
+<div class="row">
+@foreach ($vehicles as $vehicle)
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<img src="/uploaded/vehicles/{{ $vehicle->image }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
+			<div class="caption">
+				<h3>{{ $vehicle->brand }} {{ $vehicle->model }}</h3>
+				<p>{{ $vehicle->comment }}</p>
+				<p>
+					<a href="/vehicle/detail/{{$vehicle->id}}" class="btn btn-success" role="button">Bekijken</a> 
 					@if(Auth::check()) 
 					@if (Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
 					<a href='/vehicle/edit/{{ $vehicle->id }}' class='btn btn-primary pull-right' style='margin-left: 5px'>Bewerken</a>
 					<a href='/vehicle/delete/{{ $vehicle->id }}' class="btn btn-danger pull-right" onclick="return confirm('Weet u zeker dat u dit voertuig wilt verwijderen?')">Verwijderen</a>
 					@endif
 					@endif
-				</div>
+				</p>
 			</div>
 		</div>
-		@endforeach
+	</div>
+	@endforeach
+</div>
+
 
 		{{ $vehicles->links() }}
-	</div>
-</div>
 @stop
