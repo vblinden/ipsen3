@@ -31,10 +31,6 @@
 							<li><a href="#tab2" data-toggle="tab">Voertuiggegevens</a></li>
 							<li><a href="#tab3" data-toggle="tab">Voertuigopties</a></li>
 							<li><a href="#tab4" data-toggle="tab">Verhuur periode</a></li>
-							<li><a href="#tab5" data-toggle="tab">Betaalgegevens</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
-							<li><a href="#">€ <span id='totalPrice'>{{ $vehicle->hourlyrate * 24 }}</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -45,10 +41,9 @@
 				</div>
 			</div>
 					<ul class="pager wizard">
-					<li class="previous first" style="display:none;"><a href="#">First</a></li>
 					<li class="previous"><a href="#">Vorige</a></li>
-					<li class="next last" style="display:none;"><a href="#">Last</a></li>
 					<li class="next"><a href="#">Volgende</a></li>
+					<li class="next finish" style="display:none;">{{ Form::submit('Afronden', array('class' => 'btn btn-default pull-right')); }}</li>
 				</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab1">
@@ -180,25 +175,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane" id="tab5">
-					<div class="panel panel-default">
-					<div class="panel-heading">Uw betaalgegevens</div>
-						<div class='panel-body'>
-							<div class="row">
-								<div class="col-lg-8">
-									<p>Selecteer hieronder uw betaalmethode.</p>
-									<p>{{ Form::select('paymentmethod', array('ideal' => 'iDeal', 'paypal' => 'PayPal', 'creditcard' => 'Creditcard'), null, array('class' => 'form-control')); }}</p>
-
-									<p>{{ Form::submit('Reservering plaatsen', array('class' => 'btn btn-primary btn-full')); }}</p>
-	
-								</div>
-								<div class="col-lg-4">
-									<img src="/img/ideal.jpg" alt="iDeal betaling" width="60%"/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>	
 		</div>
 	</div>
@@ -211,35 +187,21 @@
 <script type="text/javascript" src='/js/wizard.js'></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var totalPrice = 0;
-
-
-	    // cache the inputs and bind the events
-	    var $inputs = $('input[type="checkbox"]')
-	    $inputs.on('change', function () {
-	      
-	        $inputs.each(function() {
-	        // iterate and add it to sum only if checked
-	           if(this.checked) {
-	               totalPrice += this.value * 24;
-	           console.log(this.value * 24) 
-	       }
-		        });
-
-	        $("#totalPrice").text(totalPrice);
-	    });
-
-
-
-
-
-
 
 		$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
 			var $total = navigation.find('li').length;
 			var $current = index+1;
 			var $percent = ($current/$total) * 100;
 			$('#rootwizard').find('.progress-bar').css({width: $percent+'%'});
+
+			if($current >= $total) {
+				$('#rootwizard').find('.pager .next').hide();
+				$('#rootwizard').find('.pager .finish').show();
+				$('#rootwizard').find('.pager .finish').removeClass('disabled');
+			} else {
+				$('#rootwizard').find('.pager .next').show();
+				$('#rootwizard').find('.pager .finish').hide();
+			}
 		}});
 
 		var nowTemp = new Date();
