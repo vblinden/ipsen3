@@ -4,7 +4,7 @@
 <div class='row'>
 	<div class='col-lg-12'>
 		<div class="page-header">
-		<h1>Voertuigopties <small>overzicht pagina</small></h1>
+		<h1>Voertuigopties <small>Overzicht pagina</small></h1>
 		</div>
 	</div>
 </div>
@@ -23,8 +23,8 @@
 					De prijs per dag: € {{ $vehicleoption->price*24 }}
 					@if(Auth::check()) 
 					@if (Role::find(Auth::user()->role['role_id'])['name'] == 'admin')
-					<a href='/vehicleoption/edit/{{ $vehicleoption->id }}' class='btn btn-primary btn-sm pull-right' style='margin-left: 5px;'>Bewerken</a> 
-					<a href='/vehicleoption/delete/{{ $vehicleoption->id }}' class="btn btn-danger btn-sm pull-right" onclick="return confirm('Weet u zeker dat u deze voertuig optie wilt verwijderen?')">Verwijderen</a>
+					<a href='/vehicleoption/delete/{{ $vehicleoption->id }}' class="btn btn-danger btn-xs pull-right" style='margin-left: 5px;' onclick="return confirm('Weet u zeker dat u deze voertuig optie wilt verwijderen?')">Verwijderen</a>
+					<a href='/vehicleoption/edit/{{ $vehicleoption->id }}' class='btn btn-primary btn-xs pull-right'>Bewerken</a>
 					@endif
 					@endif
 				</p>
