@@ -72,97 +72,34 @@
 </div>
 
 @else
-<div class='row' style="margin-bottom: 20px;">
+<div class='row'>
 	<div class='col-lg-12'>
-		<div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-							Bekijk reviews
-						</a>
-
-						<span class="badge pull-right">{{ $reviews->count() }}</span>
-					</h4>
-				</div>
-				<div id="collapseOne" class="panel-collapse collapse in">
-					<div class="panel-body">
-						@foreach($reviews as $review)
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<span>Voertuig review van: {{ $review->user->firstname }}
-									 </span>
-								  	<span class="pull-right">
-									    @for ($i=1; $i <= 5 ; $i++)
-									      <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
-									    @endfor
-									</span>
-								</div>
-								<div class='panel-body'>
-									<p>{{ $review->comment }} </p>
-									<hr>
-									<small class="pull-right">Geschreven op: {{ $review->timeago }}</small>
-								</div>
-							</div>
-						@endforeach
-						{{ $reviews->links() }}
+		<div class="panel-body">
+			<div class="page-header">
+				<h1>Beoordelingen<small> dit is wat onze klanten ervan vonden</small></h1>
+			</div>
+			@foreach($reviews as $review)
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span>Voertuig review van: {{ $review->user->firstname }}
+						 </span>
+					  	<span class="pull-right">
+						    @for ($i=1; $i <= 5 ; $i++)
+						      <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
+						    @endfor
+						</span>
+					</div>
+					<div class='panel-body'>
+						<p>{{ $review->comment }} </p>
+						<hr>
+						<small class="pull-right">Geschreven op: {{ $review->timeago }}</small>
 					</div>
 				</div>
-			</div>
-			@endif
-			@if(Auth::check())
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					{{ Form::open(array('action' => 'ReviewController@postAdd')) }}
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapseMakeReview">
-							<span>Review schrijven</span>
-							<small class="pull-right">Ingelogd als: {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</small>
-						</a>
-					</h4>
-				</div>
-				<div id="collapseMakeReview" class="panel-collapse collapse">
-					<div class="panel-body">
-						<div>
-							{{ Form::hidden('vehicleid', $vehicle->id); }}
-
-							<p>Hallo {{ Auth::user()->firstname }}, je hebt vijf dagen geleden de  {{ $vehicle->brand }} {{ $vehicle->model }} gehuurd, vertel ons wat je ervaring was!</p>
-							<hr>
-						</div>
-						<div>
-							<span><strong>Uw beoordeling</strong></span>
-		                    <input id="ratings-hidden" name="rating" type="hidden"> 
-		                    <div class="stars starrr" data-rating="0"></div>
-						</div>
-						<div class='form-group'>
-							{{ Form::label('comment', 'Beschrijf hier uw ervaring'); }}
-							{{ Form::textarea('comment', null, array('class' => 'form-control', 'style' => 'height: 110px;')); }}
-						</div>
-						{{ Form::submit('Toevoegen', array('class' => 'btn btn-primary btn-full')); }}
-					</div>
-				</div>
-				{{ Form::close() }}
-			</div>
-			@endif
+			@endforeach
+			{{ $reviews->links() }}
 		</div>
 	</div>
 </div>
+@endif
 
-@stop
-
-@section('scripts')
-
-<script type="text/javascript" src='/js/starsystem.js'></script>
-<script type="text/javascript">
-
-$(function(){
-
-  var ratingsField = $('#ratings-hidden');
-
-  $('.starrr').on('starrr:change', function(e, value){
-  	ratingsField.val(value);
-  });
-});
-
-</script>
 @stop

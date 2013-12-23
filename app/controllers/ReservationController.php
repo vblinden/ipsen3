@@ -81,7 +81,7 @@ class ReservationController extends BaseController {
 	{
 		// Save all the input data.
 		$data = Input::all();
-
+		
 		$reservation = new Reservation();
 		$reservation->user_id = Auth::user()->id;
 		$reservation->vehicle_id = $data['vehicleid'];
