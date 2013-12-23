@@ -41,6 +41,7 @@
 							</ul>
 						</li>
 						<li><a href="/vehicleoption">Voertuigen opties</a></li>
+						<li><a href="/review/index">Beoordelingen</a></li>
 						<li><a href="/home/faq">FAQ</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -81,17 +82,25 @@
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="panel panel-default">
-							<div class="panel-heading">LeenMeij</div>
-							<div class="panel-body">
-								<ul class="bulletless">
-									<li><a href="#">Reseveer nu</a></li>
-									<li><a href="#">Langer huren</a></li>
-									<li><a href="#">Extra services</a></li>
-									<li><a href="#">Vestigingen</a></li>
-									<li><a href="#">Wagenpark</a></li>
-									<li><a href="#">Over LeenMeij</a></li>
-								</ul>
-							</div>
+							<div class="panel-heading">Klantenbeoordelingen</div>
+							@foreach(Review::getHighReviews() as $review)
+							
+								@if($review->rating >= 4)
+								<div class="panel-body">
+									<div>
+										<a href="/review/index"><p> {{ Str::words($review->comment, $words = 4, $end = '...')}}
+										<span class="pull-right">
+										    @for ($i=1; $i <= 5 ; $i++)
+										      <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
+										    @endfor
+										</span>
+										</p></a>
+										<small class="pull-right">{{ $review->timeago }}</small>
+									</div>
+									</div>
+								@endif
+							
+							@endforeach
 						</div>
 					</div>
 					<div class="col-lg-4">

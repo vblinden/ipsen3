@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<div class='row'>
+<div class='row' style="margin-bottom: 20px;">
 	<div class='col-lg-12'>
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-default">

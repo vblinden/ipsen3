@@ -8,4 +8,9 @@ class Vehicle extends Eloquent {
 	{
 		return $this->belongsTo('VehicleCategory', 'vehiclecategoryid');
 	}
+
+	public function review()
+	{
+		return $this->hasMany('review');
+	}
 }

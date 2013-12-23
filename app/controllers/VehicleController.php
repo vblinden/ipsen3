@@ -47,8 +47,9 @@ class VehicleController extends BaseController {
 	public function getDetail($id)
 	{
 		$vehicle = Vehicle::find($id);
+		$reviews = Review::where('vehicleid', '=', $id)->paginate(5);
 
-		return View::make('vehicle.detail', array('vehicle' => $vehicle));
+		return View::make('vehicle.detail', array('vehicle' => $vehicle, 'reviews' => $reviews));
 	}
 
 	public function getAdd() 
