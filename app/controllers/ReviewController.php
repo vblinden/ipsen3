@@ -22,8 +22,8 @@ class ReviewController extends BaseController {
 		$data = Input::all();
 
 		$review = new Review();
-		$review->vehicleid = $data['vehicleid'];
-		$review->userid = Auth::user()->id;
+		$review->vehicle_id = $data['vehicleid'];
+		$review->user_id = Auth::user()->id;
 		$review->comment = $data['comment'];
 		$review->rating = $data['rating'];
 

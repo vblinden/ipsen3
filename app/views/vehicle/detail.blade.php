@@ -65,10 +65,13 @@
 </div>
 
 @if($reviews->isEmpty())
-<p>Er zijn nog geen reviews geschreven voor dit voertuig aanwezig.</p>
+<div class='row'>
+	<div class='col-lg-12'>
+		<p>Er zijn nog geen reviews geschreven voor dit voertuig aanwezig.</p>
+	</div>
+</div>
 
 @else
-
 <div class='row' style="margin-bottom: 20px;">
 	<div class='col-lg-12'>
 		<div class="panel-group" id="accordion">
@@ -106,7 +109,7 @@
 					</div>
 				</div>
 			</div>
-			
+			@endif
 			@if(Auth::check())
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -144,8 +147,6 @@
 		</div>
 	</div>
 </div>
-
-@endif
 
 @stop
 

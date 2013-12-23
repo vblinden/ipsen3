@@ -6,12 +6,12 @@ class Review extends Eloquent {
 
 	public function user()
 	{
-		return $this->belongsTo('user', 'userid');
+		return $this->belongsTo('user', 'user_id');
 	}
 
 	public function vehicle()
 	{
-		return $this->belongsTo('vehicle', 'vehicleid');
+		return $this->belongsTo('vehicle', 'vehicle_id');
 	}
 
 	public function getTimeagoAttribute()
@@ -26,7 +26,7 @@ class Review extends Eloquent {
 
 	public static function getHighReviews()
 	{
-		$review = Review::where('vehicleid' , '=', '0')->orderby(DB::raw('RAND() * 999'))->paginate(3);
+		$review = Review::where('vehicle_id' , '=', '0')->orderby(DB::raw('RAND() * 999'))->take(3);
 		
 		return $review;
 	}

@@ -84,7 +84,6 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Klantenbeoordelingen</div>
 							@foreach(Review::getHighReviews() as $review)
-							
 								@if($review->rating >= 4)
 								<div class="panel-body">
 									<div>
