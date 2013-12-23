@@ -44,7 +44,7 @@
 					@endforeach
 					<tr>
 						<td>Aantal dagen</td>
-						<td>{{ Carbon::parse($reservation->startdate)->diffInDays(Carbon::parse($reservation->enddate)); }} dagen</td>
+						<td><strong>{{ Carbon::parse($reservation->startdate)->diffInDays(Carbon::parse($reservation->enddate)); }} dagen</strong></td>
 					</tr>
 					<!-- Intentionally left blank -->
 					<tr>
@@ -73,12 +73,65 @@
 		</div>
 	</div>
 </div>
+
+{{ Form::open(array('action' => 'ReservationController@postSucces')) }}
 <div class="row">
 	<div class="col-lg-12">
 		<div class="page-header">
-			<h1>Betaling<small> kies hieronder uw betalingsmethode</small></h1>
+			<h1>Betaling<small> kies hieronder uw bank</small></h1>
+		</div>
+		<div class="col-lg-4">
+			<img src="/img/ideal.jpg" alt="iDeal logo"/>
+		</div>
+		<div class="col-lg-8 form-group">
+			<h4>iDeal</h4>
+			<p>Met iDeal kunt u gemakkelijk betalen via uw online bank omgeving. Nadat u uw bank gekozen heeft, zullen wij u doorsturen naar uw eigen bank.</p>
+
+			{{ Form::select('bank', array('ING', 'ABN Amro', 'Vinniebankie'), null, array('class' => 'form-control', 'id' => 'bank')); }}
+			<br>
+			<!-- Button trigger modal -->
+			<button class="btn btn-primary btn-full" data-toggle="modal" data-target="#myModal">
+			  Open betalingscherm
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title" id="myModalLabel">iDeal betaling</h4>
+			      </div>
+			      <div class="modal-body">
+			      	@if('selectedValue' === 'IGN')
+			        	@include('reservation.partials.ing')
+			        @endif
+			      </div>
+			      <div class="modal-footer">
+			      	{{ Form::submit('Betaling voltooien', array('class' => 'btn btn-primary', 'style' => 'background-color: #f86b02')); }}
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		</div>
 	</div>
 </div>
 
+@stop
+
+@section('scripts')
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+	$('#bank').on('change', function (e) {
+		var selectedValue = $("#bank").find(":selected").text();
+
+  		console.log(selectedValue);
+	});
+});
+
+
+
+</script>
 @stop
