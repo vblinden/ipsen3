@@ -102,9 +102,7 @@
 			        <h4 class="modal-title" id="myModalLabel">iDeal betaling</h4>
 			      </div>
 			      <div class="modal-body">
-			      	@if('selectedValue' === 'IGN')
-			        	@include('reservation.partials.ing')
-			        @endif
+			        @include('reservation.partials.ing')
 			      </div>
 			      <div class="modal-footer">
 			      	{{ Form::submit('Betaling voltooien', array('class' => 'btn btn-primary', 'style' => 'background-color: #f86b02')); }}
@@ -127,11 +125,21 @@ $(document).ready(function () {
 	$('#bank').on('change', function (e) {
 		var selectedValue = $("#bank").find(":selected").text();
 
-  		console.log(selectedValue);
+		function getValue(selectedValue){
+			console.log(selectedValue);
+			$.ajax(
+			{
+				type: 'POST',
+				url: 'reservation/check/48',
+				data: "&value=" + selectedValue,
+				succes: function(data){
+					alert(data);
+					console.log(data);
+				}
+			});
+		}
 	});
 });
-
-
 
 </script>
 @stop
