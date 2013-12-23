@@ -30,6 +30,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="/">Startpagina</a></li>
+						<li><a href="/reservation">Reserveren</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Voertuigen<b class="caret"></b></a>
 							<ul class="dropdown-menu">

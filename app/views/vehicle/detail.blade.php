@@ -16,7 +16,6 @@
 		<div class="page-header">
 			<h1>{{ $vehicle->brand }} {{ $vehicle->model }}
 				<small class="pull-right">
-					<a href='/reservation/make/{{ $vehicle->id }}' class='btn btn-success'>Reserveren</a>
 					@if(Auth::check()) 
 					@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
 					<a href='/vehicle/edit/{{ $vehicle->id }}' class='btn btn-primary'>Bewerken</a>
