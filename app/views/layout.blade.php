@@ -107,11 +107,11 @@
 							<div class="panel-heading">Diensten</div>
 							<div class="panel-body">
 								<ul class="bulletless">
-									<li><a href="#">Personenauto</a></li>
-									<li><a href="#">Bedrijfswagens</a></li>
-									<li><a href="#">Motoren</a></li>
-									<li><a href="#">Scooters</a></li>
-									<li><a href="#">Accessoires</a></li>
+									<li><a href="/vehicle/person">Personenauto</a></li>
+									<li><a href="/vehicle/company">Bedrijfswagens</a></li>
+									<li><a href="/vehicle/motor">Motoren</a></li>
+									<li><a href="/vehicle/scooter">Scooters</a></li>
+									<li><a href="/vehicleoption">Accessoires</a></li>
 								</ul>
 							</div>
 						</div>
