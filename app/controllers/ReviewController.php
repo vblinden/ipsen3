@@ -29,7 +29,7 @@ class ReviewController extends BaseController {
 
 		if ($data['rating'] == 0) {
 			$review->rating = 1;
-		} else{
+		} else {
 			$review->rating = $data['rating'];
 		}
 
@@ -51,7 +51,10 @@ class ReviewController extends BaseController {
 
 		$review = Review::find($data['id']);
 		$review->comment = $data['comment'];
-		$review->rating = $data['rating'];
+
+		if ($data['rating'] != 0) {
+			$review->rating = $data['rating'];
+		} 
 
 		$review->save();
 

@@ -14,7 +14,15 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>Review <small>voor {{ $review->vehicle->brand }} {{ $review->vehicle->model }} met het kenteken {{ $review->vehicle->licenseplate }}</small></h1>
+			<h1>Review 
+			<small>
+				voor 
+				@if ($review->vehicle_id != 0)
+				{{ $review->vehicle->brand }} {{ $review->vehicle->model }} met het kenteken {{ $review->vehicle->licenseplate }}
+				@else 
+				LeenMeij
+				@endif
+			</small></h1>
 		</div>
 		<p>Hier onder vind u de gegevens die bekend zijn bij deze review, u kunt op deze pagina de review bewerken.</p>
 	</div>

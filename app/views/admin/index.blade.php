@@ -302,13 +302,19 @@
 							@foreach ($reviews->take(5) as $review)
 							<tr>
 								<td>{{ $review->id }}</td>
-								<td>{{ $review->comment }}</td>
+								<td>{{ Str::words($review->comment, $words = 3, $end = '...')}}</td>
 								<td>
 									@for ($i=1; $i <= 5 ; $i++)
 									    <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
 									@endfor
 								</td>
-								<td>{{ $review->vehicle->brand }} {{ $review->vehicle->model }}</td>
+								<td>
+									@if ($review->vehicle_id != 0)
+									{{ $review->vehicle->brand }} {{ $review->vehicle->model }}
+									@else 
+									Bedrijf
+									@endif
+								</td>
 								<td>{{ $review->user->firstname }} {{ $review->user->lastname }}</td>
 								<td>
 									<a href='/review/edit/{{ $review->id }}' class="btn btn-primary btn-sm">Bewerken</a> 

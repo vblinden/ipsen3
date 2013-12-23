@@ -41,7 +41,7 @@
 							</ul>
 						</li>
 						<li><a href="/vehicleoption">Voertuigen opties</a></li>
-						<li><a href="/review/index">Beoordelingen</a></li>
+						<li><a href="/review">Beoordelingen</a></li>
 						<li><a href="/home/faq">FAQ</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -87,7 +87,7 @@
 								@if($review->rating >= 4)
 								<div class="panel-body">
 									<div>
-										<a href="/review/index"><p> {{ Str::words($review->comment, $words = 4, $end = '...')}}
+										<a href="/review"><p> {{ Str::words($review->comment, $words = 4, $end = '...')}}
 										<span class="pull-right">
 										    @for ($i=1; $i <= 5 ; $i++)
 										      <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>

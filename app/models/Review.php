@@ -26,7 +26,7 @@ class Review extends Eloquent {
 
 	public static function getHighReviews()
 	{
-		$review = Review::where('vehicle_id' , '=', '0')->orderby(DB::raw('RAND() * 999'))->take(3);
+		$review = Review::where('vehicle_id' , '=', '0')->orderby(DB::raw('RAND() * 999'))->paginate(3);
 		
 		return $review;
 	}

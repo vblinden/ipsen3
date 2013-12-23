@@ -27,7 +27,13 @@
 					@foreach ($reviews as $review)
 					<tr>
 						<td>{{ $review->id }}</td>
-						<td>{{ $review->vehicle->brand }} {{ $review->vehicle->brand }}</td>
+						<td>
+							@if ($review->vehicle_id != 0)
+								{{ $review->vehicle->brand }} {{ $review->vehicle->model }}
+							@else 
+								Bedrijf
+							@endif
+							</td>
 						<td>{{ $review->user->firstname }} {{ $review->user->lastname }} </td>
 						<td> 
 							@for ($i=1; $i <= 5 ; $i++)
