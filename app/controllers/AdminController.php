@@ -15,6 +15,7 @@ class AdminController extends BaseController {
 		$userroles = Role::orderBy('id', 'DESC')->get();
 		$reservations = Reservation::orderby('id', 'DESC')->get();
 		$general = General::find(1);
+		$reviews = Review::orderBy('id', 'DESC')->get();
 
 		return View::make('admin.index', array(
 			'vehicles' => $vehicles, 
@@ -22,7 +23,8 @@ class AdminController extends BaseController {
 			'general' => $general, 
 			'vehicleoptions' => $vehicleoptions, 
 			'reservations' => $reservations,
-			'userroles' => $userroles));
+			'userroles' => $userroles,
+			'reviews' => $reviews));
 	}
 
 	public function getVehicles() 
@@ -48,6 +50,11 @@ class AdminController extends BaseController {
 	public function getUserroles()
 	{
 		return View::make('admin.userroles', array('userroles' => Role::all()));
+	}
+
+	public function getReviews()
+	{
+		return View::make('admin.reviews', array('reviews' => Review::all()));
 	}
 
 	public function postVat() 

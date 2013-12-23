@@ -28,6 +28,9 @@
 			 <li class="nav-divider"></li>
 			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Gebruikers</a></li>
 			<li><a href="#userroles" data-toggle="pill"><span class="badge pull-right">{{ $userroles->count() }}</span>Gebruikers rollen</a></li>
+			 <li class="nav-divider"></li>
+			<li><a href="#reviews" data-toggle="pill"><span class="badge pull-right">{{ $reviews->count() }}</span>Reviews</a></li>
+		
 		</ul>
 	</div>
 	<div class='col-lg-9'>
@@ -274,6 +277,51 @@
 						</div>
 						<div class='col-lg-6'>
 							<a href="/userrole/add" class="btn btn-success btn-full">Nieuwe gebruikers rol</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="reviews">
+				<div class="page-header">
+					<h1>Reviews<small></small></h1>
+				</div>
+				<p>Hieronder vind u de laatste vijf toegevoegde reviews. U kunt de reviews bewerken of verwijderen. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle reviews.</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">Gebruikers rollen</div>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Beschrijving</th>
+								<th>Beoordeling</th>
+								<th>Voertuig</th>
+								<th>Gebruiker</th>
+								<th width="185px"></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($reviews->take(5) as $review)
+							<tr>
+								<td>{{ $review->id }}</td>
+								<td>{{ $review->comment }}</td>
+								<td>
+									@for ($i=1; $i <= 5 ; $i++)
+									    <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
+									@endfor
+								</td>
+								<td>{{ $review->vehicle->brand }} {{ $review->vehicle->model }}</td>
+								<td>{{ $review->user->firstname }} {{ $review->user->lastname }}</td>
+								<td>
+									<a href='/review/edit/{{ $review->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
+									<a href='/review/delete/{{ $review->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze review wilt verwijderen?')">Verwijderen</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					<div class='panel-body'>
+						<div class='col-lg-12'>
+							<a href="/admin/reviews" class="btn btn-primary btn-full">Alle reviews</a>
 						</div>
 					</div>
 				</div>
