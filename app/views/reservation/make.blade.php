@@ -165,11 +165,11 @@
 							<div class='row'>
 								<div class='col-lg-6'>
 									{{ Form::label('startdate', 'Begin datum'); }}
-									{{ Form::text('startdate', null, array('class' => 'form-control', 'id' => 'dpd1')); }}
+									{{ Form::text('startdate', Cookie::get('dates')['startdate'], array('class' => 'form-control', 'id' => 'dpd1', 'disabled')); }}
 								</div>
 								<div class='col-lg-6'>
 									{{ Form::label('enddate', 'Eind datum'); }}
-									{{ Form::text('enddate', null, array('class' => 'form-control', 'id' => 'dpd2')); }}
+									{{ Form::text('enddate', Cookie::get('dates')['enddate'], array('class' => 'form-control', 'id' => 'dpd2', 'disabled')); }}
 								</div>
 							</div>
 						</div>

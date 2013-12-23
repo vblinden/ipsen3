@@ -62,6 +62,10 @@ class ReservationController extends BaseController {
 			return true;
 		});
 
+		// Create cookie for dates.
+		$cookie = Cookie::forever('dates', array('startdate' => $data['startdate'], 'enddate' => $data['enddate']));
+		Cookie::queue($cookie);
+
 		return View::make('reservation.index', array('input' => $data))->nest('child', 'reservation.availablevehicles', array('vehicles' => $vehicles));
 	}
 

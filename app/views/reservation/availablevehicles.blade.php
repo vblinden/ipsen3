@@ -6,7 +6,7 @@
 			<img src="/uploaded/vehicles/{{ $vehicle->image }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
 			<div class="caption">
 				<h3>{{ $vehicle->brand }} {{ $vehicle->model }}</h3>
-				<p>{{ $vehicle->comment }}</p>
+				<p>{{ Str::words($vehicle->comment, $words = 30, $end = '...')}}</p>
 				<p>
 					<a href="/reservation/make/{{$vehicle->id}}" class="btn btn-success" role="button">Reserveren</a> 
 					<a href="/vehicle/detail/{{$vehicle->id}}" class="btn btn-primary pull-right" role="button">Bekijken</a> 
