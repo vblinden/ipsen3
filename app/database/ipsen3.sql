@@ -23,6 +23,10 @@
 # Dump of table general
 # ------------------------------------------------------------
 
+CREATE DATABASE ipsen3;
+
+USE ipsen3;
+
 DROP TABLE IF EXISTS `general`;
 
 CREATE TABLE `general` (

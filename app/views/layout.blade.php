@@ -40,7 +40,7 @@
 								<li><a href="/vehicle/scooter">Scooter</a></li>
 							</ul>
 						</li>
-						<li><a href="/vehicleoption">Voertuigen opties</a></li>
+						<li><a href="/vehicleoption">Accessoires</a></li>
 						<li><a href="/review">Beoordelingen</a></li>
 						<li><a href="/home/faq">FAQ</a></li>
 					</ul>
@@ -98,7 +98,6 @@
 									</div>
 									</div>
 								@endif
-							
 							@endforeach
 						</div>
 					</div>

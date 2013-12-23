@@ -107,6 +107,11 @@ class ReservationController extends BaseController {
 		return Redirect::to('/reservation/check/' . $reservation->id);
 	}
 
+	public function getPayment()
+	{
+		return View::make('reservation.payment');
+	}
+
 	public function getCheck($id)
 	{
 		$reservation = Reservation::find($id);
@@ -169,6 +174,11 @@ class ReservationController extends BaseController {
 		$reservation->delete();
 
 		return Redirect::to('/admin#reservations')->with('success', 'De reservering is succesvol verwijderd.');
+	}
+
+	public function postSucces()
+	{
+		return View::make('reservation.success');
 	}
 
 	public function getSuccess() 
