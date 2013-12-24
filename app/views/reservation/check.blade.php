@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+{{ Form::open(array('action' => 'ReservationController@postSucces')) }}
 <link href="/css/datepicker.css" rel="stylesheet">
 <div class='row'>
 	<div class='col-lg-12'>
@@ -73,8 +74,6 @@
 		</div>
 	</div>
 </div>
-
-{{ Form::open(array('action' => 'ReservationController@postSucces')) }}
 <div class="row">
 	<div class="col-lg-12">
 		<div class="page-header">

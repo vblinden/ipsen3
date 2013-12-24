@@ -178,6 +178,19 @@ class ReservationController extends BaseController {
 
 	public function postSucces()
 	{
+		$data = Input::all();
+
+		$invoice = new Invoice();
+		$invoice->user_id = Auth::user()->id;
+		$invoice->vehicle_id = $data['vehicle_id'];
+		$invoice->startdate = $data['startdate'];
+		$invoice->enddate = $data['enddate'];
+		$invoice->price = $data['price'];
+		$invoice->total = $data['total'];
+
+		$invoice->save();
+
+
 		return View::make('reservation.success');
 	}
 
