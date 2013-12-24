@@ -102,16 +102,13 @@
 			        <h4 class="modal-title" id="myModalLabel">iDeal betaling</h4>
 			      </div>
 			      <div class="modal-body">
-			        @include('reservation.partials.ing')
+			      	@include('reservation.partials.ing')
 			      </div>
 			      <div class="modal-footer">
-			      {{ Form::hidden('vehicle_id', $reservation->vehicle->id); }}
-			      <!--{{ Form::hidden('startdate', $reservation->startdate); }}
-			      {{ Form::hidden('enddate', $reservation->enddate); }}
-			      {{ Form::hidden('price', $reservation->totalPrice); }}-->
+			      	{{ Form::hidden('reservation', $reservation); }}
 			      	{{ Form::submit('Betaling voltooien', array('class' => 'btn btn-primary', 'style' => 'background-color: #f86b02')); }}
 			      </div>
-			    </div>
+			  </div>
 			  </div>
 			</div>
 		</div>
@@ -121,9 +118,7 @@
 @stop
 
 @section('scripts')
-
 <script type="text/javascript">
-
 $(document).ready(function () {
 
 	$('#bank').on('change', function (e) {
@@ -144,6 +139,5 @@ $(document).ready(function () {
 		}
 	});
 });
-
 </script>
 @stop

@@ -23,6 +23,12 @@
 			<p>
 				Veel plezier met uw toekomstige gehuurde voertuigen!
 			</p>
+
+			<p>
+				Met vriendelijke groet,
+
+				LeenMeij Voertuigverhuur BV.
+			</p>
 		</div>
 	</body>
 </html>

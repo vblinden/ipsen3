@@ -180,24 +180,21 @@ class ReservationController extends BaseController {
 	{
 		$data = Input::all();
 
+		// Decode the reservation data and convert to an object.
+		$reservation = json_decode($data['reservation']);
+
 		$invoice = new Invoice();
 		$invoice->user_id = Auth::user()->id;
-		$invoice->vehicle_id = $data['vehicle_id'];
-
+		$invoice->vehicle_id = $reservation->vehicle->id;
 
 		$invoice->save();
-
-		//TO:DO zorgen dat et werkt
-		//
 		
 		$user = User::find($invoice->user_id);
 
-		Mail::queue('emails.register', array('user' => $user), function($message) use ($user)
+		Mail::later(5, 'emails.reservation', array('user' => $user, 'reservation' => $reservation), function($message) use ($user)
 		{
-		    $message->to($user->email)->subject('Welkom bij LeenMeij!');
+		    $message->to($user->email)->subject('Bedankt voor uw reservering!');
 		});
-
-
 
 		return View::make('reservation.success');
 	}
