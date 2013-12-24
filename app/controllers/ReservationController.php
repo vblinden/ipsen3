@@ -193,9 +193,4 @@ class ReservationController extends BaseController {
 
 		return View::make('reservation.success');
 	}
-
-	public function getSuccess() 
-	{
-		return View::make('reservation.success');
-	}
 }

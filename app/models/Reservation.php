@@ -19,4 +19,9 @@ class Reservation extends Eloquent {
 		return $this->belongsTo('Vehicle');
 	}
 
+	public function invoice()
+	{
+		return $this->hasOne('Invoice');
+	}
+
 }
