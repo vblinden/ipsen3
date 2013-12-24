@@ -134,7 +134,7 @@ class UserController extends BaseController {
 
 			$user->save();
 
-			Mail::send('emails.register', array('user' => $user), function($message) use ($user)
+			Mail::queue('emails.register', array('user' => $user), function($message) use ($user)
 			{
 			    $message->to($user->email)->subject('Welkom bij LeenMeij!');
 			});

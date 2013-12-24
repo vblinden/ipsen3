@@ -178,11 +178,27 @@ class ReservationController extends BaseController {
 
 	public function postSucces()
 	{
-		return View::make('reservation.success');
-	}
+		$data = Input::all();
 
-	public function getSuccess() 
-	{
+		$invoice = new Invoice();
+		$invoice->user_id = Auth::user()->id;
+		$invoice->vehicle_id = $data['vehicle_id'];
+
+
+		$invoice->save();
+
+		//TO:DO zorgen dat et werkt
+		//
+		
+		$user = User::find($invoice->user_id);
+
+		Mail::queue('emails.register', array('user' => $user), function($message) use ($user)
+		{
+		    $message->to($user->email)->subject('Welkom bij LeenMeij!');
+		});
+
+
+
 		return View::make('reservation.success');
 	}
 }

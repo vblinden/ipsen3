@@ -43,7 +43,7 @@
 					<ul class="pager wizard">
 					<li class="previous"><a href="#">Vorige</a></li>
 					<li class="next"><a href="#">Volgende</a></li>
-					<li class="next finish" style="display:none;" onclick="return confirm('Weet u zeker dat alle gegevens correct zijn? U kunt uw reservering na deze stap niet meer aanpassen!')">{{ Form::submit('Afronden', array('class' => 'btn btn-success pull-right')); }}</li>
+					<li class="next finish" style="display:none;" onclick="return confirm('Weet u zeker dat alle gegevens correct zijn? U kunt uw reservering na deze stap niet meer aanpassen!')">{{ Form::submit('Naar controle', array('class' => 'btn btn-success pull-right')); }}</li>
 				</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab1">
@@ -106,28 +106,48 @@
 									Voertuig gegevens
 								</div>
 								<div class='panel-body'>
-									<div class="col-lg-5">
-										<p><strong>Merk</strong> </p>
-										<p><strong>Model </strong></p>
-										<p><strong>Kilometerstand</strong> </p>
-										<p><strong>Kenteken </strong></p>
-										<p><strong>Voertuigkleur </strong></p>
-										<p><strong>Verbruik per kilometer </strong></p>
-										<p><strong>Prijs per uur </strong></p>
-										<p><strong>Prijs per dag </strong></p>
-										<p><strong>Opmerkingen </strong></p>
-									</div>
-									<div class="col-lg-7">
+									<div class="col-lg-12">
 										{{ Form::hidden('vehicleid', $vehicle->id); }}
-										<p> {{ $vehicle->brand }} </p>
-										<p> {{ $vehicle->model }} </p>
-										<p> {{ $vehicle->milage }} kilometer</p>
-										<p> {{ $vehicle->licenseplate }} </p>
-										<p> {{ $vehicle->color }} </p>
-										<p> {{ $vehicle->usage }} </p>
-										<p> € {{ $vehicle->hourlyrate }}</p>
-										<p> € {{ $vehicle->hourlyrate * 24 }}</p>
-										<p> {{ $vehicle->comment }} </p>
+										<table class="table table-striped">
+											<tbody>
+												<tr>
+													<td><strong>Merk</strong></td>
+													<td> {{ $vehicle->brand }} </td>
+												</tr>
+												<tr>
+													<td><strong>Model</strong></td>
+													<td> {{ $vehicle->model }} </td>
+												</tr>
+												<tr>
+													<td><strong>Kilometerstand</strong></td>
+													<td> {{ $vehicle->milage }} kilometer</td>
+												</tr>
+												<tr>
+													<td><strong>Kenteken</strong></td>
+													<td> {{ $vehicle->licenseplate }} </td>
+												</tr>
+												<tr>
+													<td><strong>Voertuigkleur</strong></td>
+													<td> {{ $vehicle->color }} </td>
+												</tr>
+												<tr>
+													<td><strong>Verbruik per kilometer</strong></td>
+													<td> {{ $vehicle->usage }} </td>
+												</tr>
+												<tr>
+													<td><strong>Prijs per uur</strong></td>
+													<td>€ {{ $vehicle->hourlyrate }} </td>
+												</tr>
+												<tr>
+													<td><strong>Prijs per dag</strong></td>
+													<td>€ {{ $vehicle->hourlyrate * 24 }} </td>
+												</tr>
+												<tr>
+													<td><strong>Opmerkingen</strong></td>
+													<td> {{ $vehicle->comment }} </td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>

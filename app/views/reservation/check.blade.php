@@ -105,6 +105,10 @@
 			        @include('reservation.partials.ing')
 			      </div>
 			      <div class="modal-footer">
+			      {{ Form::hidden('vehicle_id', $reservation->vehicle->id); }}
+			      <!--{{ Form::hidden('startdate', $reservation->startdate); }}
+			      {{ Form::hidden('enddate', $reservation->enddate); }}
+			      {{ Form::hidden('price', $reservation->totalPrice); }}-->
 			      	{{ Form::submit('Betaling voltooien', array('class' => 'btn btn-primary', 'style' => 'background-color: #f86b02')); }}
 			      </div>
 			    </div>
