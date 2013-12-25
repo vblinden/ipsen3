@@ -196,8 +196,8 @@
 				<div class="page-header">
 					<h1>Facturen <small></small></h1>
 				</div>
-				<p>Hieronder vind u de laatste vijf toegevoegde facturen. U kunt de facturen bewerkenof verwijderen. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle facturen.</p>
-				<p>Facturen worden automatisch bijgewerkt als een reservering wordt bewerkt.</p>
+				<p>Hieronder vind u de laatste vijf toegevoegde facturen. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle facturen.</p>
+				<p>Facturen worden automatisch bijgewerkt als een reservering wordt bewerkt. Facturen kunnen niet worden verwijderd.</p>
 				<div class="panel panel-default">
 					<div class="panel-heading">
 							Facturen

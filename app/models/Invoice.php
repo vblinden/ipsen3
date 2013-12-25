@@ -14,4 +14,9 @@ class Invoice extends Eloquent {
 		return $this->belongsTo('Vehicle');
 	}
 
+	public function reservation()
+	{
+		return $this->hasOne('reservation');
+	}
+
 }
