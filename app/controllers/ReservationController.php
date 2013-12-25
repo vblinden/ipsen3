@@ -186,12 +186,17 @@ class ReservationController extends BaseController {
 		$invoice = new Invoice();
 		$invoice->user_id = Auth::user()->id;
 		$invoice->vehicle_id = $reservation->vehicle->id;
+		$invoice->startdate = $reservation->startdate;
+		$invoice->enddate = $reservation->enddate;
+		$invoice->price = $data['price'];
+		$invoice->total = $data['total'];
+
 
 		$invoice->save();
 		
 		$user = User::find($invoice->user_id);
 
-		Mail::later(5, 'emails.reservation', array('user' => $user, 'reservation' => $reservation), function($message) use ($user)
+		Mail::later(5, 'emails.reservation', array('user' => $user, 'reservation' => $reservation, 'invoice' => $invoice), function($message) use ($user)
 		{
 		    $message->to($user->email)->subject('Bedankt voor uw reservering!');
 		});
