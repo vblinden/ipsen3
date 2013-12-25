@@ -6,27 +6,22 @@
 	<body>
 		<div>
 			<p>Beste {{{ $user->firstname }}},</p>
-			<br>
+		
 			<p>Hartelijk dank voor je reservering bij voertuigverhuurbedrijf LeenMeij. </p>
 			<p>Wij stellen uw vertrouwen erg op prijs, en hopen u in de toekomst nog verder van dienst te kunnen zijn.</p>
-			<br>
+			
 			<p>Volgens ons systeem heeft u de {{ $reservation->vehicle->brand }} {{ $reservation->vehicle->model }} gereserveerd</p>
 			<p>van  {{ $reservation->startdate }} t/m {{ $reservation->enddate }}.</p>
 
 			<br>
 			<p>Hieronder een gedetailleerd overzicht van uw reservering. Controleer de gegevens goed.</p>
 			<hr>
-<!--
+			<br/>
 			<div>
 				<a>
-					// Hoe wij het doen
-					<img src="/uploaded/vehicles/{{ $reservation->vehicle->image }}" alt="{{ $reservation->vehicle->brand }} {{ $reservation->vehicle->model }}">
-
-					// Hoe laravel zeg dat het moet
-					 <img src="<?php echo $message->embed($pathToFile); ?>">
+					<img src="http://leenmeij.vblinden.com/uploaded/vehicles/{{ $reservation->vehicle->image }}" alt="{{ $reservation->vehicle->brand }} {{ $reservation->vehicle->model }}" style="width: 50%; height: 50%">
 				</a>
 			</div>
-			-->
 
 			<div>
 				<table style="border-collapse:collapse;border-spacing:0">
@@ -75,6 +70,7 @@
 					</tbody>
 				</table>
 			</div>
+			<br/>
 			<hr>
 			<br>
 			<p>Mocht er iets niet kloppen aan deze gegevens, dan kunt u contact opnemen met de klantenservice van LeenMeij.</p>

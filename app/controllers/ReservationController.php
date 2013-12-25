@@ -152,14 +152,32 @@ class ReservationController extends BaseController {
 
 		$reservation->save();
 
-		// TODO: make it work
-		$invoice = Invoice::where('reservation_id', '==', $data['id'])->get();
-		// $invoice = Invoice::find(46); Werkt wel bij mij, maar bovenstaande kan niet in een find volgens mij.
-		// Check ook ff mail.reservation voor die img, en anders kankert die image maar op.
-		$invoice->startdate = $data['startdate'];
-		$invoice->enddate = $data['enddate'];
+		// Get invoice from reservation id, and make sure we only get one.
+		$invoice = Invoice::where('reservation_id', '=', $data['id'])->firstOrFail();
 
-		echo $invoice;
+		// Update the invoice values.
+		$invoice->startdate = Carbon::parse($data['startdate']);
+		$invoice->enddate = Carbon::parse($data['enddate']);
+
+		// Calculate new price.
+		$totalPrice = $reservation->vehicle->hourlyrate * 24;
+
+		foreach ($reservation->vehicleoptions as $vehicleoption) {
+			$totalPrice += $vehicleoption->price * 24;
+		}
+
+		$datetime1 = new DateTime($reservation->startdate);
+		$datetime2 = new DateTime($reservation->enddate);
+		$interval = $datetime1->diff($datetime2);
+
+		$totalPrice = $totalPrice * $interval->format('%a');
+		$vat = $totalPrice / 100 * General::find(1)->vat;
+
+		$invoice->price = $totalPrice;
+		$invoice->total = $totalPrice + $vat;
+
+		// Save the invoice.
+		$invoice->save();
 
 		// Detach all vehicle options from this reservation.
 		$reservation->vehicleoptions()->detach();
@@ -174,7 +192,7 @@ class ReservationController extends BaseController {
 			}
 		}
 
-		//return Redirect::to('/reservation/edit/' . $data['id'])->with('success', 'De reservering is succesvol bijgewerkt.');	
+		return Redirect::to('/reservation/edit/' . $data['id'])->with('success', 'De reservering is succesvol bijgewerkt.');	
 	}
 
 	public function getDelete($id) 
@@ -192,15 +210,15 @@ class ReservationController extends BaseController {
 		// Decode the reservation data and convert to an object.
 		$reservation = json_decode($data['reservation']);
 
+		// Create new invoice.
 		$invoice = new Invoice();
 		$invoice->user_id = Auth::user()->id;
 		$invoice->vehicle_id = $reservation->vehicle->id;
-		$invoice->startdate = $reservation->startdate;
-		$invoice->enddate = $reservation->enddate;
+		$invoice->startdate = Carbon::parse($reservation->startdate);
+		$invoice->enddate = Carbon::parse($reservation->enddate);
 		$invoice->price = $data['price'];
 		$invoice->total = $data['total'];
 		$invoice->reservation_id = $reservation->id;
-
 
 		$invoice->save();
 		
