@@ -22,7 +22,7 @@ class CreateInvoiceTable extends Migration {
 			$table->datetime('enddatedate');
 			$table->double('price');
 			$table->double('total');
-
+			$table->integer('reservation_id');
 			$table->timestamps();
 		});
 	}

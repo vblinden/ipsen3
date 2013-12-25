@@ -137,7 +137,7 @@ class ReservationController extends BaseController {
 
 	public function getEdit($id) 
 	{
-		return View::make('reservation.edit', array('reservation' => Reservation::find($id)));
+		return View::make('reservation.edit', array('reservation' => Reservation::find($id), 'invoice' => Invoice::find('reservation_id' . '=' . $id)));
 	}
 
 	public function postEdit() 
@@ -152,6 +152,15 @@ class ReservationController extends BaseController {
 
 		$reservation->save();
 
+		// TODO: make it work
+		$invoice = Invoice::where('reservation_id', '==', $data['id'])->get();
+		// $invoice = Invoice::find(46); Werkt wel bij mij, maar bovenstaande kan niet in een find volgens mij.
+		// Check ook ff mail.reservation voor die img, en anders kankert die image maar op.
+		$invoice->startdate = $data['startdate'];
+		$invoice->enddate = $data['enddate'];
+
+		echo $invoice;
+
 		// Detach all vehicle options from this reservation.
 		$reservation->vehicleoptions()->detach();
 
@@ -163,9 +172,9 @@ class ReservationController extends BaseController {
 
 				$reservation->vehicleoptions()->save($vo);
 			}
-		} 
+		}
 
-		return Redirect::to('/reservation/edit/' . $data['id'])->with('success', 'De reservering is succesvol bijgewerkt.');	
+		//return Redirect::to('/reservation/edit/' . $data['id'])->with('success', 'De reservering is succesvol bijgewerkt.');	
 	}
 
 	public function getDelete($id) 
@@ -186,12 +195,18 @@ class ReservationController extends BaseController {
 		$invoice = new Invoice();
 		$invoice->user_id = Auth::user()->id;
 		$invoice->vehicle_id = $reservation->vehicle->id;
+		$invoice->startdate = $reservation->startdate;
+		$invoice->enddate = $reservation->enddate;
+		$invoice->price = $data['price'];
+		$invoice->total = $data['total'];
+		$invoice->reservation_id = $reservation->id;
+
 
 		$invoice->save();
 		
 		$user = User::find($invoice->user_id);
 
-		Mail::later(5, 'emails.reservation', array('user' => $user, 'reservation' => $reservation), function($message) use ($user)
+		Mail::later(5, 'emails.reservation', array('user' => $user, 'reservation' => $reservation, 'invoice' => $invoice), function($message) use ($user)
 		{
 		    $message->to($user->email)->subject('Bedankt voor uw reservering!');
 		});

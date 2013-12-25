@@ -106,6 +106,8 @@
 			      </div>
 			      <div class="modal-footer">
 			      	{{ Form::hidden('reservation', $reservation); }}
+			      	{{ Form::hidden('price', $totalPrice); }}
+			      	{{ Form::hidden('total', $totalPrice + $vat); }}
 			      	{{ Form::submit('Betaling voltooien', array('class' => 'btn btn-primary', 'style' => 'background-color: #f86b02')); }}
 			      </div>
 			  </div>

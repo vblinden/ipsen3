@@ -24,7 +24,7 @@
 			<li><a href="#vehiclesoptions" data-toggle='pill'><span class="badge pull-right">{{ $vehicleoptions->count() }}</span>Voertuigen opties</a></li>
 			<li class="nav-divider"></li>
 			<li><a href="#reservations" data-toggle="pill"><span class="badge pull-right">{{ $reservations->count() }}</span>Reserveringen</a></li>
-			<li><a href="#invoices" data-toggle="pill">Facturen</a></li>
+			<li><a href="#invoices" data-toggle="pill"><span class="badge pull-right">{{ $invoices->count() }}</span>Facturen</a></li>
 			<li class="nav-divider"></li>
 			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Gebruikers</a></li>
 			<li><a href="#userroles" data-toggle="pill"><span class="badge pull-right">{{ $userroles->count() }}</span>Gebruikers rollen</a></li>
@@ -151,7 +151,7 @@
 				<div class="page-header">
 					<h1>Reserveringen <small></small></h1>
 				</div>
-				<p>Hieronder vind u de laatste vijf toegevoegde reserveringen. U kunt de reserveringen bewerken, verwijderen. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle reserveringen.</p>
+				<p>Hieronder vind u de laatste vijf toegevoegde reserveringen. U kunt de reserveringen bewerken of verwijderen. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle reserveringen.</p>
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						Reserveringen
@@ -193,8 +193,49 @@
 				</div>
 			</div>
 			<div class="tab-pane" id="invoices">
-				
-			</div>
+				<div class="page-header">
+					<h1>Facturen <small></small></h1>
+				</div>
+				<p>Hieronder vind u de laatste vijf toegevoegde facturen. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle facturen.</p>
+				<p>Facturen worden automatisch bijgewerkt als een reservering wordt bewerkt. Facturen kunnen niet worden verwijderd.</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+							Facturen
+					</div>
+
+					<!-- Vehicle table -->
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Naam</th>
+								<th>Voertuig</th>
+								<th>Begin datum</th>
+								<th>Eind datum</th>
+								<th>Totaalbedrag</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($invoices->take(5) as $invoice)
+							<tr>
+								<td>{{ $invoice->id }}</td>
+								<td>{{ $invoice->user->firstname }} {{ $invoice->user->lastname }}</td>
+								<td>{{ $invoice->vehicle->brand }} {{ $invoice->vehicle->model }}</td>
+								<td>{{ $invoice->startdate }}</td>
+								<td>{{ $invoice->enddate }}</td>
+								<td>€ {{ $invoice->total }}</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					<div class='panel-body'>
+						<div class='col-lg-12'>
+							<a href="/admin/invoices" class="btn btn-primary btn-full">Alle facturen</a>
+						</div>
+					</div>
+				</div>
+			</div>				
+			
 			<div class="tab-pane" id="users">
 				<div class="page-header">
 					<h1>Gebruikers <small></small></h1>
