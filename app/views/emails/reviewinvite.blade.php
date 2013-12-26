@@ -26,7 +26,7 @@
 
 			<p>
 				Met vriendelijke groet,
-			</p>
+			<p>
 			<p>
 				LeenMeij Voertuigverhuur BV.
 			</p>

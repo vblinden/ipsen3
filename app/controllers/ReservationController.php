@@ -224,10 +224,7 @@ class ReservationController extends BaseController {
 		
 		$user = User::find($invoice->user_id);
 
-		Mail::later(5, 'emails.reservation', array('user' => $user, 'reservation' => $reservation, 'invoice' => $invoice), function($message) use ($user)
-		{
-		    $message->to($user->email)->subject('Bedankt voor uw reservering!');
-		});
+		Queue::push('EmailService@reservation', array('user' => $user, 'reservation' => $reservation, 'invoice' => $invoice));
 
 		return View::make('reservation.success');
 	}
