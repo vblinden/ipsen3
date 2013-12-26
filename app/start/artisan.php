@@ -11,4 +11,5 @@
 |
 */
 
-Artisan::add(new ReservationCommand);
+Artisan::add(new ReviewInviteCommand);
+Artisan::add(new DatedReservations);
