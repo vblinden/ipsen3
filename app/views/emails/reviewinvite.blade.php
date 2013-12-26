@@ -17,7 +17,7 @@
 
 			<p>
 				<a href="#" target="_blank">Klik hier</a> om een voertuigbeoordeling te maken. <br/>
-				<a href="#" target="_blank">Klik hier</a> om een bedrijfbeoordeling te maken. 
+				<a href="#" target="_blank">Klik hier</a> om een bedrijfsbeoordeling te maken. 
 			</p>
 	
 			<p>Met vriendelijke groet,<p>
