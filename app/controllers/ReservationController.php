@@ -126,6 +126,12 @@ class ReservationController extends BaseController {
 		$interval = $datetime1->diff($datetime2);
 
 		$totalPrice = $totalPrice * $interval->format('%a');
+
+		// Check if reservation times are two months ahead.
+		if (Carbon::now()->diffInDays(Carbon::parse($reservation->startdate)) >= 60) {	
+			$totalPrice = $totalPrice - ($totalPrice / 100) * 5;
+		}
+
 		$vat = $totalPrice / 100 * General::find(1)->vat;
 
 		return View::make('reservation.check', array(
@@ -170,7 +176,15 @@ class ReservationController extends BaseController {
 		$datetime2 = new DateTime($reservation->enddate);
 		$interval = $datetime1->diff($datetime2);
 
+		// Calculate total price.
 		$totalPrice = $totalPrice * $interval->format('%a');
+	
+		// Check if reservation times are two months ahead.
+		if (Carbon::now()->diffInDays(Carbon::parse($reservation->startdate)) >= 60) {	
+			$totalPrice = $totalPrice - ($totalPrice / 100) * 5;
+		}
+
+		// Calculate vat.
 		$vat = $totalPrice / 100 * General::find(1)->vat;
 
 		$invoice->price = $totalPrice;
