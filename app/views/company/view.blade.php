@@ -14,7 +14,12 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>Overzicht pagina <small>van {{ $company->name }}</small></h1>
+			<h1>
+			Overzicht pagina <small>van {{ $company->name }}</small>
+			@if ($company->admin_user_id != Auth::user()->id)
+			<a href='/company/userdelete/{{ $company->id }}/{{ Auth::user()->id }}' class="btn btn-danger btn-sm pull-right" onclick="return confirm('Weet u zeker dat u zich wilt afmelding bij dit bedrijf?')">Afmelden bij dit bedrijf</a>
+			@endif
+			</h1>
 		</div>
 		<p>Hieronder kunt u een nieuwe gebruikers rol aanmaken.</p>
 	</div>

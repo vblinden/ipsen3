@@ -1,6 +1,21 @@
 @extends('layout')
 
 @section('content')
+<div class='row'>
+	<div class='col-lg-12'>
+		@if(Session::has('success'))
+		<div class="alert alert-success">
+			<p><strong>Succes!</strong> {{ Session::get('success') }}</p>
+		</div>
+		@endif
+		@if(Session::has('failed'))
+		<div class="alert alert-danger">
+			<p><strong>Fout!</strong> {{ Session::get('failed') }}</p>
+		</div>
+		@endif
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-lg-12">
 		<div id="carousel" class="carousel slide" data-ride="carousel">

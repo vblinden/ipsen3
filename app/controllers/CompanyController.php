@@ -21,9 +21,21 @@ class CompanyController extends BaseController {
 
 		$user = User::find($user_id);
 		$user->company_id = 0;
+		$user->business = 0;
 		$user->save();
 
-		return Redirect::to('/company/view/' . $company_id)->with('failed', 'Gebruiker is al aangemeld bij een bedrijf.');
+		return Redirect::to('/')->with('success', 'U bent met succes afgemeld bij het bedrijf.');
+	}
+
+	public function getUnsubscribe($id)
+	{
+		$company = Company::find($id);
+		$company->users()->detach(Auth::user()->id);
+
+		$user = User::find(Auth::user()->id);
+		$user->company_id = 0;
+		$user->business = 0;
+		$user->save();
 	}
 
 	public function postAdd()
@@ -55,7 +67,7 @@ class CompanyController extends BaseController {
 				$company = Company::find($data['company_id']);
 				$company->users()->save($user);
 
-				return Redirect::to('/company/view/' . $data['company_id'])->with('success', 'De optie is succesvol toegevoegd.');
+				return Redirect::to('/company/view/' . $data['company_id'])->with('success', 'De gebruiker is succesvol toegevoegd.');
 			}
 
 			else 
