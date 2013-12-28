@@ -2,6 +2,11 @@
 
 class UserRoleController extends BaseController {
 
+	public function __construct() 
+	{
+		$this->beforeFilter('auth.admin');
+	}
+
 	public function getAdd() 
 	{
 		return View::make('userrole.add');

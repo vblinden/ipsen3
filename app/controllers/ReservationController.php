@@ -4,8 +4,10 @@ class ReservationController extends BaseController {
 
 	public function __construct() 
 	{
-		$this->beforeFilter('auth', array(
-			'except' => array('getIndex', 'postIndex')
+		$this->beforeFilter('auth');
+
+		$this->beforeFilter('auth.admin', array(
+			'except' => array('getIndex', 'postIndex', 'getMake', 'postMake', 'getPayment', 'getCheck', 'postSucces')
 		));
 	}
 

@@ -2,6 +2,13 @@
 
 class VehicleOptionController extends BaseController
 {
+	public function __construct() 
+	{
+		$this->beforeFilter('auth.admin', array(
+			'except' => array('getIndex')
+		));
+	}
+
 	public function getIndex()
 	{
 		$vehicleoptions = VehicleOption::paginate(15);

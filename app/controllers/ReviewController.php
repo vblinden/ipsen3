@@ -4,8 +4,8 @@ class ReviewController extends BaseController {
 
 	public function __construct() 
 	{
-		$this->beforeFilter('auth', array(
-			'except' => 'getIndex'
+		$this->beforeFilter('auth.admin', array(
+			'except' => array('getIndex', 'postAdd')
 		));
 	}
 

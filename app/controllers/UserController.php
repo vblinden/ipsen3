@@ -2,6 +2,13 @@
 
 class UserController extends BaseController {
 
+	public function __construct() 
+	{
+		$this->beforeFilter('auth.admin', array(
+			'except' => array('getLogin' , 'postLogin', 'getRegister', 'postRegister', 'getSuccess', 'getLogout')
+		));
+	}
+
 	public function getLogin()
 	{
 		// Localization testing.
