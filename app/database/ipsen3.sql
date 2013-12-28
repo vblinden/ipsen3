@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.31)
 # Database: ipsen3
-# Generation Time: 2013-12-26 19:32:01 +0000
+# Generation Time: 2013-12-28 16:37:55 +0000
 # ************************************************************
 
 
@@ -18,6 +18,54 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table companies
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `companies`;
+
+CREATE TABLE `companies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `companies` WRITE;
+/*!40000 ALTER TABLE `companies` DISABLE KEYS */;
+
+INSERT INTO `companies` (`id`, `name`, `admin_user_id`, `created_at`, `updated_at`)
+VALUES
+  (4,'New Border Studio Enterprises Ltd',11,'2013-12-28 15:51:07','2013-12-28 15:51:07');
+
+/*!40000 ALTER TABLE `companies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table company_user
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `company_user`;
+
+CREATE TABLE `company_user` (
+  `company_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `company_user` WRITE;
+/*!40000 ALTER TABLE `company_user` DISABLE KEYS */;
+
+INSERT INTO `company_user` (`company_id`, `user_id`)
+VALUES
+  (4,11),
+  (4,2),
+  (4,1);
+
+/*!40000 ALTER TABLE `company_user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table general
@@ -74,7 +122,8 @@ VALUES
   (14,1,18,'0000-00-00 00:00:00','0000-00-00 00:00:00',46704,56511.84,'2013-12-25 22:22:27','2013-12-25 22:22:27',52),
   (15,1,35,'2013-12-28 00:00:00','2014-01-04 00:00:00',42294,51175.74,'2013-12-25 22:44:45','2013-12-25 22:49:59',53),
   (16,1,35,'2013-12-26 00:00:00','2013-12-27 00:00:00',6000,7260,'2013-12-26 10:37:58','2013-12-26 10:37:58',54),
-  (17,1,20,'2014-03-07 00:00:00','2014-11-13 00:00:00',1433561.4,1734609.294,'2013-12-26 15:18:43','2013-12-26 15:22:20',57);
+  (17,1,20,'2014-03-07 00:00:00','2014-11-13 00:00:00',1433561.4,1734609.294,'2013-12-26 15:18:43','2013-12-26 15:22:20',57),
+  (18,2,18,'2014-01-02 00:00:00','2014-01-21 00:00:00',5472,6621.12,'2013-12-28 12:16:27','2013-12-28 12:16:27',58);
 
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -107,7 +156,8 @@ VALUES
   ('2013_12_06_190320_create_roles_table',7),
   ('2013_12_09_112132_create_general_table',8),
   ('2013_12_19_121236_create_reservation_table',9),
-  ('2013_12_24_124345_create_invoice_table',10);
+  ('2013_12_24_124345_create_invoice_table',10),
+  ('2013_12_28_144827_create_business_table',11);
 
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -129,33 +179,29 @@ CREATE TABLE `reservation` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(1) DEFAULT NULL,
   `sended_review_mail` tinyint(11) NOT NULL,
+  `picked_up` tinyint(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 
-INSERT INTO `reservation` (`id`, `user_id`, `vehicle_id`, `startdate`, `enddate`, `price`, `created_at`, `updated_at`, `status`, `sended_review_mail`)
+INSERT INTO `reservation` (`id`, `user_id`, `vehicle_id`, `startdate`, `enddate`, `price`, `created_at`, `updated_at`, `status`, `sended_review_mail`, `picked_up`)
 VALUES
-  (25,1,20,'12/24/2013','12/26/2013',NULL,'2013-12-21 15:13:16','2013-12-26 19:25:19',0,1),
-  (39,1,18,'12/22/2013','12/25/2013',NULL,'2013-12-22 14:21:49','2013-12-26 19:25:20',1,1),
-  (40,1,20,'12/22/2013','12/31/2013',NULL,'2013-12-22 14:40:09','2013-12-26 19:25:21',0,1),
-  (41,1,22,'12/22/2013','12/31/2013',NULL,'2013-12-22 14:47:05','2013-12-26 19:25:21',1,1),
-  (42,1,13,'12/24/2013','12/27/2013',NULL,'2013-12-22 14:53:26','2013-12-26 19:25:22',0,1),
-  (43,1,13,'12/24/2013','12/27/2013',NULL,'2013-12-22 14:54:54','2013-12-26 19:25:23',0,1),
-  (44,1,22,'12/22/2013','10/03/2015',NULL,'2013-12-22 15:04:02','2013-12-22 15:04:02',0,0),
-  (46,1,49,'12/24/2013','12/25/2013',NULL,'2013-12-22 15:07:39','2013-12-26 19:25:24',0,1),
-  (47,1,13,'01/01/2014','01/13/2014',NULL,'2013-12-23 12:42:16','2013-12-23 12:42:16',0,0),
-  (48,1,22,'12/24/2013','12/26/2013',NULL,'2013-12-23 23:05:56','2013-12-26 19:25:24',1,1),
-  (49,1,20,'01/03/2014','01/27/2014',NULL,'2013-12-24 20:32:27','2013-12-24 20:32:27',0,0),
-  (50,1,46,'12/25/2013','12/26/2013',NULL,'2013-12-25 16:26:45','2013-12-26 19:25:25',0,1),
-  (51,1,18,'01/31/2014','02/20/2014',NULL,'2013-12-25 22:17:04','2013-12-25 22:17:04',0,0),
-  (52,2,18,'02/19/2014','07/16/2014',NULL,'2013-12-25 22:21:59','2013-12-25 22:40:09',1,0),
-  (53,1,35,'12/28/2013','01/04/2014',NULL,'2013-12-25 22:44:42','2013-12-25 22:46:56',1,0),
-  (54,1,35,'12/26/2013','12/27/2013',NULL,'2013-12-26 10:37:55','2013-12-26 19:25:26',0,1),
-  (55,1,37,'12/26/2013','01/02/2014',NULL,'2013-12-26 14:10:05','2013-12-26 14:10:05',0,0),
-  (56,1,37,'12/26/2013','01/02/2014',NULL,'2013-12-26 14:10:56','2013-12-26 14:10:56',0,0),
-  (57,1,20,'03/07/2014','11/13/2014',NULL,'2013-12-26 15:18:39','2013-12-26 15:20:53',1,0);
+  (39,1,18,'12/22/2013','12/25/2013',NULL,'2013-12-22 14:21:49','2013-12-26 19:25:20',1,1,0),
+  (40,1,20,'12/22/2013','12/31/2013',NULL,'2013-12-22 14:40:09','2013-12-26 19:25:21',0,1,0),
+  (41,1,22,'12/22/2013','12/31/2013',NULL,'2013-12-22 14:47:05','2013-12-26 19:25:21',1,1,0),
+  (42,1,13,'12/24/2013','12/27/2013',NULL,'2013-12-22 14:53:26','2013-12-26 19:25:22',0,1,0),
+  (43,1,13,'12/24/2013','12/27/2013',NULL,'2013-12-22 14:54:54','2013-12-26 19:25:23',0,1,0),
+  (44,1,22,'12/22/2013','10/03/2015',NULL,'2013-12-22 15:04:02','2013-12-22 15:04:02',0,0,0),
+  (46,1,49,'12/24/2013','12/25/2013',NULL,'2013-12-22 15:07:39','2013-12-26 19:25:24',0,1,0),
+  (47,1,13,'01/01/2014','01/13/2014',NULL,'2013-12-23 12:42:16','2013-12-23 12:42:16',0,0,0),
+  (48,1,22,'12/24/2013','12/26/2013',NULL,'2013-12-23 23:05:56','2013-12-26 19:25:24',1,1,0),
+  (49,1,20,'01/03/2014','01/27/2014',NULL,'2013-12-24 20:32:27','2013-12-24 20:32:27',0,0,0),
+  (51,1,18,'01/31/2014','02/20/2014',NULL,'2013-12-25 22:17:04','2013-12-25 22:17:04',0,0,0),
+  (52,2,18,'02/19/2014','07/16/2014',NULL,'2013-12-25 22:21:59','2013-12-25 22:40:09',1,0,0),
+  (57,1,20,'03/07/2014','11/13/2014',NULL,'2013-12-26 15:18:39','2013-12-26 15:20:53',1,0,0),
+  (58,2,18,'01/02/2014','01/21/2014',NULL,'2013-12-28 12:16:23','2013-12-28 12:16:23',0,0,0);
 
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -315,6 +361,7 @@ CREATE TABLE `users` (
   `kvknumber` varchar(320) COLLATE utf8_unicode_ci DEFAULT NULL,
   `vatnumber` varchar(320) COLLATE utf8_unicode_ci DEFAULT NULL,
   `business` tinyint(1) NOT NULL,
+  `company_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
@@ -323,11 +370,11 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `password`, `email`, `firstname`, `lastname`, `addresslineone`, `addresslinetwo`, `city`, `zipcode`, `country`, `phonenumber`, `licensenumber`, `passportnumber`, `kvknumber`, `vatnumber`, `business`, `created_at`, `updated_at`)
+INSERT INTO `users` (`id`, `password`, `email`, `firstname`, `lastname`, `addresslineone`, `addresslinetwo`, `city`, `zipcode`, `country`, `phonenumber`, `licensenumber`, `passportnumber`, `kvknumber`, `vatnumber`, `business`, `company_id`, `created_at`, `updated_at`)
 VALUES
-  (1,'$2y$08$UosAEKZ7ZVzgnxCFIpTQNOE.HP88m4ONO.l24GRJxK9bVdLZcLVV6','vbvanderlinden@gmail.com','Vincent','van der Linden','Hallincqhof','6','Dordrecht','3311DD','Nederland','0640356771','9123','9123901','','',0,'2013-12-05 12:49:53','2013-12-26 16:11:18'),
-  (2,'$2y$08$mZz6TNwacrej9g.ApywFVOBQxtaZa3zFwTBQwYRcRxmpBWATKheE6','deamus@gmail.com','Deam','Kop','H.R. Holst-erf 224',NULL,'Dordrecht','3315 TH','Nederland','634188996','0687281937891','781238192','','',0,'2013-12-05 12:52:21','2013-12-05 12:52:21'),
-  (6,'$2y$08$3m7KcoINw.yULwOe2oHjiOzGnq57ml3V.dCfSLJiYZ/Gk6WKAUe56','vblinden@outlook.com','Vincent','Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123',NULL,NULL,1,'2013-12-26 10:12:50','2013-12-26 10:12:50');
+  (1,'$2y$08$UosAEKZ7ZVzgnxCFIpTQNOE.HP88m4ONO.l24GRJxK9bVdLZcLVV6','vbvanderlinden@gmail.com','Vincent','van der Linden','Hallincqhof','6','Dordrecht','3311DD','Nederland','0640356771','9123','9123901','','',1,4,'2013-12-05 12:49:53','2013-12-28 16:36:08'),
+  (2,'$2y$08$mZz6TNwacrej9g.ApywFVOBQxtaZa3zFwTBQwYRcRxmpBWATKheE6','deamus@gmail.com','Deam','Kop','H.R. Holst-erf 224',NULL,'Dordrecht','3315 TH','Nederland','634188996','0687281937891','781238192','','',0,4,'2013-12-05 12:52:21','2013-12-28 16:34:56'),
+  (11,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -396,8 +443,6 @@ LOCK TABLES `vehicleoptions` WRITE;
 
 INSERT INTO `vehicleoptions` (`id`, `name`, `price`, `created_at`, `updated_at`)
 VALUES
-  (1,'Skibox',1.75,'2013-12-18 22:04:45','2013-12-18 22:42:42'),
-  (5,'Dakdrager',0.75,'2013-12-18 22:55:23','2013-12-18 22:55:23'),
   (6,'All-risk verzekering',1.25,'2013-12-18 22:55:37','2013-12-18 22:55:37'),
   (7,'Inzittende verzekering',0.5,'2013-12-18 22:55:49','2013-12-19 19:43:00'),
   (8,'WA verzekering',0.5,'2013-12-18 22:56:08','2013-12-19 19:43:14'),
