@@ -35,6 +35,7 @@
 						<th>#</th>
 						<th>Naam</th>
 						<th>Aantal reserveringen</th>
+						@if ($company->admin_user_id == Auth::user()->id)<th></th>@endif
 					</tr>
 				</thead>
 				<tbody>
@@ -43,6 +44,13 @@
 						<td>{{ $user->id }}</td>
 						<td>{{ $user->firstname }} {{ $user->lastname }}</td>
 						<td></td>
+						@if ($company->admin_user_id == Auth::user()->id)
+						<td>
+							@if ($user->id != $company->admin_user_id)
+							<a href='/company/userdelete/{{ $company->id }}/{{ $user->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u deze gebruiker wilt verwijderen uit uw bedrijf?')">Verwijderen</a>
+							@endif
+						</td>
+						@endif
 					</tr>
 					@endforeach
 				</tbody>
