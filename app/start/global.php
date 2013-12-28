@@ -51,6 +51,10 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
+	if(Config::get('app.debug') == false) {
+		return Response::view('error.default', array(), $code);
+	}
+
 	Log::error($exception);
 });
 
