@@ -5,7 +5,7 @@ class ReservationController extends BaseController {
 	public function __construct() 
 	{
 		$this->beforeFilter('auth', array(
-			'except' => 'getIndex'
+			'except' => array('getIndex', 'postIndex')
 		));
 	}
 
