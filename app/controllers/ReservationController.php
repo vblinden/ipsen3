@@ -21,8 +21,8 @@ class ReservationController extends BaseController {
 
 		// Set validator rules.
 		$rules = array(
-			'startdate' => 'required',
-			'enddate' => 'required'
+			'startdate' => 'required|date',
+			'enddate' => 'required|date'
 		);
 
 		// Create a validator with the data and the rules we set above.
@@ -30,7 +30,7 @@ class ReservationController extends BaseController {
 
 		// If the validator fails, return to page with error and with input (if there is any).
 		if ($validator->fails()) {
-			return Redirect::to('reservation/index')->with('failed', 'U moet een begin en eind datum opgeven. Probeer het opnieuw.')->withInput();
+			return Redirect::to('reservation/index')->with('failed', 'U moet een begin en eind datum opgeven en de datums moeten van een geldig datum formaat zijn. Probeer het opnieuw.')->withInput();
 		}
 		
 		// Only get vehicles from the selected category.
