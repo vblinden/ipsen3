@@ -54,6 +54,9 @@
 								@endif
 								{{ Auth::user()->firstname; }}<b class="caret"></b></a>
 								<ul class="dropdown-menu">
+									@if(Auth::user()->business == 1)
+										<li><a href='/company/view/{{ Auth::user()->company->id }}'>{{ Auth::user()->company->name }}</a></li>
+									@endif
 									<!-- <li><a href="/user/account">Mijn account</a></li> -->
 									@if(Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
 									<li><a href='/admin/'>Administrator</a></li>
@@ -64,7 +67,13 @@
 							</li>
 							@else
 							<li><a href="/user/login">Inloggen</a></li>
-							<li><a href="/user/register">Registreren</a></li>
+							<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registreren <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/user/register/personal">Particulier</a></li>
+									<li><a href="/user/register/company">Zakelijk</a></li>
+								</ul>
+							</li>
 							@endif
 						</ul>
 					</div>

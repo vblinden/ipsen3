@@ -5,7 +5,14 @@ class UserController extends BaseController {
 	public function __construct() 
 	{
 		$this->beforeFilter('auth.admin', array(
-			'except' => array('getLogin' , 'postLogin', 'getRegister', 'postRegister', 'getSuccess', 'getLogout')
+			'except' => array(
+				'getLogin', 
+				'postLogin', 
+				'getRegister', 
+				'postRegister', 
+				'getSuccess', 
+				'getLogout',  
+				'postCompany')
 		));
 	}
 
@@ -59,9 +66,110 @@ class UserController extends BaseController {
 		}
 	}
 
-	public function getRegister() 
+	public function getRegister($id) 
 	{
-		return View::make('user.register');
+		// Check if user wants to register a personal or business account.
+		if ($id == 'personal') {
+			return View::make('user.register');
+		}
+
+		else {
+			return View::make('user.company');
+		}
+		
+	}
+
+	public function postCompany() 
+	{
+		// Save all the input data.
+		$data = Input::all();
+
+		// Set validation rules.
+		$rules = array(
+			'email' => 'required|unique:users,email|email',
+			'password' => array('required', 'min:3', 'regex:/^(?=.*[A-Z])(?=.*\d).*$/'),
+			'passwordconfirm' => 'same:password',
+			'firstname' => 'required',
+			'lastname' => 'required',
+			'zipcode' => 'required',
+			'companyname' => 'required',
+			'addresslineone' => 'required',
+			'city' => 'required',
+			'country' => 'required',
+			'phonenumber' => 'required',
+			'licensenumber' => 'required',
+			'passportnumber' => 'required',
+			'kvknumber' => 'required',
+			'vatnumber' => 'required',
+			'recaptcha_response_field' => 'required|recaptcha'
+		);
+
+		// Run the validator rules on the inputs from the form.
+		$validator = Validator::make($data, $rules);
+
+		// If validator fails, show error message.
+		if ($validator->fails()) {
+			if ($validator->messages()->has('email')) {
+				return Redirect::to('/user/register/company')->with('failed', 'Het e-mail adres wat u probeert te gebruiken is al in gebruik of is geen geldig e-mail adres. Probeer het opnieuw.')->withInput(Input::except('password'));
+			}
+
+			else if ($validator->messages()->has('password')) {
+				return Redirect::to('/user/register/company')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens, een hoofdletter hebben en een cijfer bevatten. Ook moeten de wachtwoorden overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
+			}
+
+			else if ($validator->messages()->has('passwordconfirm')) {
+				return Redirect::to('/user/register/company')->with('failed', 'Uw wachtwoorden komen niet overeen. Probeer het opnieuw.')->withInput(Input::except('password'));
+			}
+
+			else if ($validator->messages()->has('recaptcha_response_field')) {
+				return Redirect::to('/user/register/company')->with('failed', 'Uw CAPTCHA invoer is incorrect. Probeer het opnieuw.')->withInput(Input::except('password'));
+			}
+
+			else {
+				return Redirect::to('/user/register/company')->with('failed', 'U moet alle velden invullen die rood gemarkeerd zijn. Probeer het opnieuw.')->withInput(Input::except('password'));
+			}
+		}
+
+		else {
+			// Create a new user.
+			$user = new User;
+			$user->email = $data['email'];
+			$user->password = Hash::make($data['password']);
+			$user->firstname = $data['firstname'];
+			$user->lastname = $data['lastname'];
+			$user->zipcode = $data['zipcode'];
+			$user->addresslineone = $data['addresslineone'];
+			$user->addresslinetwo = $data['addresslinetwo'];
+			$user->city = $data['city'];
+			$user->country = $data['country'];
+			$user->phonenumber = $data['phonenumber'];
+			$user->licensenumber = $data['licensenumber'];
+			$user->passportnumber = $data['passportnumber'];
+			$user->kvknumber = $data['kvknumber'];
+			$user->vatnumber = $data['vatnumber'];
+			$user->business = 1;
+
+			$user->save();
+
+			// Create a new business
+			$company = new Company;
+			$company->name = $data['companyname'];
+			$company->admin_user_id = $user->id;
+
+			$company->save();
+			
+			$company->users()->save($user);
+
+			$user->company_id = $company->id;
+			$user->save();
+
+			// Send mail to the queue, where it will be executed later.
+			Queue::push('EmailService@register', array('user' => $user));
+
+			Auth::login($user);
+
+			return Redirect::to('/');
+		}
 	}
 
 	public function postRegister() 
@@ -127,17 +235,7 @@ class UserController extends BaseController {
 			$user->phonenumber = $data['phonenumber'];
 			$user->licensenumber = $data['licensenumber'];
 			$user->passportnumber = $data['passportnumber'];
-			// $user->kvknumber = $data['kvknumber'];
-			// $user->vatnumber = $data['vatnumber'];
-			$user->business = 1;
-
-			// if (!isset($data['kvknumber']) || trim($data['kvknumber']) === '') {
-			// 	$user->business = 0;
-			// }
-
-			// else if (!isset($data['vatnumber']) || trim($data['vatnumber']) === '') {
-			// 	$user->business = 0;
-			// }
+			$user->business = 0;
 
 			$user->save();
 

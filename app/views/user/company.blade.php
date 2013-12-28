@@ -14,9 +14,9 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>Registreren <small>Een nieuwe persoonlijke LeenMeij account aanmaken</small></h1>
+			<h1>Registreren <small>Een nieuwe zakelijke LeenMeij account aanmaken</small></h1>
 		</div>
-		<p>Hier onder kunt u een nieuwe persoonlijke LeenMeij account aanmaken. Alle rode gemarkeerde velden zijn verplicht.</p>
+		<p>Hier onder kunt u een nieuwe zakelijke LeenMeij account aanmaken. Alle rode gemarkeerde velden zijn verplicht.</p>
 	</div>
 </div>
 <div class='row'>
@@ -24,7 +24,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Uw gegevens</div>
 			<div class="panel-body">
-				{{ Form::open(array('action' => 'UserController@postRegister', 'class' => 'address')) }}
+				{{ Form::open(array('action' => 'UserController@postCompany', 'class' => 'address')) }}
 				<div class='row'>
 					<div class='col-lg-6'>
 						{{-- Email field ---------------------------------------------------}}
@@ -43,6 +43,12 @@
 						<div class='form-group required'>
 							{{ Form::label('passwordconfirm', 'Wachtwoord bevestigen'); }}
 							{{ Form::password('passwordconfirm', array('class' => 'form-control')); }}
+						</div>
+
+						{{-- Company name field ---------------------------------------------------}}
+						<div class='form-group required'>
+							{{ Form::label('companyname', 'Bedrijfsnaam'); }}
+							{{ Form::text('companyname', null, array('class' => 'form-control')); }}
 						</div>
 
 						{{-- First name field ---------------------------------------------------}}
@@ -105,6 +111,16 @@
 						<div class='form-group required'>
 							{{ Form::label('passportnumber', 'Passpoortnummer'); }}
 							{{ Form::text('passportnumber', null, array('class' => 'form-control')); }}
+						</div>
+
+						<div class='form-group required'>
+							{{ Form::label('kvknumber', 'KVK nummer'); }}
+							{{ Form::text('kvknumber', null, array('class' => 'form-control')); }}
+						</div>
+
+						<div class='form-group required'>
+							{{ Form::label('vatnumber', 'BTW nummer'); }}
+							{{ Form::text('vatnumber', null, array('class' => 'form-control')); }}
 						</div>
 
 						{{ Form::captcha(array('theme' => 'clean')); }}

@@ -7,7 +7,7 @@
 		<div>
 			<p>Beste {{{ $user->firstname }}},</p>
 			<p>
-				Hartelijk dank voor je registratie bij voertuigverhuurbedrijf LeenMeij. LeenMeij is een
+				Hartelijk dank voor uw registratie bij voertuigverhuurbedrijf LeenMeij. LeenMeij is een
 				van de grootste aanbieders voor voertuigverhuur in de regio Leiden en hopen u van dienst te
 				kunnen zijn bij het zoeken naar een voertuig. 
 			</p>
@@ -16,6 +16,7 @@
 				de volgende gegevens.
 			</p>
 			<p>
+				<strong>Gebruiker ID:</strong> {{ $user->id }} <br/>
 				<strong>E-mail:</strong> {{ $user->email }}<br/>
 				<strong>Wachtwoord:</strong> Uw persoonlijk gekozen wachtwoord.
 			</p>

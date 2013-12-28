@@ -22,3 +22,4 @@ Route::controller('reservation', 'ReservationController');
 Route::controller('vehicleoption', 'VehicleOptionController');
 Route::controller('review', 'ReviewController');
 Route::controller('invoice', 'InvoiceController');
+Route::controller('company', 'CompanyController');
