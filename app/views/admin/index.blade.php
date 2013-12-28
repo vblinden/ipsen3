@@ -28,6 +28,7 @@
 			<li class="nav-divider"></li>
 			<li><a href="#users" data-toggle="pill"><span class="badge pull-right">{{ $users->count() }}</span>Gebruikers</a></li>
 			<li><a href="#userroles" data-toggle="pill"><span class="badge pull-right">{{ $userroles->count() }}</span>Gebruikers rollen</a></li>
+			<li><a href="#companies" data-toggle="pill"><span class="badge pull-right">{{ $companies->count() }}</span>Bedrijven</a></li>
 			<li class="nav-divider"></li>
 			<li><a href="#reviews" data-toggle="pill"><span class="badge pull-right">{{ $reviews->count() }}</span>Reviews</a></li>
 		</ul>
@@ -317,6 +318,46 @@
 						</div>
 						<div class='col-lg-6'>
 							<a href="/userrole/add" class="btn btn-success btn-full">Nieuwe gebruikers rol</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="companies">
+				<div class="page-header">
+					<h1>Bedrijven<small></small></h1>
+				</div>
+				<p>Hieronder vind u de laatste vijf toegevoegde bedrijven. U kunt de bedrijven bewerken, verwijderen of een nieuw bedrijf aanmaken. U kunt er ook voor kiezen om naar een overzicht te gaan voor alle bedrijven.</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">Bedrijven</div>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Naam</th>
+								<th>Aantal leden</th>
+								<th width="185px"></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($companies->take(5) as $company)
+							<tr>
+								<td>{{ $company->id }}</td>
+								<td>{{ $company->name }}</td>
+								<td>{{ $company->users()->count() }}</td>
+								<td>
+									<a href='/company/edit/{{ $company->id }}' class="btn btn-primary btn-sm">Bewerken</a> 
+									<a href='/company/delete/{{ $company->id }}' class="btn btn-danger btn-sm" onclick="return confirm('Weet u zeker dat u dit bedrijf wilt verwijderen?')">Verwijderen</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					<div class='panel-body'>
+						<div class='col-lg-6'>
+							<a href="/admin/companies" class="btn btn-primary btn-full">Alle bedrijven</a>
+						</div>
+						<div class='col-lg-6'>
+							<a href="/company/add" class="btn btn-success btn-full">Nieuw bedrijf</a>
 						</div>
 					</div>
 				</div>

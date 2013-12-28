@@ -17,6 +17,7 @@ class AdminController extends BaseController {
 		$invoices = Invoice::orderby('id', 'DESC')->get();
 		$general = General::find(1);
 		$reviews = Review::orderBy('id', 'DESC')->get();
+		$companies = Company::orderBy('id', 'DESC')->get();
 
 		return View::make('admin.index', array(
 			'vehicles' => $vehicles, 
@@ -26,7 +27,8 @@ class AdminController extends BaseController {
 			'reservations' => $reservations,
 			'invoices' => $invoices,
 			'userroles' => $userroles,
-			'reviews' => $reviews));
+			'reviews' => $reviews,
+			'companies' => $companies));
 	}
 
 	public function getVehicles() 
@@ -37,6 +39,11 @@ class AdminController extends BaseController {
 	public function getVehicleoptions()
 	{
 		return View::make('admin.vehicleoptions', array('vehicleoptions' => VehicleOption::all()));
+	}
+
+	public function getCompanies()
+	{
+		return View::make('admin.companies', array('companies' => Company::all()));
 	}
 
 	public function getUsers()
