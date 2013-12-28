@@ -35,30 +35,46 @@
 				<div class="panel-heading">
 					Voertuig gegevens
 				</div>
-				<div class='panel-body'>
-				<div class="col-lg-5">
-						<p><strong>Merk</strong> </p>
-						<p><strong>Model </strong></p>
-						<p><strong>Kilometerstand</strong> </p>
-						<p><strong>Kenteken </strong></p>
-						<p><strong>Voertuigkleur </strong></p>
-						<p><strong>Verbruik per kilometer </strong></p>
-						<p><strong>Prijs per uur </strong></p>
-						<p><strong>Prijs per dag </strong></p>
-						<p><strong>Opmerkingen </strong></p>
-					</div>
-					<div class="col-lg-7">
-						<p> {{ $vehicle->brand }} </p>
-						<p> {{ $vehicle->model }} </p>
-						<p> {{ $vehicle->milage }} kilometer</p>
-						<p> {{ $vehicle->licenseplate }} </p>
-						<p> {{ $vehicle->color }} </p>
-						<p> {{ $vehicle->usage }} </p>
-						<p> € {{ $vehicle->hourlyrate }}</p>
-						<p> € {{ $vehicle->hourlyrate * 24 }}</p>
-						<p> {{ $vehicle->comment }} </p>
-					</div>
-				</div>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td><strong>Merk</strong></td>
+							<td> {{ $vehicle->brand }} </td>
+						</tr>
+						<tr>
+							<td><strong>Model</strong></td>
+							<td> {{ $vehicle->model }} </td>
+						</tr>
+						<tr>
+							<td><strong>Kilometerstand</strong></td>
+							<td> {{ $vehicle->milage }} kilometer</td>
+						</tr>
+						<tr>
+							<td><strong>Kenteken</strong></td>
+							<td> {{ $vehicle->licenseplate }} </td>
+						</tr>
+						<tr>
+							<td><strong>Voertuigkleur</strong></td>
+							<td> {{ $vehicle->color }} </td>
+						</tr>
+						<tr>
+							<td><strong>Verbruik per kilometer</strong></td>
+							<td> {{ $vehicle->usage }} </td>
+						</tr>
+						<tr>
+							<td><strong>Prijs per uur</strong></td>
+							<td>€ {{ $vehicle->hourlyrate }} </td>
+						</tr>
+						<tr>
+							<td><strong>Prijs per dag</strong></td>
+							<td>€ {{ $vehicle->hourlyrate * 24 }} </td>
+						</tr>
+						<tr>
+							<td><strong>Opmerkingen</strong></td>
+							<td> {{ $vehicle->comment }} </td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -79,22 +95,22 @@
 				<h1>Beoordelingen<small> dit is wat onze klanten ervan vonden</small></h1>
 			</div>
 			@foreach($reviews as $review)
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<span>Voertuig review van: {{ $review->user->firstname }}
-						 </span>
-					  	<span class="pull-right">
-						    @for ($i=1; $i <= 5 ; $i++)
-						      <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
-						    @endfor
-						</span>
-					</div>
-					<div class='panel-body'>
-						<p>{{ $review->comment }} </p>
-						<hr>
-						<small class="pull-right">Geschreven op: {{ $review->timeago }}</small>
-					</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span>Voertuig review van: {{ $review->user->firstname }}
+					</span>
+					<span class="pull-right">
+						@for ($i=1; $i <= 5 ; $i++)
+						<span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
+						@endfor
+					</span>
 				</div>
+				<div class='panel-body'>
+					<p>{{ $review->comment }} </p>
+					<hr>
+					<small class="pull-right">Geschreven op: {{ $review->timeago }}</small>
+				</div>
+			</div>
 			@endforeach
 			{{ $reviews->links() }}
 		</div>
