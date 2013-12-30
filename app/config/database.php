@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'ipsen3',
-			'username'  => 'dbuser',
-			'password'  => 'dbuser123',
+			'database'  => 'leenmeij',
+			'username'  => 'root',
+			'password'  => 'laravel',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

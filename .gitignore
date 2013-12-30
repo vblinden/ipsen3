@@ -3,5 +3,6 @@
 composer.phar
 composer.lock
 .DS_Store
+.vagrant
 Thumbs.db
 /public/uploaded/vehicles/*
