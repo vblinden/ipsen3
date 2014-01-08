@@ -123,10 +123,12 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Wachtwoord wijzigen</div>
 			<div class="panel-body">
-				{{ Form::model(Auth::user(), array('action' => 'UserController@postChangePassword')) }}
+				{{ Form::model($user, array('action' => 'UserController@postChangePassword')) }}
 
 				{{ $errors->first('email') }}
 				{{ $errors->first('password') }}
+
+				{{ Form::hidden('id', $user->id); }}
 
 				{{-- Password field ---------------------------------------------------}}
 				<div class='form-group'>

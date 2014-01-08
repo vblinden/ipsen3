@@ -339,7 +339,7 @@ class UserController extends BaseController {
 
 		// Else show succes message and save the password.
 		else {
-			$user = Auth::user();
+			$user = User::find($data['id']);
 			$user->password = Hash::make($data['password']);
 			$user->save();
 
