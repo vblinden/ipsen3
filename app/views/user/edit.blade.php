@@ -29,6 +29,8 @@
 				{{ $errors->first('email') }}
 				{{ $errors->first('password') }}
 
+				{{ Form::hidden('id', $user->id); }}
+
 				{{-- Email field ---------------------------------------------------}}
 				<div class='form-group required'>
 					{{ Form::label('email', 'E-mail'); }}

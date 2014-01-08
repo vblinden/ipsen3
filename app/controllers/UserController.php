@@ -292,7 +292,7 @@ class UserController extends BaseController {
 
 		// Else show succes message and save the password.
 		else {
-			$user = Auth::user();
+			$user = User::find($data['id']);
 			$user->email = $data['email'];
 			$user->firstname = $data['firstname'];
 			$user->lastname = $data['lastname'];
@@ -314,7 +314,7 @@ class UserController extends BaseController {
 
 			$user->save();
 
-			return Redirect::to('/user/edit')->with('success', 'Uw gegevens zijn succesvol bijgewerkt.');
+			return Redirect::to('/user/edit/' . $data['id'])->with('success', 'Uw gegevens zijn succesvol bijgewerkt.');
 		}
 	}
 

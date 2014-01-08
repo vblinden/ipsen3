@@ -43,6 +43,9 @@ Vagrant.configure("2") do |config|
     end
     config.vm.provision :hostmanager
 
+    # Forward MySQL port so it can be accessed remotely
+    config.vm.network :forwarded_port, guest: 3306, host: 3306
+
     # Make sure that the newest version of Chef have been installed
     config.vm.provision :shell, :inline => "apt-get update -qq && apt-get install make ruby1.9.1-dev --no-upgrade --yes"
     config.vm.provision :shell, :inline => "gem install chef --version 11.6.0 --no-rdoc --no-ri --conservative"
