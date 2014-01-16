@@ -12,6 +12,9 @@
 
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/style.css" rel="stylesheet">
+
+	@if (General::skin() == 'Kerst') <link href="/css/theme-christmas.css" rel="stylesheet"> @endif
+	@if (General::skin() == 'Zomer') <link href="/css/theme-summer.css" rel="stylesheet"> @endif
 </head>
 
 <body>
@@ -142,6 +145,9 @@
 			</div>
 		</div>
 
+		@if (General::skin() == 'Kerst') <script src="/js/theme-christmas.js"></script> @endif
+		@if (General::skin() == 'Kerst') <script src="/js/theme-summer.js"></script> @endif
+		
 		<script src="/js/jquery.js"></script>
 		<script src="/js/bootstrap.js"></script>
 		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>

@@ -17,7 +17,7 @@
 </div>
 <div class='row'>
 	<div class='col-lg-3'>
-		<ul class="nav nav-pills nav-stacked" style="border: 1px solid #ddd;">
+		<ul class="nav nav-pills nav-stacked" style="border: 1px solid #ddd; background-color: white;">
 			<li class='active'><a href="#general" data-toggle="pill">Algemeen</a></li>
 			<li class="nav-divider"></li>
 			<li><a href="#vehicles" data-toggle="pill"><span class="badge pull-right">{{ $vehicles->count() }}</span>Voertuigen</a></li>
@@ -44,13 +44,30 @@
 					<div class="panel-body">
 						{{ Form::open(array('action' => 'AdminController@postVat')) }}
 
-						{{-- Username field ---------------------------------------------------}}
+						{{-- VAT field ---------------------------------------------------}}
 						<div class='form-group'>
 							{{ Form::label('vat', 'Belasting Toegevoegde Waarde (BTW) in procenten'); }}
 							{{ Form::text('vat', $general->vat, array('class' => 'form-control')); }}
 						</div>
 
 						{{ Form::submit('Belasting Toegevoegde Waarde (BTW) wijzigen', array('class' => 'btn btn-primary btn-full')); }}
+						{{ Form::close() }}
+					</div>
+					
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">Skins</div>
+					<div class="panel-body">
+						{{ Form::open(array('action' => 'AdminController@postSkin')) }}
+
+						{{-- Skin field ---------------------------------------------------}}
+						<div class='form-group'>
+							{{ Form::label('skin', 'Skin'); }}
+							{{ Form::select('skin', array('Standaard' => 'Standaard', 'Zomer' => 'Zomer', 'Kerst' => 'Kerst'), $general->skin, array('class' => 'form-control')); }}
+						</div>
+
+						{{ Form::submit('Skin aanpassen', array('class' => 'btn btn-primary btn-full')); }}
 						{{ Form::close() }}
 					</div>
 					

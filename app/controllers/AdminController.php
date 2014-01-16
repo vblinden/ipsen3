@@ -79,4 +79,13 @@ class AdminController extends BaseController {
 
 		return Redirect::to('/admin#general')->with('success', 'Uw Belasting Toegevoegde Waarde (BTW) is aangepast.');
 	}
+
+	public function postSkin() 
+	{
+		$general = General::find(1);
+		$general->skin = Input::all()['skin'];
+		$general->save();
+
+		return Redirect::to('/admin#general')->with('success', 'De skin van de website is bijgewerkt.');
+	}
 }
