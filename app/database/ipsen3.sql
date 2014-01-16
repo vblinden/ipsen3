@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # http://code.google.com/p/sequel-pro/
 #
-# Host: 127.0.0.1 (MySQL 5.5.31)
-# Database: ipsen3
-# Generation Time: 2013-12-28 16:37:55 +0000
+# Host: 172.22.22.22 (MySQL 5.5.34-0ubuntu0.12.04.1-log)
+# Database: leenmeij
+# Generation Time: 2014-01-16 13:44:51 +0000
 # ************************************************************
 
 
@@ -76,6 +76,9 @@ DROP TABLE IF EXISTS `general`;
 CREATE TABLE `general` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `vat` int(11) NOT NULL,
+  `skin` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latestnews` text COLLATE utf8_unicode_ci,
+  `latestnewsenglish` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
@@ -84,9 +87,9 @@ CREATE TABLE `general` (
 LOCK TABLES `general` WRITE;
 /*!40000 ALTER TABLE `general` DISABLE KEYS */;
 
-INSERT INTO `general` (`id`, `vat`, `created_at`, `updated_at`)
+INSERT INTO `general` (`id`, `vat`, `skin`, `latestnews`, `latestnewsenglish`, `created_at`, `updated_at`)
 VALUES
-  (1,21,'0000-00-00 00:00:00','2013-12-09 11:29:44');
+  (1,21,'Standaard','De afgelopen maanden zijn wij druk bezig geweest met het ontwikkelen van een nieuwe website, die binnenkort volledig online zal komen. De website heeft een nieuwe frisse uitstraling gekregen, en beschikt over talloze nieuwe functies en mogelijkheden om u als klant nog beter van dienst te kunnen zijn. <br/><br/>\r\n\r\nDe nieuwe website voor LeenMeij is ontwikkeld in samenwerking met Vinnie & Deampie Enterprises Ltd, een full-service internetbureau dat gespecialiseerd is in het bedenken, ontwerpen en bouwen van hoogwaardige internetapplicaties. De nieuwe website is overzichtelijker en gebruiksvriendelijker, waar we er blij mee zijn.','Wilkommen auf Birningham.','0000-00-00 00:00:00','2014-01-16 13:39:40');
 
 /*!40000 ALTER TABLE `general` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -188,20 +191,8 @@ LOCK TABLES `reservation` WRITE;
 
 INSERT INTO `reservation` (`id`, `user_id`, `vehicle_id`, `startdate`, `enddate`, `price`, `created_at`, `updated_at`, `status`, `sended_review_mail`, `picked_up`)
 VALUES
-  (39,1,18,'12/22/2013','12/25/2013',NULL,'2013-12-22 14:21:49','2013-12-26 19:25:20',1,1,0),
-  (40,1,20,'12/22/2013','12/31/2013',NULL,'2013-12-22 14:40:09','2013-12-26 19:25:21',0,1,0),
-  (41,1,22,'12/22/2013','12/31/2013',NULL,'2013-12-22 14:47:05','2013-12-26 19:25:21',1,1,0),
-  (42,1,13,'12/24/2013','12/27/2013',NULL,'2013-12-22 14:53:26','2013-12-26 19:25:22',0,1,0),
-  (43,1,13,'12/24/2013','12/27/2013',NULL,'2013-12-22 14:54:54','2013-12-26 19:25:23',0,1,0),
-  (44,1,22,'12/22/2013','10/03/2015',NULL,'2013-12-22 15:04:02','2013-12-22 15:04:02',0,0,0),
-  (46,1,49,'12/24/2013','12/25/2013',NULL,'2013-12-22 15:07:39','2013-12-26 19:25:24',0,1,0),
-  (47,1,13,'01/01/2014','01/13/2014',NULL,'2013-12-23 12:42:16','2013-12-23 12:42:16',0,0,0),
-  (48,1,22,'12/24/2013','12/26/2013',NULL,'2013-12-23 23:05:56','2013-12-26 19:25:24',1,1,0),
-  (49,1,20,'01/03/2014','01/27/2014',NULL,'2013-12-24 20:32:27','2013-12-24 20:32:27',0,0,0),
-  (51,1,18,'01/31/2014','02/20/2014',NULL,'2013-12-25 22:17:04','2013-12-25 22:17:04',0,0,0),
-  (52,2,18,'02/19/2014','07/16/2014',NULL,'2013-12-25 22:21:59','2013-12-25 22:40:09',1,0,0),
-  (57,1,20,'03/07/2014','11/13/2014',NULL,'2013-12-26 15:18:39','2013-12-26 15:20:53',1,0,0),
-  (58,2,18,'01/02/2014','01/21/2014',NULL,'2013-12-28 12:16:23','2013-12-28 12:16:23',0,0,0);
+  (61,2,49,'01/15/2014','01/22/2014',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,0,0),
+  (62,15,47,'01/15/2014','01/22/2014',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,0,0);
 
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -373,8 +364,20 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` (`id`, `password`, `email`, `firstname`, `lastname`, `addresslineone`, `addresslinetwo`, `city`, `zipcode`, `country`, `phonenumber`, `licensenumber`, `passportnumber`, `kvknumber`, `vatnumber`, `business`, `company_id`, `created_at`, `updated_at`)
 VALUES
   (1,'$2y$08$UosAEKZ7ZVzgnxCFIpTQNOE.HP88m4ONO.l24GRJxK9bVdLZcLVV6','vbvanderlinden@gmail.com','Vincent','van der Linden','Hallincqhof','6','Dordrecht','3311DD','Nederland','0640356771','9123','9123901','','',1,4,'2013-12-05 12:49:53','2013-12-28 16:36:08'),
-  (2,'$2y$08$mZz6TNwacrej9g.ApywFVOBQxtaZa3zFwTBQwYRcRxmpBWATKheE6','deamus@gmail.com','Deam','Kop','H.R. Holst-erf 224',NULL,'Dordrecht','3315 TH','Nederland','634188996','0687281937891','781238192','','',0,4,'2013-12-05 12:52:21','2013-12-28 16:34:56'),
-  (11,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02');
+  (2,'$2y$08$mZz6TNwacrej9g.ApywFVOBQxtaZa3zFwTBQwYRcRxmpBWATKheE6','deamus@gmail.com','Deam','Kop','H.R. Holst-erf','224','Dordrecht','3315 TH','Nederland','634188996','0687281937891','781238192','','',0,4,'2013-12-05 12:52:21','2013-12-28 16:34:56'),
+  (11,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (12,'$2y$08$UosAEKZ7ZVzgnxCFIpTQNOE.HP88m4ONO.l24GRJxK9bVdLZcLVV6','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',0,0,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (13,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (14,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (15,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (16,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (17,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (18,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (19,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (20,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (21,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (22,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02'),
+  (23,'$2y$08$wa7twoLCmpjkIRRUpBO.m.q.GV5P.uUYOBD6t./mgxvXBrfo54riK','vblinden@outlook.com','Vincent','van der Linden','Hallincqhof','14','Dordrecht','3311DD','Zuid-Holland','1623566062','123','123','123','123',1,4,'2013-12-28 15:51:07','2013-12-28 16:31:02');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -446,7 +449,9 @@ VALUES
   (6,'All-risk verzekering',1.25,'2013-12-18 22:55:37','2013-12-18 22:55:37'),
   (7,'Inzittende verzekering',0.5,'2013-12-18 22:55:49','2013-12-19 19:43:00'),
   (8,'WA verzekering',0.5,'2013-12-18 22:56:08','2013-12-19 19:43:14'),
-  (10,'Tomtom',0.25,'2013-12-21 10:29:14','2013-12-22 14:49:11');
+  (10,'Tomtom',0.25,'2013-12-21 10:29:14','2013-12-22 14:49:11'),
+  (11,'Aids',1.12342,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
+  (12,'Aids',1.12342,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 
 /*!40000 ALTER TABLE `vehicleoptions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -478,19 +483,15 @@ DROP TABLE IF EXISTS `vehicles`;
 
 CREATE TABLE `vehicles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `categoryid` int(11) NOT NULL,
   `brand` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `model` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `milage` int(11) NOT NULL,
   `licenseplate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `usage` int(11) NOT NULL,
+  `vehicleusage` int(11) NOT NULL,
   `comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `color` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `hourlyrate` double NOT NULL,
   `vehiclecategoryid` int(11) NOT NULL,
-  `vehiclereviewid` int(11) NOT NULL,
-  `vehicleoptionsid` int(11) NOT NULL,
-  `vehicledamageid` int(11) NOT NULL,
   `locked` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -501,23 +502,22 @@ CREATE TABLE `vehicles` (
 LOCK TABLES `vehicles` WRITE;
 /*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
 
-INSERT INTO `vehicles` (`id`, `categoryid`, `brand`, `model`, `milage`, `licenseplate`, `usage`, `comment`, `color`, `hourlyrate`, `vehiclecategoryid`, `vehiclereviewid`, `vehicleoptionsid`, `vehicledamageid`, `locked`, `created_at`, `updated_at`, `image`)
+INSERT INTO `vehicles` (`id`, `brand`, `model`, `milage`, `licenseplate`, `vehicleusage`, `comment`, `color`, `hourlyrate`, `vehiclecategoryid`, `locked`, `created_at`, `updated_at`, `image`)
 VALUES
-  (13,0,'Suzuki','GSX-R 1000',0,'12-12-12',5,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Wit met blauw',3,3,0,0,0,0,'2013-12-07 11:03:00','2013-12-10 07:19:23','KvPjunzVXKKTOB04hkC0.jpg'),
-  (18,0,'BMW','X6',4512,'13-13-13',1,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Wit',12,1,0,0,0,0,'2013-12-10 07:40:37','2013-12-10 07:40:37','WtgUoiIhsTyuFV3huixM.jpg'),
-  (20,0,'Lamborghini','Aventador',10,'15-15-15',3,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Mat zwart',250,1,0,0,0,0,'2013-12-10 07:46:25','2013-12-10 07:55:08','AtDgiR86xL7zhtblppZ7.jpg'),
-  (22,0,'Daihatsu','Cuore',109381,'17-17-17',4,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',2,1,0,0,0,0,'2013-12-10 07:52:48','2013-12-10 07:54:28','XYUcuBRNJ1jkNtGwHTlA.jpg'),
-  (23,0,'Volkswagen','Transporter',89123,'01-01-01',15,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,2,0,0,0,0,'2013-12-11 08:07:45','2013-12-11 08:07:45','So3uF619zwJKNKaz38Er.jpg'),
-  (34,0,'BMW','X6',4512,'13-13-13',1,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Wit',12,1,0,0,0,0,'2013-12-10 07:40:37','2013-12-10 07:40:37','WtgUoiIhsTyuFV3huixM.jpg'),
-  (35,0,'Lamborghini','Aventador',10,'15-15-15',3,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Mat zwart',250,1,0,0,0,0,'2013-12-10 07:46:25','2013-12-10 07:55:08','AtDgiR86xL7zhtblppZ7.jpg'),
-  (37,0,'Daihatsu','Cuore',109381,'17-17-17',4,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',2,1,0,0,0,0,'2013-12-10 07:52:48','2013-12-10 07:54:28','XYUcuBRNJ1jkNtGwHTlA.jpg'),
-  (38,0,'Volkswagen','Transporter',89123,'01-01-01',15,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,2,0,0,0,0,'2013-12-11 08:07:45','2013-12-11 08:07:45','So3uF619zwJKNKaz38Er.jpg'),
-  (39,0,'Vespa','Oldskool',12930,'01-NFJ-1',20,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',5,4,0,0,0,0,'2013-12-11 08:35:20','2013-12-11 08:35:33','2zknt3GMHlx3OB7seuG9.jpg'),
-  (43,0,'BMW','X6',4512,'13-13-13',1,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Wit',12,1,0,0,0,0,'2013-12-10 07:40:37','2013-12-10 07:40:37','WtgUoiIhsTyuFV3huixM.jpg'),
-  (44,0,'Lamborghini','Aventador',10,'15-15-15',3,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Mat zwart',250,1,0,0,0,0,'2013-12-10 07:46:25','2013-12-10 07:55:08','AtDgiR86xL7zhtblppZ7.jpg'),
-  (46,0,'Daihatsu','Cuore',109381,'17-17-17',4,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',2,1,0,0,0,0,'2013-12-10 07:52:48','2013-12-10 07:54:28','XYUcuBRNJ1jkNtGwHTlA.jpg'),
-  (47,0,'Volkswagen','Transporter',89123,'01-01-01',15,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,2,0,0,0,0,'2013-12-11 08:07:45','2013-12-11 08:07:45','So3uF619zwJKNKaz38Er.jpg'),
-  (49,0,'Audi','A6',124,'12-12-12',12,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,1,0,0,0,0,'2013-12-11 13:14:57','2013-12-11 13:14:57','iIyIXhwU9PTjMBo2C6Uc.jpg');
+  (13,'Suzuki','GSX-R 1000',0,'12-12-12',5,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Wit met blauw',3,3,1,'2013-12-07 11:03:00','2013-12-10 07:19:23','KvPjunzVXKKTOB04hkC0.jpg'),
+  (18,'BMW','X6',4512,'13-13-13',1,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Wit',12,1,1,'2013-12-10 07:40:37','2013-12-10 07:40:37','WtgUoiIhsTyuFV3huixM.jpg'),
+  (20,'Lamborghini','Aventador',10,'15-15-15',3,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Mat zwart',250,1,1,'2013-12-10 07:46:25','2013-12-10 07:55:08','AtDgiR86xL7zhtblppZ7.jpg'),
+  (22,'Daihatsu','Cuore',109381,'17-17-17',4,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',2,1,1,'2013-12-10 07:52:48','2013-12-10 07:54:28','XYUcuBRNJ1jkNtGwHTlA.jpg'),
+  (23,'Volkswagen','Transporter',89123,'01-01-01',15,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,2,0,'2013-12-11 08:07:45','2013-12-11 08:07:45','So3uF619zwJKNKaz38Er.jpg'),
+  (34,'BMW','X6',4512,'13-13-13',1,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Wit',12,1,0,'2013-12-10 07:40:37','2013-12-10 07:40:37','WtgUoiIhsTyuFV3huixM.jpg'),
+  (35,'Lamborghini','Aventador',10,'15-15-15',3,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Mat zwart',250,1,0,'2013-12-10 07:46:25','2013-12-10 07:55:08','AtDgiR86xL7zhtblppZ7.jpg'),
+  (37,'Daihatsu','Cuore',109381,'17-17-17',4,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',2,1,0,'2013-12-10 07:52:48','2013-12-10 07:54:28','XYUcuBRNJ1jkNtGwHTlA.jpg'),
+  (38,'Volkswagen','Transporter',89123,'01-01-01',15,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,2,0,'2013-12-11 08:07:45','2013-12-11 08:07:45','So3uF619zwJKNKaz38Er.jpg'),
+  (39,'Vespa','Oldskool',12930,'01-NFJ-1',18,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',5,4,0,'2013-12-11 08:35:20','2013-12-11 08:35:33','ideal.jpg'),
+  (44,'Lamborghini','Aventador',10,'15-15-15',3,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Mat zwart',250,1,0,'2013-12-10 07:46:25','2013-12-10 07:55:08','AtDgiR86xL7zhtblppZ7.jpg'),
+  (46,'Daihatsu','Cuore',109381,'17-17-17',4,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Rood',2,1,0,'2013-12-10 07:52:48','2013-12-10 07:54:28','XYUcuBRNJ1jkNtGwHTlA.jpg'),
+  (47,'Volkswagen','Transporter',89123,'01-01-01',15,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,2,1,'2013-12-11 08:07:45','2013-12-11 08:07:45','So3uF619zwJKNKaz38Er.jpg'),
+  (49,'Audi','A6',124,'12-12-12',12,'a 2.8-litre FSI V6 with 204 horsepower (152 kW) and a 300 horsepower (224 kW), 3.0-litre supercharged FSI engine – and three diesel engines – a 2.0-litre inline four-cylinder and a 3.0-litre turbocharged diesel engine in three states of tune.\0','Zwart',12,1,1,'2013-12-11 13:14:57','2013-12-11 13:14:57','iIyIXhwU9PTjMBo2C6Uc.jpg');
 
 /*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 UNLOCK TABLES;
