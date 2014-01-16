@@ -10,4 +10,18 @@ class General extends Eloquent {
 
 		return $general->skin;
 	}
+
+	public static function latestnews() 
+	{
+		$general = General::find(1);
+
+		return $general->latestnews;
+	}
+
+	public static function latestnewsenglish() 
+	{
+		$general = General::find(1);
+
+		return $general->latestnewsenglish;
+	}
 }

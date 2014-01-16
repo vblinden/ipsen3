@@ -9,7 +9,7 @@ Visit http://rainbow.arch.scriptmania.com/scripts/
 var snowmax=35
 
 // Set the colors for the snow. Add as many colors as you like
-var snowcolor=new Array("black","black","black","black","black")
+var snowcolor=new Array("white")
 
 // Set the fonts, that create the snowflakes. Add as many fonts as you like
 var snowtype=new Array("Times","Arial","Times","Verdana")

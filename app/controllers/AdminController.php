@@ -88,4 +88,14 @@ class AdminController extends BaseController {
 
 		return Redirect::to('/admin#general')->with('success', 'De skin van de website is bijgewerkt.');
 	}
+
+	public function postLatestNews() 
+	{
+		$general = General::find(1);
+		$general->latestnews = Input::all()['latestnews'];
+		$general->latestnewsenglish = Input::all()['latestnewsenglish'];
+		$general->save();
+
+		return Redirect::to('/admin#general')->with('success', 'Het laatste nieuws is bijgewerkt.');
+	}
 }

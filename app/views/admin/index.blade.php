@@ -53,7 +53,6 @@
 						{{ Form::submit('Belasting Toegevoegde Waarde (BTW) wijzigen', array('class' => 'btn btn-primary btn-full')); }}
 						{{ Form::close() }}
 					</div>
-					
 				</div>
 
 				<div class="panel panel-default">
@@ -70,7 +69,27 @@
 						{{ Form::submit('Skin aanpassen', array('class' => 'btn btn-primary btn-full')); }}
 						{{ Form::close() }}
 					</div>
-					
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">Laatste nieuws</div>
+					<div class="panel-body">
+						{{ Form::open(array('action' => 'AdminController@postLatestNews')) }}
+
+						{{-- Latest news field ---------------------------------------------------}}
+						<div class='form-group'>
+							{{ Form::label('latestnews', 'Laatste nieuws in het Nederlands'); }}
+							{{ Form::textarea('latestnews', $general->latestnews, array('class' => 'form-control', 'style' => 'height: 110px;')); }}
+						</div>
+
+						<div class='form-group'>
+							{{ Form::label('latestnewsenglish', 'Laatste nieuws in het Engels'); }}
+							{{ Form::textarea('latestnewsenglish', $general->latestnewsenglish, array('class' => 'form-control', 'style' => 'height: 110px;')); }}
+						</div>
+
+						{{ Form::submit('Laatste nieuws aanpassen', array('class' => 'btn btn-primary btn-full')); }}
+						{{ Form::close() }}
+					</div>
 				</div>
 			</div>
 			<div class="tab-pane" id="vehicles">

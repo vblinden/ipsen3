@@ -72,10 +72,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Laatste nieuws</div>
 			<div class="panel-body">
-				De afgelopen maanden zijn wij druk bezig geweest met het ontwikkelen van een nieuwe website, die binnenkort volledig online zal komen.
-				De website heeft een nieuwe frisse uitstraling gekregen, en beschikt over talloze nieuwe functies en mogelijkheden om u als klant nog beter van dienst te kunnen zijn.
-				<br><br>
-				De nieuwe website voor LeenMeij is ontwikkeld in samenwerking met Vinnie&Deampie enterprises, een full-service internetbureau dat gespecialiseerd is in het bedenken, ontwerpen en bouwen van hoogwaardige internetapplicaties. De nieuwe website is overzichtelijker en gebruiksvriendelijker, waar we er blij mee zijn.
+				{{ General::latestnews(); }}
 			</div>
 		</div>
 		<div class="panel panel-default">
