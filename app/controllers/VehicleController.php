@@ -97,7 +97,7 @@ class VehicleController extends BaseController {
 			$vehicle->licenseplate = $data['licenseplate'];
 			$vehicle->comment = $data['comment'];
 			$vehicle->color = $data['color'];
-			$vehicle->usage = $data['usage'];
+			$vehicle->vehicleusage = $data['usage'];
 			$vehicle->hourlyrate = $data['hourlyrate'];
 			$vehicle->vehiclecategoryid = $data['vehiclecategoryid'];
 
@@ -164,7 +164,7 @@ class VehicleController extends BaseController {
 			$vehicle->licenseplate = $data['licenseplate'];
 			$vehicle->comment = $data['comment'];
 			$vehicle->color = $data['color'];
-			$vehicle->usage = $data['usage'];
+			$vehicle->vehicleusage = $data['usage'];
 			$vehicle->hourlyrate = $data['hourlyrate'];
 			$vehicle->vehiclecategoryid = $data['vehiclecategoryid'];
 

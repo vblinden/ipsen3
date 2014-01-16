@@ -132,7 +132,7 @@
 												</tr>
 												<tr>
 													<td><strong>Verbruik per kilometer</strong></td>
-													<td> {{ $vehicle->usage }} </td>
+													<td> {{ $vehicle->vehicleusage }} </td>
 												</tr>
 												<tr>
 													<td><strong>Prijs per uur</strong></td>

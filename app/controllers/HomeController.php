@@ -12,4 +12,9 @@ class HomeController extends BaseController {
 		return View::make('faq');
 	}
 
+	public function getContact() 
+	{
+		return View::make('contact');
+	}
+
 }

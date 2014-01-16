@@ -43,6 +43,7 @@
 						<li><a href="/vehicleoption">Accessoires</a></li>
 						<li><a href="/review">Beoordelingen</a></li>
 						<li><a href="/home/faq">FAQ</a></li>
+						<li><a href="/home/contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						@if(Auth::check())
