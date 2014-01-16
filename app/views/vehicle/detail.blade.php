@@ -63,11 +63,11 @@
 						</tr>
 						<tr>
 							<td><strong>Prijs per uur</strong></td>
-							<td>€ {{ $vehicle->hourlyrate }} </td>
+							<td>€ {{ $vehicle->hourlyrate + $vehicle->hourlyrate / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicle->hourlyrate / 100 * General::vat(); }}) </td>
 						</tr>
 						<tr>
 							<td><strong>Prijs per dag</strong></td>
-							<td>€ {{ $vehicle->hourlyrate * 24 }} </td>
+							<td>€ {{ $vehicle->hourlyrate * 24 + $vehicle->hourlyrate * 24 / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicle->hourlyrate * 24 / 100 * General::vat(); }}) </td>
 						</tr>
 						<tr>
 							<td><strong>Opmerkingen</strong></td>

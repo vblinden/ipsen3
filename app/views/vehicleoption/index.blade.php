@@ -20,7 +20,7 @@
 					{{ $vehicleoption->name }}
 				</h3>
 				<p>
-					De prijs per dag: € {{ $vehicleoption->price*24 }}
+					De prijs per dag: € {{ $vehicleoption->price * 24 + $vehicleoption->price * 24 / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicleoption->price * 24 / 100 * General::vat(); }})
 					@if(Auth::check()) 
 					@if (Role::find(Auth::user()->role['role_id'])['name'] == 'admin')
 					<a href='/vehicleoption/delete/{{ $vehicleoption->id }}' class="btn btn-danger btn-xs pull-right" style='margin-left: 5px;' onclick="return confirm('Weet u zeker dat u deze voertuig optie wilt verwijderen?')">Verwijderen</a>
