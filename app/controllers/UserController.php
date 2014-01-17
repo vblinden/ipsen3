@@ -200,23 +200,23 @@ class UserController extends BaseController {
 		// If validator fails, show error message.
 		if ($validator->fails()) {
 			if ($validator->messages()->has('email')) {
-				return Redirect::to('/user/register')->with('failed', 'Het e-mail adres wat u probeert te gebruiken is al in gebruik of is geen geldig e-mail adres. Probeer het opnieuw.')->withInput(Input::except('password'));
+				return Redirect::to('/user/register/personal')->with('failed', 'Het e-mail adres wat u probeert te gebruiken is al in gebruik of is geen geldig e-mail adres. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
 			else if ($validator->messages()->has('password')) {
-				return Redirect::to('/user/register')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens, een hoofdletter hebben en een cijfer bevatten. Ook moeten de wachtwoorden overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
+				return Redirect::to('/user/register/personal')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens, een hoofdletter hebben en een cijfer bevatten. Ook moeten de wachtwoorden overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
 			else if ($validator->messages()->has('passwordconfirm')) {
-				return Redirect::to('/user/register')->with('failed', 'Uw wachtwoorden komen niet overeen. Probeer het opnieuw.')->withInput(Input::except('password'));
+				return Redirect::to('/user/register/personal')->with('failed', 'Uw wachtwoorden komen niet overeen. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
 			else if ($validator->messages()->has('recaptcha_response_field')) {
-				return Redirect::to('/user/register')->with('failed', 'Uw CAPTCHA invoer is incorrect. Probeer het opnieuw.')->withInput(Input::except('password'));
+				return Redirect::to('/user/register/personal')->with('failed', 'Uw CAPTCHA invoer is incorrect. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
 			else {
-				return Redirect::to('/user/register')->with('failed', 'U moet alle velden invullen die rood gemarkeerd zijn. Probeer het opnieuw.')->withInput(Input::except('password'));
+				return Redirect::to('/user/register/personal')->with('failed', 'U moet alle velden invullen die rood gemarkeerd zijn. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 		}
 
