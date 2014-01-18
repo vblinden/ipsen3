@@ -11,8 +11,13 @@ return array(
 	'navAccessories' => 'Accessoires',
 	'navRatings' => 'Beoordelingen',
 	'navFAQ' => 'FAQ',
+	'navContact' => 'Contact',
 	'navLogin' => 'Inloggen',
 	'navRegister' => 'Registreren',
 	'navPrivate' => 'Particulier',
-	'navCommercial' => 'Zakelijk'
+	'navCommercial' => 'Zakelijk',
+	'loggedInMorning' => 'Good morning, ',
+	'loggedInMorning' => 'Good afternoon, ',
+	'loggedInMorning' => 'Good evening, ',
+	'loggedInLogOut' => 'Log out'
 );
