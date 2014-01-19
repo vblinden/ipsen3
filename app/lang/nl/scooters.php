@@ -2,6 +2,6 @@
 
 return array(
 	'scootersTitle' => 'Scooters',
-	'scootersSubtitle' => 'Alle beschikbare scooters',
-	'btnShow' => 'Bekijk'
+	'scootersSubtitle' => 'Alle available scooters',
+	'btnShow' => 'Show'
 );

@@ -1,9 +1,9 @@
 <?php
 
 return array(
-	'ratingsTitle' => 'LeenMeij beoordelingen',
-	'ratingsSubtitle' => 'door de klanten',
-	'reviewInfo' => 'LeenMeij vind het belangrijk om feedback te krijgen van haar klanten, hierdoor kunnen we de kwaliteit en klantvriendelijkheid optimaliseren.',
-	'reviewTitle' => 'Voertuig review van:',
-	'showReviews' => 'Bekijk reviews'
+	'ratingsTitle' => 'LeenMeij ratings',
+	'ratingsSubtitle' => 'by our customers',
+	'reviewInfo' => 'LeenMeij thinks it\'s important to receive feedback from it\'s customers, so we can improve our services.',
+	'reviewTitle' => 'Vehicle review by:',
+	'showReviews' => 'Show reviews'
 );

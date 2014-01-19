@@ -1,13 +1,13 @@
 <?php
 
 return array(
-	'rentTitle' => 'Reserveren',
-	'startDateLabel' => 'Start datum',
-	'endDateLabel' => 'Eind datum',
-	'btnShowVehicles' => 'Laat beschikbare voertuigen zien',
-	'vehicleCategory' => 'Voertuig categorie',
-	'vehicleOption1' => 'Personenauto',
-	'vehicleOption2' => 'Bedrijfswagen',
-	'vehicleOption3' => 'Motor',
+	'rentTitle' => 'Rent',
+	'startDateLabel' => 'Start date',
+	'endDateLabel' => 'End date',
+	'btnShowVehicles' => 'Show available vehicles',
+	'vehicleCategory' => 'Vehicle category',
+	'vehicleOption1' => 'Passengercar',
+	'vehicleOption2' => 'Commercial vehicle',
+	'vehicleOption3' => 'Motorcycle',
 	'vehicleOption4' => 'Scooter'
 );
