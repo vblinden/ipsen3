@@ -16,8 +16,8 @@ return array(
 	'navRegister' => 'Registreren',
 	'navPrivate' => 'Particulier',
 	'navCommercial' => 'Zakelijk',
-	'loggedInMorning' => 'Goede morgen, ',
-	'loggedInAfternoon' => 'Goede middag, ',
-	'loggedInEvening' => 'Goede avond, ',
+	'loggedInMorning' => 'Goede morgen',
+	'loggedInAfternoon' => 'Goede middag',
+	'loggedInEvening' => 'Goede avond',
 	'loggedInLogOut' => 'Uitloggen'
 );
