@@ -79,6 +79,8 @@
 								</ul>
 							</li>
 							@endif
+							<li><a href="/lang/nl" style="padding-left: 0px; padding-right: 0px;"><img src='/img/nl.jpg' /></a></li>
+							<li><a href="/lang/en"><img src='/img/en.gif' /></a></li>
 						</ul>
 					</div>
 				</div>
