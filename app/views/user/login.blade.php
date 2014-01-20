@@ -14,41 +14,41 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>Inloggen <small>Met uw LeenMeij account</small></h1>
+			<h1>{{ Lang::get('login.loginTitle'); }} <small>{{ Lang::get('login.loginSubtitle'); }}</small></h1>
 		</div>
-		<p>Hier onder kunt u inloggen met uw LeenMeij account.</p>
+		<p>{{ Lang::get('login.loginMessage'); }}</p>
 	</div>
 </div>
 <div class='row'>
 	<div class='col-lg-8'>
 		<div class="panel panel-default">
-			<div class="panel-heading">Uw gegevens</div>
+			<div class="panel-heading">{{ Lang::get('login.loginBoxTitle'); }}</div>
 			<div class="panel-body">
 				{{ Form::open(array('action' => 'UserController@postLogin')) }}
 
 				{{-- Username field ---------------------------------------------------}}
 				<div class='form-group'>
-					{{ Form::label('email', 'E-mail'); }}
+					{{ Form::label('email', Lang::get('login.txtEmail')); }}
 					{{ Form::text('email', null, array('class' => 'form-control')); }}
 				</div>
 
 				{{-- Password field ---------------------------------------------------}}
 				<div class='form-group'>
-					{{ Form::label('password', 'Wachtwoord'); }}
+					{{ Form::label('password', Lang::get('login.txtPassword')); }}
 					{{ Form::password('password', array('class' => 'form-control')); }}
 				</div>
 
-				{{ Form::submit(Lang::get('users.loginButton'), array('class' => 'btn btn-primary btn-full')); }}
+				{{ Form::submit(Lang::get('login.btnLogin'), array('class' => 'btn btn-primary btn-full')); }}
 				{{ Form::close() }}
 			</div>
 		</div>
 	</div>
 	<div class='col-lg-4'>
 		<div class="panel panel-info">
-			<div class="panel-heading">Nog geen LeenMeij account?</div>
+			<div class="panel-heading">{{ Lang::get('login.panelRegisterTitle'); }}</div>
 			<div class="panel-body">
-				<p>Als u nog geen LeenMeij account heeft kunt boven aan de pagina op <strong><a href="/user/register">Registreren</a></strong> klikken om een LeenMeij account aan te maken. U kunt ook op de onderstaande knop klikken.</p>
-				<a href="/user/register" class="btn btn-primary btn-full">Een LeenMeij account maken</a>
+				<p>{{ Lang::get('login.panelRegisterContent1'); }} <strong><a href="/user/register/personal">{{ Lang::get('login.panelRegisterContent2'); }}</a></strong> {{ Lang::get('login.panelRegisterContent3'); }}</p>
+				<a href="/user/register/personal" class="btn btn-primary btn-full">{{ Lang::get('login.btnRegister'); }}</a>
 			</div>
 		</div>
 	</div>

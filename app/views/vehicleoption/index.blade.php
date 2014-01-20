@@ -4,12 +4,12 @@
 <div class='row'>
 	<div class='col-lg-12'>
 		<div class="page-header">
-		<h1>Voertuigopties <small>Overzicht pagina</small></h1>
+		<h1>{{ Lang::get('accessories.accessoriesTitle') }} <small>{{ Lang::get('accessories.accessoriesSubtitle') }}</small></h1>
 		</div>
 	</div>
 </div>
 <p>
-	Hieronder kunt u een overzicht vinden van alle voertuigopties die LeenMeij u aan kan bieden. De voertuigopties kunt u kiezen bij het maken van de reservering, de kosten zullen verwerkt worden tijdens het maken van de reservering.
+	{{ Lang::get('accessories.accessoriesInfo') }}
 </p>
 <div class="row">
 @foreach ($vehicleoptions as $vehicleoption)

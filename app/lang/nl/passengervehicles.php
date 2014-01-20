@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	'passengerVehiclesTitle' => 'Passengercars',
-	'passengerVehiclesSubtitle' => 'All available passengercars',
-	'btnShow' => 'Show'
+	'passengerVehiclesTitle' => 'Personenauto',
+	'passengerVehiclesSubtitle' => 'Alle beschikbare personenauto\'s',
+	'btnShow' => 'Bekijk'
 );

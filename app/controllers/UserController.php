@@ -18,9 +18,6 @@ class UserController extends BaseController {
 
 	public function getLogin()
 	{
-		// Localization testing.
-		App::setLocale('nl');
-
 		// Return the login view.
 		return View::make('user.login');
 	}

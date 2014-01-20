@@ -5,13 +5,13 @@
 	<div class='col-lg-12'>
 		<div class="page-header">
 		@if (Request::is('vehicle/person'))
-			<h1>Personenauto <small>Alle beschikbare personenauto's</small></h1>
+			<h1>{{ Lang::get('passengervehicles.passengerVehiclesTitle') }} <small>{{ Lang::get('passengervehicles.passengerVehiclesSubtitle') }}</small></h1>
 		@elseif (Request::is('vehicle/company'))
-			<h1>Bedrijfswagen <small>Alle beschikbare bedrijfswagens</small></h1>
+			<h1>{{ Lang::get('commercialvehicles.commercialVehiclesTitle') }} <small>{{ Lang::get('commercialvehicles.commercialVehiclesSubtitle') }}</small></h1>
 		@elseif (Request::is('vehicle/motor'))
-			<h1>Motor <small>Alle beschikbare motoren</small></h1>
+			<h1>{{ Lang::get('motorcycles.motorcyclesTitle') }} <small>{{ Lang::get('motorcycles.motorcyclesSubtitle') }}</small></h1>
 		@elseif (Request::is('vehicle/scooter'))
-			<h1>Scooter <small>Alle beschikbare scooters</small></h1>
+			<h1>{{ Lang::get('scooters.scootersTitle') }} <small>{{ Lang::get('scooters.scootersSubtitle') }}</small></h1>
 		@endif
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 				<h3>{{ $vehicle->brand }} {{ $vehicle->model }}</h3>
 				<p>{{ $vehicle->comment }}</p>
 				<p>
-					<a href="/vehicle/detail/{{$vehicle->id}}" class="btn btn-success" role="button">Bekijken</a> 
+					<a href="/vehicle/detail/{{$vehicle->id}}" class="btn btn-success" role="button">{{ Lang::get('passengervehicles.btnShow') }}</a> 
 					@if(Auth::check()) 
 					@if (Role::find(Auth::user()->role['role_id'])['name'] == 'admin') 
 					<a href='/vehicle/edit/{{ $vehicle->id }}' class='btn btn-primary pull-right' style='margin-left: 5px'>Bewerken</a>

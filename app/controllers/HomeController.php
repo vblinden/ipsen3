@@ -16,19 +16,4 @@ class HomeController extends BaseController {
 	{
 		return View::make('contact');
 	}
-
-	public function getDutch()
-	{
-		App::setLocale('nl');
-
-		return Redirect::to('/');
-	}
-
-	public function getEnglish()
-	{
-		App::setLocale('en');
-
-		return Redirect::to('/');
-	}
-
 }

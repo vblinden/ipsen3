@@ -32,29 +32,29 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/">Startpagina</a></li>
-						<li><a href="/reservation">Reserveren</a></li>
+						<li><a href="/">{{ Lang::get('navbar.navHome'); }} </a></li>
+						<li><a href="/reservation">{{ Lang::get('navbar.navRent'); }}</a></li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Voertuigen<b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Lang::get('navbar.navVehicles'); }}<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/vehicle/person">Personenauto</a></li>
-								<li><a href="/vehicle/company">Bedrijfswagen</a></li>
-								<li><a href="/vehicle/motor">Motor</a></li>
-								<li><a href="/vehicle/scooter">Scooter</a></li>
+								<li><a href="/vehicle/person">{{ Lang::get('navbar.navPassengerCar'); }}</a></li>
+								<li><a href="/vehicle/company">{{ Lang::get('navbar.navCommercialVehicle'); }}</a></li>
+								<li><a href="/vehicle/motor">{{ Lang::get('navbar.navMotorcycle'); }}</a></li>
+								<li><a href="/vehicle/scooter">{{ Lang::get('navbar.navScooter'); }}</a></li>
 							</ul>
 						</li>
-						<li><a href="/vehicleoption">Accessoires</a></li>
-						<li><a href="/review">Beoordelingen</a></li>
-						<li><a href="/home/faq">FAQ</a></li>
-						<li><a href="/home/contact">Contact</a></li>
+						<li><a href="/vehicleoption">{{ Lang::get('navbar.navAccessories'); }}</a></li>
+						<li><a href="/review">{{ Lang::get('navbar.navRatings'); }}</a></li>
+						<li><a href="/home/faq">{{ Lang::get('navbar.navFAQ'); }}</a></li>
+						<li><a href="/home/contact">{{ Lang::get('navbar.navContact'); }}</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						@if(Auth::check())
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								@if(date("H") < "12") Goedemorgen,
-								@elseif(date("H") < "18") Goedemiddag,
-								@else Goedenavond,
+								@if(date("H") < "12") {{ Lang::get('navbar.loggedInMorning'); }},
+								@elseif(date("H") < "18") {{ Lang::get('navbar.loggedInAfternoon'); }},
+								@else {{ Lang::get('navbar.loggedInEvening'); }},
 								@endif
 								{{ Auth::user()->firstname; }}<b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -66,16 +66,16 @@
 									<li><a href='/admin/'>Administrator</a></li>
 									<li class="divider"></li>
 									@endif
-									<li><a href="/user/logout">Uitloggen</a></li>
+									<li><a href="/user/logout">{{ Lang::get('navbar.loggedInLogOut'); }}</a></li>
 								</ul>
 							</li>
 							@else
-							<li><a href="/user/login">Inloggen</a></li>
+							<li><a href="/user/login">{{ Lang::get('navbar.navLogin'); }}</a></li>
 							<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registreren <b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Lang::get('navbar.navRegister'); }} <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/user/register/personal">Particulier</a></li>
-									<li><a href="/user/register/company">Zakelijk</a></li>
+									<li><a href="/user/register/personal">{{ Lang::get('navbar.navPrivate'); }}</a></li>
+									<li><a href="/user/register/company">{{ Lang::get('navbar.navCommercial'); }}</a></li>
 								</ul>
 							</li>
 							@endif
@@ -95,7 +95,7 @@
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="panel panel-default">
-							<div class="panel-heading">Klantenbeoordelingen</div>
+							<div class="panel-heading">{{ Lang::get('footer.customerRatingHeader'); }}</div>
 							@foreach(Review::getHighReviews() as $review)
 								@if($review->rating >= 4)
 								<div class="panel-body">
@@ -116,21 +116,21 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="panel panel-default">
-							<div class="panel-heading">Diensten</div>
+							<div class="panel-heading">{{ Lang::get('footer.servicesHeader'); }}</div>
 							<div class="panel-body">
 								<ul class="bulletless">
-									<li><a href="/vehicle/person">Personenauto</a></li>
-									<li><a href="/vehicle/company">Bedrijfswagens</a></li>
-									<li><a href="/vehicle/motor">Motoren</a></li>
-									<li><a href="/vehicle/scooter">Scooters</a></li>
-									<li><a href="/vehicleoption">Accessoires</a></li>
+									<li><a href="/vehicle/person">{{ Lang::get('footer.servicesPassengerCars'); }}</a></li>
+									<li><a href="/vehicle/company">{{ Lang::get('footer.servicesCommercialVehicles'); }}</a></li>
+									<li><a href="/vehicle/motor">{{ Lang::get('footer.servicesMotorcycles'); }}</a></li>
+									<li><a href="/vehicle/scooter">{{ Lang::get('footer.servicesScooters'); }}</a></li>
+									<li><a href="/vehicleoption">{{ Lang::get('footer.servicesAccessories'); }}</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-4">
 						<div class="panel panel-default">
-							<div class="panel-heading">Contact</div>
+							<div class="panel-heading">{{ Lang::get('footer.contactHeader'); }}</div>
 							<div class="panel-body" style="padding: 0px;">
 								<div id="footer-maps" style="height: 200px;"></div>
 							</div>
@@ -139,7 +139,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<p class='text-muted'>Copyright &copy; <?php echo date("Y"); ?> Leenmeij Autoverhuur BV. Alle rechten voorbehouden. <span class='pull-right'>KVK: 987654321</span></p>
+						<p class='text-muted'>{{ Lang::get('footer.footer'); }}  <span class='pull-right'>KVK: 987654321</span></p>
 					</div>
 				</div>
 			</div>

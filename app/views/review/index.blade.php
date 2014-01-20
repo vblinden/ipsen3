@@ -14,9 +14,9 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>LeenMeij beoordelingen <small>door de klanten</small></h1>
+			<h1>{{ Lang::get('ratings.ratingsTitle') }} <small>{{ Lang::get('ratings.ratingsSubtitle') }}</small></h1>
 		</div>
-		<p>LeenMeij vind het belangrijk om feedback te krijgen van haar klanten, hierdoor kunnen we de kwaliteit en klantvriendelijkheid optimaliseren.</p>
+		<p>{{ Lang::get('ratings.reviewInfo') }}</p>
 	</div>
 </div>
 
@@ -25,7 +25,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-							Bekijk reviews
+							{{ Lang::get('ratings.showReviews') }}
 					</h4>
 				</div>
 					<div class="panel-body">
@@ -33,7 +33,7 @@
 						@if($review->vehicle_id == 0)
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<span>Voertuig review van: {{ $review->user->firstname }}
+								<span>{{ Lang::get('ratings.reviewTitle') }} {{ $review->user->firstname }}
 								</span>
 								<span class="pull-right">
 									@for ($i=1; $i <= 5 ; $i++)

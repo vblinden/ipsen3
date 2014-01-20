@@ -14,64 +14,64 @@
 		</div>
 		@endif
 		<div class="page-header">
-			<h1>Registreren <small>Een nieuwe persoonlijke LeenMeij account aanmaken</small></h1>
+			<h1>{{ Lang::get('register.registerTitle'); }} <small>{{ Lang::get('register.registerSubtitle'); }}</small></h1>
 		</div>
-		<p>Hier onder kunt u een nieuwe persoonlijke LeenMeij account aanmaken. Alle rode gemarkeerde velden zijn verplicht.</p>
+		<p>{{ Lang::get('register.registerMessage'); }}</p>
 	</div>
 </div>
 <div class='row'>
 	<div class='col-lg-12'>
 		<div class="panel panel-default">
-			<div class="panel-heading">Uw gegevens</div>
+			<div class="panel-heading">{{ Lang::get('register.registerBoxTitle'); }}</div>
 			<div class="panel-body">
 				{{ Form::open(array('action' => 'UserController@postRegister', 'class' => 'address')) }}
 				<div class='row'>
 					<div class='col-lg-6'>
 						{{-- Email field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('email', 'E-mail'); }}
+							{{ Form::label('email', Lang::get('register.txtEmail')); }}
 							{{ Form::text('email', null, array('class' => 'form-control')); }}
 						</div>
 
 						{{-- Password field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('password', 'Wachtwoord'); }}
+							{{ Form::label('password', Lang::get('register.txtPassword')); }}
 							{{ Form::password('password', array('class' => 'form-control')); }}
 						</div>
 
 						{{-- Confirm password field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('passwordconfirm', 'Wachtwoord bevestigen'); }}
+							{{ Form::label('passwordconfirm', Lang::get('register.txtPassConfirm')); }}
 							{{ Form::password('passwordconfirm', array('class' => 'form-control')); }}
 						</div>
 
 						{{-- First name field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('firstname', 'Voornaam'); }}
+							{{ Form::label('firstname', Lang::get('register.txtName')); }}
 							{{ Form::text('firstname', null, array('class' => 'form-control')); }}
 						</div>
 
 						{{-- Last name field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('lastname', 'Achternaam'); }}
+							{{ Form::label('lastname', Lang::get('register.txtLastName')); }}
 							{{ Form::text('lastname', null, array('class' => 'form-control')); }}
 						</div>
 						{{-- Zipcode field ---------------------------------------------------}}
 						<div class='form-group required'>
 							<div class='row'>
 								<div class='col-lg-8'>
-									{{ Form::label('zipcode', 'Postcode'); }}
+									{{ Form::label('zipcode', Lang::get('register.txtZipcode')); }}
 									{{ Form::text('zipcode', null, array('class' => 'form-control postcode')); }}
 								</div>
 								<div class='col-lg-4'>
-									{{ Form::label('addresslinetwo', 'Huisnummer'); }}
+									{{ Form::label('addresslinetwo', Lang::get('register.txtHousenumber')); }}
 									{{ Form::text('addresslinetwo', null, array('class' => 'form-control streetnumber')); }}
 								</div>
 							</div>
 						</div>
 						{{-- Address field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('addresslineone', 'Adres 1'); }}
+							{{ Form::label('addresslineone', Lang::get('register.txtAddress')); }}
 							{{ Form::text('addresslineone', null, array('class' => 'form-control street')); }}
 						</div>
 					</div>
@@ -79,31 +79,31 @@
 					<div class='col-lg-6'>
 						{{-- City field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('city', 'Woonplaats'); }}
+							{{ Form::label('city', Lang::get('register.txtCity')); }}
 							{{ Form::text('city', null, array('class' => 'form-control city')); }}
 						</div>
 
 						{{-- Country field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('country', 'Land'); }}
+							{{ Form::label('country', Lang::get('register.txtCountry')); }}
 							{{ Form::text('country', null, array('class' => 'form-control')); }}
 						</div>
 
 						{{-- Phone number field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('phonenumber', 'Telefoonnummer'); }}
+							{{ Form::label('phonenumber', Lang::get('register.txtPhone')); }}
 							{{ Form::text('phonenumber', null, array('class' => 'form-control')); }}
 						</div>
 
 						{{-- License field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('licensenumber', 'Rijbewijsnummer'); }}
+							{{ Form::label('licensenumber', Lang::get('register.txtDriverLicense')); }}
 							{{ Form::text('licensenumber', null, array('class' => 'form-control')); }}
 						</div>
 
 						{{-- Passport field ---------------------------------------------------}}
 						<div class='form-group required'>
-							{{ Form::label('passportnumber', 'Passpoortnummer'); }}
+							{{ Form::label('passportnumber', Lang::get('register.txtPasspoort')); }}
 							{{ Form::text('passportnumber', null, array('class' => 'form-control')); }}
 						</div>
 
@@ -112,7 +112,7 @@
 				</div>
 				<div class='row'>
 					<div class='col-lg-12'>
-						{{ Form::submit('Registeren', array('class' => 'btn btn-primary btn-full')); }}
+						{{ Form::submit(Lang::get('register.btnRegister'), array('class' => 'btn btn-primary btn-full')); }}
 					</div>
 				</div>
 				{{ Form::close() }}

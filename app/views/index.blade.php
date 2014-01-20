@@ -70,26 +70,30 @@
 <div class="row" style="margin-top: 20px;">
 	<div class="col-lg-9">
 		<div class="panel panel-default">
-			<div class="panel-heading">Laatste nieuws</div>
+			<div class="panel-heading">{{ Lang::get('index.latestNewsHeader'); }}</div>
 			<div class="panel-body">
+				@if (Session::get('leenmeij.locale') == 'nl')
 				{{ General::latestnews(); }}
+				@else
+				{{ General::latestnewsenglish(); }}
+				@endif
 			</div>
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading">Waarom LeenMeij</div>
+			<div class="panel-heading">{{ Lang::get('index.whyLeenMeijHeader'); }}</div>
 			<div class="panel-body">
 				<div class="col-lg-8" style="padding: 0px;">
-				 LeenMeij heeft een uitgebreid wagenpark, waardoor we een completer aanbod hebben voor de klanten. Hierdoor kunnen wij het u als klant een stuk makkelijker maken in het maken van een keuze. 
+				{{ Lang::get('index.whyLeenMeijContent1'); }}
 				 <br><br>
-				 Daarbij garanderen wij een actueel aanbod op de website tegen scherpe prijzen. Hierdoor proberen we de kwaliteit te waarborgen, en het u als klant zo makkelijk mogelijk te maken. Daarboven op hebben we de 6 sterren garantie van de BOVAG verkregen, dit betekend alleen maar meer zekerheid en service voor u!
+				{{ Lang::get('index.whyLeenMeijContent2'); }}
 				</div>
 				<div class="col-lg-4">
 					<ul class="bulletless">
-						<li><span style="color: green;">✔</span> Kwaliteit</li>
-						<li><span style="color: green;">✔</span> Actueel aanbod</li>
-						<li><span style="color: green;">✔</span> Scherpe prijzen</li>
-						<li><span style="color: green;">✔</span> Bovag 6 sterren kwalificatie</li>
-						<li><span style="color: green;">✔</span> Gratis inleveren bij elke vestiging</li>
+						<li><span style="color: green;">✔</span> {{ Lang::get('index.whyLeenMeijCheck1'); }}</li>
+						<li><span style="color: green;">✔</span> {{ Lang::get('index.whyLeenMeijCheck2'); }}</li>
+						<li><span style="color: green;">✔</span> {{ Lang::get('index.whyLeenMeijCheck3'); }}</li>
+						<li><span style="color: green;">✔</span> {{ Lang::get('index.whyLeenMeijCheck4'); }}</li>
+						<li><span style="color: green;">✔</span> {{ Lang::get('index.whyLeenMeijCheck5'); }}</li>
 					</ul>
 				</div>
 			</div>
@@ -106,7 +110,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel2.png" /></div>
 			<div class="panel-body">
-				Tijdens deze winter maanden is veiligheid op de weg de hoogste prioriteit. Huur daarom nu alle voertuigen voorzien van een set winterbanden.
+				{{ Lang::get('index.bottomInfo1'); }}
 			</div>
 		</div>
 	</div>
@@ -114,7 +118,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel3.png" /></div>
 			<div class="panel-body">
-				Wij bieden vanaf nu meer opties bij het verhuren van voertuigen onder andere: navigatiesystemen, portable dvd speler, dakdrager, skibox enzovoort.
+				{{ Lang::get('index.bottomInfo2'); }}
 			</div>
 		</div>
 	</div>
@@ -122,7 +126,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel1.png" /></div>
 			<div class="panel-body">
-				Als je twee maanden van te voren een voertuig reseveert bij LeenMeij ontvang je automatisch 5% korting op je resevering.
+				{{ Lang::get('index.bottomInfo3'); }}
 			</div>
 		</div>
 	</div>

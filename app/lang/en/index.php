@@ -8,7 +8,7 @@ return array(
 	'whyLeenMeijContent1' => 'Because of LeenMeij\'s elaborate vehiclepark, we can offer our customers more. We can make your choise a lot more easy.',
 	'whyLeenMeijContent2' => 'We also guarentee a topical offer with good pricing. With this we are trying to warrant quality, and this should make you choise as a customer a lot more easy. We also have a 6 star Bovag guarantee. This means we can offer you the best of our services!',
 	'whyLeenMeijCheck1' => 'Quality',
-	'whyLeenMeijCheck2' => 'up to date offer',
+	'whyLeenMeijCheck2' => 'Up to date offer',
 	'whyLeenMeijCheck3' => 'Good pricing',
 	'whyLeenMeijCheck4' => 'Bovag 6 star qualification',
 	'whyLeenMeijCheck5' => 'Free return at every LeenMeij location',

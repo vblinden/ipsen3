@@ -17,7 +17,7 @@ return array(
 	'navPrivate' => 'Private',
 	'navCommercial' => 'Corporate',
 	'loggedInMorning' => 'Good morning, ',
-	'loggedInMorning' => 'Good afternoon, ',
-	'loggedInMorning' => 'Good evening, ',
+	'loggedInAfternoon' => 'Good afternoon, ',
+	'loggedInEvening' => 'Good evening, ',
 	'loggedInLogOut' => 'Log out'
 );

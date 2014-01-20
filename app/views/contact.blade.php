@@ -4,9 +4,9 @@
 <div class='row'>
 	<div class='col-lg-12'>
 		<div class="page-header">
-			<h1>Contact <small>opnemen met LeenMeij</small></h1>
+			<h1>{{ Lang::get('contact.contactTitle') }} <small>{{ Lang::get('contact.contactSubtitle') }}</small></h1>
 		</div>
-		<p>Hieronder vind u informatie om op meerdere manieren contact met ons op te nemen.</p>
+		<p>{{ Lang::get('contact.contactInfo') }}</p>
 	</div>
 </div>
 

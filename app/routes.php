@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('lang/{lang}', function ($lang) {
+	Session::put('leenmeij.locale', $lang);
+	
+	return Redirect::to('/');
+});
+
 Route::get('/', 'HomeController@getIndex');
 
 Route::controller('user', 'UserController');

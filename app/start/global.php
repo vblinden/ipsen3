@@ -1,5 +1,7 @@
 <?php
 
+App::setlocale(Session::get('leenmeij.locale', Config::get('app.locale')));
+
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
