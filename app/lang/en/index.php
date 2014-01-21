@@ -14,5 +14,5 @@ return array(
 	'whyLeenMeijCheck5' => 'Free return at every LeenMeij location',
 	'bottomInfo1' => 'Safety is our highest priority during the winter months. That\'s why all vehicles are equiped with wintertires.',
 	'bottomInfo2' => 'We offer GPS Systems, protable dvd players, roofsupport, skibox etc.',
-	'bottomInfo3' => 'If you make a reservation two months early you automaticly receive a 5% discount on your resevation.'
+	'bottomInfo3' => 'If you make a reservation two months early you automaticly receive a 5% discount on your reservation.'
 );

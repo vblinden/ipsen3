@@ -63,11 +63,24 @@
 						</tr>
 						<tr>
 							<td><strong>Prijs per uur</strong></td>
-							<td>€ {{ $vehicle->hourlyrate + $vehicle->hourlyrate / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicle->hourlyrate / 100 * General::vat(); }}) </td>
+							<!-- determine if currency session isset and adapt price from another sessionvariable -->
+							<td>{{ PriceConverter::convert($vehicle->hourlyrate + $vehicle->hourlyrate / 100 * General::vat()); }} 
+								incl {{ General::vat() }}% btw ({{ PriceConverter::convert( $vehicle->hourlyrate / 100 * General::vat() ); }}) </td>
+							
+							
+
 						</tr>
 						<tr>
 							<td><strong>Prijs per dag</strong></td>
-							<td>€ {{ $vehicle->hourlyrate * 24 + $vehicle->hourlyrate * 24 / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicle->hourlyrate * 24 / 100 * General::vat(); }}) </td>
+
+							@if(Session::get('leenmeij.currency'))
+								<td>{{ PriceConverter::convert($vehicle->hourlyrate * 24 + $vehicle->hourlyrate * 24 / 100 * General::vat()) ; }} 
+									incl {{ General::vat() }}% btw ({{ PriceConverter::convert($vehicle->hourlyrate * 24 / 100 * General::vat()); }}) </td>
+
+							@else
+								<td>€ {{ $vehicle->hourlyrate * 24 + $vehicle->hourlyrate * 24 / 100 * General::vat() ; }} incl {{ General::vat() }}% btw (€ {{ $vehicle->hourlyrate * 24 / 100 * General::vat(); }}) </td>
+							@endif
+
 						</tr>
 						<tr>
 							<td><strong>Opmerkingen</strong></td>

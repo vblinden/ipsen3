@@ -136,11 +136,11 @@
 												</tr>
 												<tr>
 													<td><strong>Prijs per uur</strong></td>
-													<td>€ {{ $vehicle->hourlyrate + $vehicle->hourlyrate / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicle->hourlyrate / 100 * General::vat(); }})</td>
+													<td>{{ PriceConverter::convert($vehicle->hourlyrate + $vehicle->hourlyrate / 100 * General::vat()); }} incl {{ General::vat() }}% btw ({{ PriceConverter::convert($vehicle->hourlyrate / 100 * General::vat()); }})</td>
 												</tr>
 												<tr>
 													<td><strong>Prijs per dag</strong></td>
-													<td>€ {{ $vehicle->hourlyrate * 24 + $vehicle->hourlyrate * 24 / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicle->hourlyrate * 24 / 100 * General::vat(); }}) </td>
+													<td>{{ PriceConverter::convert($vehicle->hourlyrate * 24 + $vehicle->hourlyrate * 24 / 100 * General::vat()); }} incl {{ General::vat() }}% btw ({{ PriceConverter::convert($vehicle->hourlyrate * 24 / 100 * General::vat()); }}) </td>
 												</tr>
 												<tr>
 													<td><strong>Opmerkingen</strong></td>
@@ -170,7 +170,7 @@
 							<tr>
 								<td><input tabindex="1" type="checkbox" name="vehicleoption[]" id="{{$vehicleoption->name}}" value="{{$vehicleoption->id}}"></td>
 								<td>{{ $vehicleoption->name }}</td>
-								<td>€ {{ $vehicleoption->price * 24 + $vehicleoption->price * 24 / 100 * General::vat(); }} incl {{ General::vat() }}% btw (€ {{ $vehicleoption->price * 24 / 100 * General::vat(); }})</td>
+								<td>{{ PriceConverter::convert($vehicleoption->price * 24 + $vehicleoption->price * 24 / 100 * General::vat()); }} incl {{ General::vat() }}% btw ({{ PriceConverter::convert($vehicleoption->price * 24 / 100 * General::vat()); }})</td>
 							</tr>
 							@endforeach
 						</tbody>

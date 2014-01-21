@@ -72,10 +72,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">{{ Lang::get('index.latestNewsHeader'); }}</div>
 			<div class="panel-body">
-				@if (Session::get('leenmeij.locale') == 'nl')
-				{{ General::latestnews(); }}
-				@else
+				@if (Session::get('leenmeij.locale') == 'en')
 				{{ General::latestnewsenglish(); }}
+				@else
+				{{ General::latestnews(); }}
 				@endif
 			</div>
 		</div>
