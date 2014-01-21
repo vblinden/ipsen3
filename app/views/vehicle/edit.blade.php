@@ -62,8 +62,8 @@
 				<div class='col-lg-6'>
 					{{-- Usage field ---------------------------------------------------}}
 					<div class='form-group'>
-						{{ Form::label('usage', 'Verbruik'); }}
-						{{ Form::text('usage', null, array('class' => 'form-control')); }}
+						{{ Form::label('vehicleusage', 'Verbruik'); }}
+						{{ Form::text('vehicleusage', null, array('class' => 'form-control')); }}
 					</div>
 
 					{{-- Color field ---------------------------------------------------}}
