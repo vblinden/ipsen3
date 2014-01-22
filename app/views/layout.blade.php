@@ -79,26 +79,21 @@
 								</ul>
 							</li>
 							@endif
-							<li><a href="/lang/nl" style="padding-right: 0px;"><img src='/img/nl.jpg' /></a></li>
-							<li><a href="/lang/en"><img src='/img/en.gif' /></a></li>
 
-							<!-- Currency dropdown menu -->
 							<li class="dropdown">
-								@if(Session::get('leenmeij.currency'))
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{PriceConverter::getCurrencySymbol();}} <b class="caret"></b></a>
-								@else
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">EUR <b class="caret"></b></a>
-								@endif
+							
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li class="disabled"><a href="#"> select currency:</a></li>
-										<li class="divider"></li>	
+										<li role="presentation" class="dropdown-header">Taal</li>
+										<li><a href="/lang/nl" style="padding-right: 0px;"><img src='/img/nl.jpg' /> Nederlands</a></li>
+										<li><a href="/lang/en"><img src='/img/en.gif' /> Engels</a></li>
+										<li role="presentation" class="divider"></li>
+										<li role="presentation" class="dropdown-header">Valuta</li>
 										<li><a href="/currency/EUR">&euro; - EUR</a> </li>
 										<li><a href="/currency/USD">$ - USD</a></li>
 										<li><a href="/currency/GBP">&pound; - GBP</a></li>
 									</ul>
 							</li>
-							
-
 						</ul>
 					</div>
 				</div>
