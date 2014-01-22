@@ -7,7 +7,7 @@
 #
 # Host: 172.22.22.22 (MySQL 5.5.34-0ubuntu0.12.04.1-log)
 # Database: leenmeij
-# Generation Time: 2014-01-21 22:09:45 +0000
+# Generation Time: 2014-01-22 10:28:36 +0000
 # ************************************************************
 
 
@@ -65,6 +65,33 @@ VALUES
   (4,1);
 
 /*!40000 ALTER TABLE `company_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table currencies
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `currencies`;
+
+CREATE TABLE `currencies` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `currency` varchar(3) NOT NULL DEFAULT '',
+  `value` decimal(10,9) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `currencies` WRITE;
+/*!40000 ALTER TABLE `currencies` DISABLE KEYS */;
+
+INSERT INTO `currencies` (`id`, `currency`, `value`, `created_at`, `updated_at`)
+VALUES
+  (1,'EUR',1.000000000,NULL,NULL),
+  (2,'USD',1.356666666,NULL,NULL),
+  (3,'GBP',0.852444444,NULL,NULL);
+
+/*!40000 ALTER TABLE `currencies` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
