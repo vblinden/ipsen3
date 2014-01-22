@@ -14,8 +14,16 @@
 Route::get('lang/{lang}', function ($lang) {
 	Session::put('leenmeij.locale', $lang);
 	
-	return Redirect::to('/');
+	return Redirect::back();
 });
+
+
+//change currency 
+Route::get('currency/{cur}', function ($cur) {
+	Session::put('leenmeij.currency', $cur);
+	return Redirect::back();
+});
+
 
 Route::get('/', 'HomeController@getIndex');
 
