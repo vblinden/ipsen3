@@ -3,6 +3,10 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
+/**
+ * The user model.
+ * @author Vincent van der Linden
+ */
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	/**
@@ -49,11 +53,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	/**
+	 * Create link with user roles.
+	 * @return string
+	 */
 	public function role() 
 	{
 		return $this->hasOne('UserRole');
 	}
 
+	/**
+	 * Create link with company.
+	 * @return string
+	 */
 	public function company() 
 	{
 		return $this->belongsTo('Company');

@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * This allows us to send mails later aka async.
+ * @author Vincent van der Linden and Michiel Mooring
+ */
 class EmailService {
 
+	/**
+	 * Send register mail.
+	 */
 	public function register($job, $data) 
 	{
 		$user = $data['user'];
@@ -16,6 +23,9 @@ class EmailService {
 		$job->delete();
 	}
 
+	/**
+	 * Send reservation mail.
+	 */
 	public function reservation($job, $data) 
 	{
 		$user = $data['user'];
