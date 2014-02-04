@@ -1,21 +1,35 @@
 <?php
 
+/**
+ * Handles all the reservations gets and posts calls.
+ * @author Vincent van der Linden
+ */
 class ReservationController extends BaseController {
 
 	public function __construct() 
 	{
+		// User must be logged in to create a reservation.
 		$this->beforeFilter('auth');
 
+		// User must be admin to do other things with the reservations.
 		$this->beforeFilter('auth.admin', array(
 			'except' => array('getIndex', 'postIndex', 'getMake', 'postMake', 'getPayment', 'getCheck', 'postSucces')
 		));
 	}
 
+	/**
+	 * Returns the reservation index view.
+	 * @return view
+	 */
 	public function getIndex() 
 	{
 		return View::make('reservation.index', array('input' => 0));
 	}
 
+	/**
+	 * Checks if the dates are valid and create's a reservation.
+	 * @return view
+	 */
 	public function postIndex()
 	{
 		// Get all the data.
@@ -42,7 +56,7 @@ class ReservationController extends BaseController {
 		// Filter the vehicles.
 		$vehicles = $vehicles->filter(function ($vehicle) use ($reservations, $data)
 		{
-			// Check every reservation. (Maybe use has method or something else)
+			// Check every reservation.
 			foreach ($reservations as $reservation) {
 
 				// Check if vehicle has an reservation.
@@ -64,26 +78,39 @@ class ReservationController extends BaseController {
 			return true;
 		});
 
-		// Create cookie for dates.
+		// Create cookie for dates, so we can use these later.
 		$cookie = Cookie::forever('dates', array('startdate' => $data['startdate'], 'enddate' => $data['enddate']));
 		Cookie::queue($cookie);
 
+		// Return a view with partial data.
 		return View::make('reservation.index', array('input' => $data))->nest('child', 'reservation.availablevehicles', array('vehicles' => $vehicles));
 	}
 
+	/**
+	 * Create a temp-reservation.
+	 * @param  var $id The vehicle id.
+	 * @return view
+	 */
 	public function getMake($id)
 	{
+		// Find the vehicle and vehicle options.
 		$vehicle = Vehicle::find($id);
 		$vehicleoptions = VehicleOption::all();
 
+		// Return a view with the vehicle and vehicle options.
 		return View::make('reservation.make', array('vehicle' => $vehicle, 'vehicleoptions' => $vehicleoptions));	
 	}
 
+	/**
+	 * Create a final reservation.
+	 * @return redirect
+	 */
 	public function postMake()
 	{
 		// Save all the input data.
 		$data = Input::all();
 
+		// Create new reservation and save the data.
 		$reservation = new Reservation();
 		$reservation->user_id = Auth::user()->id;
 		$reservation->vehicle_id = $data['vehicleid'];
@@ -91,6 +118,7 @@ class ReservationController extends BaseController {
 		$reservation->enddate = $data['enddate'];
 		$reservation->status = 0;
 
+		// Save the reservation.
 		$reservation->save();
 
 		// Detach all vehicle options from this reservation.
@@ -106,27 +134,43 @@ class ReservationController extends BaseController {
 			}
 		} 
 
+		// Redirect the user.
 		return Redirect::to('/reservation/check/' . $reservation->id);
 	}
 
+	/**
+	 * Returns the payment view.
+	 * @return view
+	 */
 	public function getPayment()
 	{
 		return View::make('reservation.payment');
 	}
 
+	/**
+	 * Returns the check view.
+	 * @param  var $id The reservation id.
+	 * @return view
+	 */
 	public function getCheck($id)
 	{
+		// Find the reservation.
 		$reservation = Reservation::find($id);
+
+		// Calculate the total price.
 		$totalPrice = $reservation->vehicle->hourlyrate * 24;
 
+		// Add each vehicle option price to the total price.
 		foreach ($reservation->vehicleoptions as $vehicleoption) {
 			$totalPrice += $vehicleoption->price * 24;
 		}
 
+		// Convert the two datetimes.
 		$datetime1 = new DateTime($reservation->startdate);
 		$datetime2 = new DateTime($reservation->enddate);
 		$interval = $datetime1->diff($datetime2);
 
+		// Mutliple the total price for days.
 		$totalPrice = $totalPrice * $interval->format('%a');
 
 		// Check if reservation times are two months ahead.
@@ -134,8 +178,10 @@ class ReservationController extends BaseController {
 			$totalPrice = $totalPrice - ($totalPrice / 100) * 5;
 		}
 
+		// Calculate the VAT.
 		$vat = $totalPrice / 100 * General::find(1)->vat;
 
+		// Return a view, with information.
 		return View::make('reservation.check', array(
 			'reservation' => Reservation::find($id),
 			'totalPrice' => $totalPrice,
@@ -143,21 +189,32 @@ class ReservationController extends BaseController {
 		));
 	}
 
+	/**
+	 * Returns the edit reservation view.
+	 * @param  var $id The id of the reservation.
+	 * @return view
+	 */
 	public function getEdit($id) 
 	{
 		return View::make('reservation.edit', array('reservation' => Reservation::find($id), 'invoice' => Invoice::find('reservation_id' . '=' . $id)));
 	}
 
+	/**
+	 * Edits a reservation.
+	 * @return redirect
+	 */
 	public function postEdit() 
 	{
 		// Save all the input data.
 		$data = Input::all();
 
+		// Find the reservation and change the values.
 		$reservation = Reservation::find($data['id']);
 		$reservation->startdate = $data['startdate'];
 		$reservation->enddate = $data['enddate'];
 		$reservation->status = 1;
 
+		// Save the reservation.
 		$reservation->save();
 
 		// Get invoice from reservation id, and make sure we only get one.
@@ -170,10 +227,12 @@ class ReservationController extends BaseController {
 		// Calculate new price.
 		$totalPrice = $reservation->vehicle->hourlyrate * 24;
 
+		// Add all vehicle options price to the total price.
 		foreach ($reservation->vehicleoptions as $vehicleoption) {
 			$totalPrice += $vehicleoption->price * 24;
 		}
 
+		// Covert the datetimes.
 		$datetime1 = new DateTime($reservation->startdate);
 		$datetime2 = new DateTime($reservation->enddate);
 		$interval = $datetime1->diff($datetime2);
@@ -208,19 +267,34 @@ class ReservationController extends BaseController {
 			}
 		}
 
+		// Redirect the user with message.
 		return Redirect::to('/reservation/edit/' . $data['id'])->with('success', 'De reservering is succesvol bijgewerkt.');	
 	}
 
+	/**
+	 * Deletes a reservation.
+	 * @param  var $id The id of the reservation.
+	 * @return redirect
+	 */
 	public function getDelete($id) 
 	{
+		// Get the reservation.
 		$reservation = Reservation::find($id);
+
+		// Delete it.
 		$reservation->delete();
 
+		// Redirect user with message.
 		return Redirect::to('/admin#reservations')->with('success', 'De reservering is succesvol verwijderd.');
 	}
 
+	/**
+	 * Saves the reservation and sends the confirmation email.
+	 * @return view
+	 */
 	public function postSucces()
 	{
+		// Get all the date from the view.
 		$data = Input::all();
 
 		// Decode the reservation data and convert to an object.
@@ -228,6 +302,8 @@ class ReservationController extends BaseController {
 
 		// Create new invoice.
 		$invoice = new Invoice();
+
+		// Asign all the values.
 		$invoice->user_id = Auth::user()->id;
 		$invoice->vehicle_id = $reservation->vehicle->id;
 		$invoice->startdate = Carbon::parse($reservation->startdate);
@@ -236,12 +312,16 @@ class ReservationController extends BaseController {
 		$invoice->total = $data['total'];
 		$invoice->reservation_id = $reservation->id;
 
+		// Save the invoice.
 		$invoice->save();
 		
+		// Find user.
 		$user = User::find($invoice->user_id);
 
+		// Send mail.
 		Queue::push('EmailService@reservation', array('user' => $user, 'reservation' => $reservation, 'invoice' => $invoice));
 
+		// Create success view.
 		return View::make('reservation.success');
 	}
 }

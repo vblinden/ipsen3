@@ -4,6 +4,10 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
+/**
+ * Sends a review invite to the user who needs it (based on the five day usage time).
+ * @author Vincent van der Linden
+ */
 class ReviewInviteCommand extends Command {
 
 	/**
@@ -37,6 +41,7 @@ class ReviewInviteCommand extends Command {
 	 */
 	public function fire()
 	{
+		// Get all reservations from the database.
 		$reservations = Reservation::all();
 
 		foreach ($reservations as $reservation) {
@@ -55,11 +60,11 @@ class ReviewInviteCommand extends Command {
 					// Send mail.
 					Mail::send('emails.reviewinvite', array('user' => $user, 'reservation' => $reservation), function($message) use ($user)
 					{
-					    $message->to($user->email)->subject('Bedankt voor uw vertrouwen in LeenMeij!');
+						$message->to($user->email)->subject('Bedankt voor uw vertrouwen in LeenMeij!');
 					});
 
 					// DEBUG: Print out console message.
-					$this->info('Sended e-mail to: ' . $user->email);
+					// $this->info('Sended e-mail to: ' . $user->email);
 
 					// Set the sended_review_email to 1 (aka sended a review email to the user).
 					$reservation->sended_review_mail = 1;
@@ -81,7 +86,7 @@ class ReviewInviteCommand extends Command {
 	{
 		return array(
 			array('days', InputArgument::OPTIONAL, 'How many days.'),
-		);
+			);
 	}
 
 	/**
@@ -93,7 +98,7 @@ class ReviewInviteCommand extends Command {
 	{
 		return array(
 			array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
-		);
+			);
 	}
 
 }

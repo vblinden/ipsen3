@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * Handles all the get and post calls that are linked to user.
+ * @author Vincent van der Linden and Deam Kop
+ */
 class UserController extends BaseController {
 
 	public function __construct() 
 	{
+		// Check if user is admin except the following routes.
 		$this->beforeFilter('auth.admin', array(
 			'except' => array(
 				'getLogin', 
@@ -16,12 +21,20 @@ class UserController extends BaseController {
 		));
 	}
 
+	/**
+	 * Returns the login view.
+	 * @return view
+	 */
 	public function getLogin()
 	{
 		// Return the login view.
 		return View::make('user.login');
 	}
 
+	/**
+	 * Check if information is valid and let's the user login.
+	 * @return redirect
+	 */
 	public function postLogin() 
 	{
 		// Set validation rules.
@@ -63,6 +76,11 @@ class UserController extends BaseController {
 		}
 	}
 
+	/**
+	 * Returns the register view.
+	 * @param  var $id Personal or business
+	 * @return view
+	 */
 	public function getRegister($id) 
 	{
 		// Check if user wants to register a personal or business account.
@@ -76,6 +94,10 @@ class UserController extends BaseController {
 		
 	}
 
+	/**
+	 * Register a company account.
+	 * @return redirect
+	 */
 	public function postCompany() 
 	{
 		// Save all the input data.
@@ -106,18 +128,22 @@ class UserController extends BaseController {
 
 		// If validator fails, show error message.
 		if ($validator->fails()) {
+			// Email is not valid.
 			if ($validator->messages()->has('email')) {
 				return Redirect::to('/user/register/company')->with('failed', 'Het e-mail adres wat u probeert te gebruiken is al in gebruik of is geen geldig e-mail adres. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
+			// Password is not valid.
 			else if ($validator->messages()->has('password')) {
 				return Redirect::to('/user/register/company')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens, een hoofdletter hebben en een cijfer bevatten. Ook moeten de wachtwoorden overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
+			// Passwords do not match.
 			else if ($validator->messages()->has('passwordconfirm')) {
 				return Redirect::to('/user/register/company')->with('failed', 'Uw wachtwoorden komen niet overeen. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
+			// Captchta field is not valid.
 			else if ($validator->messages()->has('recaptcha_response_field')) {
 				return Redirect::to('/user/register/company')->with('failed', 'Uw CAPTCHA invoer is incorrect. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
@@ -146,6 +172,7 @@ class UserController extends BaseController {
 			$user->vatnumber = $data['vatnumber'];
 			$user->business = 1;
 
+			// Save the user.
 			$user->save();
 
 			// Create a new business
@@ -163,12 +190,18 @@ class UserController extends BaseController {
 			// Send mail to the queue, where it will be executed later.
 			Queue::push('EmailService@register', array('user' => $user));
 
+			// Log in the user.
 			Auth::login($user);
 
+			// Redirect user to home page.
 			return Redirect::to('/');
 		}
 	}
 
+	/**
+	 * Check if input is valid and let's the user register a personal account.
+	 * @return [type] [description]
+	 */
 	public function postRegister() 
 	{
 		// Save all the input data.
@@ -196,18 +229,22 @@ class UserController extends BaseController {
 
 		// If validator fails, show error message.
 		if ($validator->fails()) {
+			// Email is not valid.
 			if ($validator->messages()->has('email')) {
 				return Redirect::to('/user/register/personal')->with('failed', 'Het e-mail adres wat u probeert te gebruiken is al in gebruik of is geen geldig e-mail adres. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
+			// Password is not valid.
 			else if ($validator->messages()->has('password')) {
 				return Redirect::to('/user/register/personal')->with('failed', 'Uw wachtwoorden moet langer zijn als 3 tekens, een hoofdletter hebben en een cijfer bevatten. Ook moeten de wachtwoorden overeenkomen. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
+			// Passwords do not match.
 			else if ($validator->messages()->has('passwordconfirm')) {
 				return Redirect::to('/user/register/personal')->with('failed', 'Uw wachtwoorden komen niet overeen. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
 
+			// Captcha is not valid.
 			else if ($validator->messages()->has('recaptcha_response_field')) {
 				return Redirect::to('/user/register/personal')->with('failed', 'Uw CAPTCHA invoer is incorrect. Probeer het opnieuw.')->withInput(Input::except('password'));
 			}
@@ -234,22 +271,34 @@ class UserController extends BaseController {
 			$user->passportnumber = $data['passportnumber'];
 			$user->business = 0;
 
+			// Save.
 			$user->save();
 
 			// Send mail to the queue, where it will be executed later.
 			Queue::push('EmailService@register', array('user' => $user));
 
+			// Log in the user.
 			Auth::login($user);
 
+			// Redirect the user to the home page.
 			return Redirect::to('/');
 		}
 	}
 
+	/**
+	 * Return the view to edit a user.
+	 * @param  var $id The user id.
+	 * @return view
+	 */
 	public function getEdit($id) 
 	{
 		return View::make('user.edit', array('user'=>User::find($id)));
 	}
 
+	/**
+	 * Post of the view to edit the user.
+	 * @return redirect
+	 */
 	public function postEdit() 
 	{
 		// Save all the input data.
@@ -309,12 +358,18 @@ class UserController extends BaseController {
 				$user->business = 0;
 			}
 
+			// Save the user.
 			$user->save();
 
+			// Redirect the user.
 			return Redirect::to('/user/edit/' . $data['id'])->with('success', 'Uw gegevens zijn succesvol bijgewerkt.');
 		}
 	}
 
+	/**
+	 * Changes the password of the user.
+	 * @return redirect
+	 */
 	public function postChangePassword() 
 	{
 		// Save all the input data.
@@ -340,27 +395,45 @@ class UserController extends BaseController {
 			$user->password = Hash::make($data['password']);
 			$user->save();
 
+			// Redirect user with a message.
 			return Redirect::to('/user/account')->with('success', 'Uw wachtwoord is succesvol gewijzigd.');
 		}
 	}
 
+	/**
+	 * Return success view.
+	 * @return view
+	 */
 	public function getSuccess() 
 	{
 		return View::make('user.success');
 	}
 
+	/**
+	 * Let's a user log out.
+	 * @return redirect
+	 */
 	public function getLogout() 
 	{
+		// Try and log out the user.
 		Auth::logout();
 
+		// Redirect the user to the home page.
 		return Redirect::to('/');
 	}
 
+	/**
+	 * Delete a user.
+	 * @param  var $id The id of the user.
+	 * @return redirect
+	 */
 	public function getDelete($id) 
 	{
+		// Find and delete the user.
 		$user = User::find($id);
 		$user->delete();
 
+		// Redirect the user with a message.
 		return Redirect::to('/admin#users')->with('success', 'De klant is succesvol verwijderd.');
 	}
 

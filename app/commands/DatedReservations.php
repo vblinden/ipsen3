@@ -4,6 +4,10 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
+/**
+ * Checks which reservations are dated and removes them.
+ * @author Vincent van der Linden
+ */
 class DatedReservations extends Command {
 
 	/**
@@ -37,6 +41,7 @@ class DatedReservations extends Command {
 	 */
 	public function fire()
 	{
+		// Get all the reservations from the database.
 		$reservations = Reservation::all();
 
 		foreach ($reservations as $reservation) {
@@ -53,7 +58,7 @@ class DatedReservations extends Command {
 					$reservation->delete();
 
 					// DEBUG: Print out console command.
-					$this->info('Deleted reservation with id: ' . $reservation->id);
+					// $this->info('Deleted reservation with id: ' . $reservation->id);
 				}
 			}
 		}

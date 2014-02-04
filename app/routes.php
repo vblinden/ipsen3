@@ -11,20 +11,6 @@
 |
 */
 
-Route::get('lang/{lang}', function ($lang) {
-	Session::put('leenmeij.locale', $lang);
-	
-	return Redirect::back();
-});
-
-
-//change currency 
-Route::get('currency/{cur}', function ($cur) {
-	Session::put('leenmeij.currency', $cur);
-	return Redirect::back();
-});
-
-
 Route::get('/', 'HomeController@getIndex');
 
 Route::controller('user', 'UserController');
@@ -37,3 +23,16 @@ Route::controller('vehicleoption', 'VehicleOptionController');
 Route::controller('review', 'ReviewController');
 Route::controller('invoice', 'InvoiceController');
 Route::controller('company', 'CompanyController');
+
+Route::get('lang/{lang}', function ($lang) {
+	Session::put('leenmeij.locale', $lang);
+	
+	return Redirect::back();
+});
+
+
+//change currency 
+Route::get('currency/{cur}', function ($cur) {
+	Session::put('leenmeij.currency', $cur);
+	return Redirect::back();
+});

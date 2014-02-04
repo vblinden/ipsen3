@@ -1,11 +1,13 @@
 <?php
 
-
+/**
+ * @author Floris Admiraal
+ */
 class PriceConverter{
 
 
 	/**
-	*	returns a string with currencysymbol and formatted price.
+	* returns a string with currencysymbol and formatted price.
 	*/
 	public static function convert($amount)
 	{
