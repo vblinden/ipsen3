@@ -108,7 +108,7 @@
 <div class="row visible-lg">
 	<div class="col-lg-4">
 		<div class="panel panel-default">
-			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel2.png" /></div>
+			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel2.png" alt="panel image" /></div>
 			<div class="panel-body">
 				{{ Lang::get('index.bottomInfo1'); }}
 			</div>
@@ -116,7 +116,7 @@
 	</div>
 	<div class="col-lg-4">
 		<div class="panel panel-default">
-			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel3.png" /></div>
+			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel3.png" alt="panel image" /></div>
 			<div class="panel-body">
 				{{ Lang::get('index.bottomInfo2'); }}
 			</div>
@@ -124,7 +124,7 @@
 	</div>
 	<div class="col-lg-4">
 		<div class="panel panel-default">
-			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel1.png" /></div>
+			<div class="panel-heading" style="padding: 0px;"><img src="/img/panel1.png" alt="panel image"/></div>
 			<div class="panel-body">
 				{{ Lang::get('index.bottomInfo3'); }}
 			</div>

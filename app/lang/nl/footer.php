@@ -9,5 +9,5 @@ return array(
 	'servicesScooters' => 'Scooters',
 	'servicesAccessories' => 'Accessoires',
 	'contactHeader' => 'Contact',
-	'footer' => 'Copyright &copy 2013 LeenMeij Autoverhuur BV. All Rights Reserved'
+	'footer' => 'Copyright &copy; 2013 LeenMeij Autoverhuur BV. All Rights Reserved'
 );

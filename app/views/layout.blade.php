@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="LeenMeij">
 	<meta name="author" content="">
@@ -85,8 +84,8 @@
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li role="presentation" class="dropdown-header">Taal</li>
-										<li><a href="/lang/nl" style="padding-right: 0px;"><img src='/img/nl.jpg' /> Nederlands</a></li>
-										<li><a href="/lang/en"><img src='/img/en.gif' /> Engels</a></li>
+										<li><a href="/lang/nl" style="padding-right: 0px;"><img src='/img/nl.jpg' alt='Nederlands'/> Nederlands</a></li>
+										<li><a href="/lang/en"><img src='/img/en.gif' alt='engels'/> Engels</a></li>
 										<li role="presentation" class="divider"></li>
 										<li role="presentation" class="dropdown-header">Valuta</li>
 										<li><a href="/currency/EUR">&euro; - EUR</a> </li>
