@@ -420,7 +420,7 @@
 							@foreach ($reviews->take(5) as $review)
 							<tr>
 								<td>{{ $review->id }}</td>
-								<td>{{ Str::words($review->comment, $words = 3, $end = '...')}}</td>
+								<td>{{{ Str::words($review->comment, $words = 3, $end = '...')}}}</td>
 								<td>
 									@for ($i=1; $i <= 5 ; $i++)
 									    <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>

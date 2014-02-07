@@ -111,7 +111,7 @@ class VehicleController extends BaseController {
 			'model' => 'required',
 			'licenseplate' => 'required',
 			'milage' => 'required',
-			'usage' => 'required',
+			'vehicleusage' => 'required',
 			'color' => 'required',
 			'hourlyrate' => 'required',
 			'image' => 'mimes:jpeg,jpg,gif,bmp,png'
@@ -140,7 +140,7 @@ class VehicleController extends BaseController {
 			$vehicle->licenseplate = $data['licenseplate'];
 			$vehicle->comment = $data['comment'];
 			$vehicle->color = $data['color'];
-			$vehicle->vehicleusage = $data['usage'];
+			$vehicle->vehicleusage = $data['vehicleusage'];
 			$vehicle->hourlyrate = $data['hourlyrate'];
 			$vehicle->vehiclecategoryid = $data['vehiclecategoryid'];
 
@@ -191,7 +191,7 @@ class VehicleController extends BaseController {
 			'model' => 'required',
 			'licenseplate' => 'required',
 			'milage' => 'required',
-			'usage' => 'required',
+			'vehicleusage' => 'required',
 			'color' => 'required',
 			'hourlyrate' => 'required',
 			'image' => 'mimes:jpeg,jpg,gif,bmp,png'
@@ -220,7 +220,7 @@ class VehicleController extends BaseController {
 			$vehicle->licenseplate = $data['licenseplate'];
 			$vehicle->comment = $data['comment'];
 			$vehicle->color = $data['color'];
-			$vehicle->vehicleusage = $data['usage'];
+			$vehicle->vehicleusage = $data['vehicleusage'];
 			$vehicle->hourlyrate = $data['hourlyrate'];
 			$vehicle->vehiclecategoryid = $data['vehiclecategoryid'];
 

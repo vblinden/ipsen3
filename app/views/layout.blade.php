@@ -31,7 +31,6 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/">{{ Lang::get('navbar.navHome'); }} </a></li>
 						<li><a href="/reservation">{{ Lang::get('navbar.navRent'); }}</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Lang::get('navbar.navVehicles'); }}<b class="caret"></b></a>
@@ -114,7 +113,7 @@
 								@if($review->rating >= 4)
 								<div class="panel-body">
 									<div>
-										<a href="/review"><p> {{ Str::words($review->comment, $words = 4, $end = '...')}}
+										<a href="/review"><p> {{{ Str::words($review->comment, $words = 4, $end = '...')}}}
 										<span class="pull-right">
 										    @for ($i=1; $i <= 5 ; $i++)
 										      <span class="glyphicon stars glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>

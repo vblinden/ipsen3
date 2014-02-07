@@ -21,12 +21,15 @@
 				</h3>
 				<p>
 					De prijs per dag: {{ PriceConverter::convert($vehicleoption->price * 24 + $vehicleoption->price * 24 / 100 * General::vat()); }} incl {{ General::vat() }}% btw ( {{ PriceConverter::convert($vehicleoption->price * 24 / 100 * General::vat()); }})
-					@if(Auth::check()) 
+					
+				</p>
+				<p>
+				@if(Auth::check()) 
 					@if (Role::find(Auth::user()->role['role_id'])['name'] == 'admin')
-					<a href='/vehicleoption/delete/{{ $vehicleoption->id }}' class="btn btn-danger btn-xs pull-right" style='margin-left: 5px;' onclick="return confirm('Weet u zeker dat u deze voertuig optie wilt verwijderen?')">Verwijderen</a>
-					<a href='/vehicleoption/edit/{{ $vehicleoption->id }}' class='btn btn-primary btn-xs pull-right'>Bewerken</a>
+					<a href='/vehicleoption/delete/{{ $vehicleoption->id }}' class="btn btn-danger" onclick="return confirm('Weet u zeker dat u deze voertuig optie wilt verwijderen?')">Verwijderen</a>
+					<a href='/vehicleoption/edit/{{ $vehicleoption->id }}' class='btn btn-primary'>Bewerken</a>
 					@endif
-					@endif
+				@endif
 				</p>
 			</div>
 		</div>
