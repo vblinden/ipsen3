@@ -386,7 +386,7 @@ class UserController extends BaseController {
 
 		// If validator fails, show error message.
 		if ($validator->fails()) {
-			return Redirect::to('/user/account')->with('failed', 'Uw wachtwoord moet groter zijn als 3 tekens en de twee wachtwoorden moeten overeenkomen. Probeer het opnieuw.');
+			return Redirect::to('/user/edit/' . $data['id'])->with('failed', 'Uw wachtwoord moet groter zijn als 3 tekens en de twee wachtwoorden moeten overeenkomen. Probeer het opnieuw.');
 		}
 
 		// Else show succes message and save the password.
@@ -396,7 +396,7 @@ class UserController extends BaseController {
 			$user->save();
 
 			// Redirect user with a message.
-			return Redirect::to('/user/account')->with('success', 'Uw wachtwoord is succesvol gewijzigd.');
+			return Redirect::to('/user/edit/' . $data['id'])->with('success', 'Uw wachtwoord is succesvol gewijzigd.');
 		}
 	}
 
@@ -437,17 +437,25 @@ class UserController extends BaseController {
 		return Redirect::to('/admin#users')->with('success', 'De klant is succesvol verwijderd.');
 	}
 
+	/**
+	 * Change a user role.
+	 * @return redirect
+	 */
 	public function postAddrole() 
 	{
+		// Get input.
 		$data = Input::all();
 
+		// Delete user roles.
 		$userrole = UserRole::where('user_id', '=', $data['id']);
 		$userrole->delete();
 
+		// Add new user roles.
 		$userrole = new UserRole;
 		$userrole['user_id'] = $data['id'];
 		$userrole['role_id'] = $data['userrole'];
 
+		// Save the new user role.
 		$userrole->save();
 
 		return Redirect::to('/user/edit/' . $data['id'])->with('success', 'De gebruikersrol is bijgewerkt.');
