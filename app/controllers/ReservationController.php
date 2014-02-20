@@ -299,6 +299,15 @@ class ReservationController extends BaseController {
 	 * Saves the reservation and sends the confirmation email.
 	 * @return view
 	 */
+	public function getSuccess()
+	{
+		return View::make('reservation.success');
+	}
+
+	/**
+	 * Saves the reservation and sends the confirmation email.
+	 * @return view
+	 */
 	public function postSucces()
 	{
 		// Get all the date from the view.
