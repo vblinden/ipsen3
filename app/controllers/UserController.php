@@ -437,4 +437,20 @@ class UserController extends BaseController {
 		return Redirect::to('/admin#users')->with('success', 'De klant is succesvol verwijderd.');
 	}
 
+	public function postAddrole() 
+	{
+		$data = Input::all();
+
+		$userrole = UserRole::where('user_id', '=', $data['id']);
+		$userrole->delete();
+
+		$userrole = new UserRole;
+		$userrole['user_id'] = $data['id'];
+		$userrole['role_id'] = $data['userrole'];
+
+		$userrole->save();
+
+		return Redirect::to('/user/edit/' . $data['id'])->with('success', 'De gebruikersrol is bijgewerkt.');
+	}
+
 }

@@ -7,6 +7,13 @@
 class UserRole extends Eloquent {
 
 	/**
+	 * We don't need the timestamps with this model.
+	 * @var boolean
+	 */
+	public $timestamps = false;
+
+
+	/**
 	 * Table name.
 	 * @var string
 	 */

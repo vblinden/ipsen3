@@ -38,7 +38,9 @@
 					{{ Form::password('password', array('class' => 'form-control')); }}
 				</div>
 
-				{{ Form::submit(Lang::get('login.btnLogin'), array('class' => 'btn btn-primary btn-full')); }}
+				<div class='form-group'>
+					{{ Form::submit(Lang::get('login.btnLogin'), array('class' => 'btn btn-primary btn-full')); }}
+				</div>
 				{{ Form::close() }}
 			</div>
 		</div>

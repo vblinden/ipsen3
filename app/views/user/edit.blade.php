@@ -26,9 +26,6 @@
 			<div class="panel-body">
 				{{ Form::model($user, array('action' => 'UserController@postEdit')) }}
 
-				{{ $errors->first('email') }}
-				{{ $errors->first('password') }}
-
 				{{ Form::hidden('id', $user->id); }}
 
 				{{-- Email field ---------------------------------------------------}}
@@ -125,9 +122,6 @@
 			<div class="panel-body">
 				{{ Form::model($user, array('action' => 'UserController@postChangePassword')) }}
 
-				{{ $errors->first('email') }}
-				{{ $errors->first('password') }}
-
 				{{ Form::hidden('id', $user->id); }}
 
 				{{-- Password field ---------------------------------------------------}}
@@ -145,6 +139,43 @@
 				<div class='row'>
 					<div class='col-lg-12'>
 						{{ Form::submit('Wachtwoord wijzigen', array('class' => 'btn btn-primary btn-full')); }}
+					</div>
+				</div>
+
+				{{ Form::close() }}
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Gebruikers rollen</div>
+
+			<table class='table'>
+				<thead>
+					<tr>
+						<th>Rol</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ Role::find($user->role['role_id'])['name']; }}
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="panel-body">
+				{{ Form::model($user, array('action' => 'UserController@postAddrole')) }}
+
+				{{ Form::hidden('id', $user->id); }}
+
+				{{-- User role field ---------------------------------------------------}}
+				<div class='form-group'>
+					{{ Form::label('userrole', 'Gebruikers rol'); }}
+					{{ Form::select('userrole', Role::lists('name', 'id'), null, array('class' => 'form-control')); }}
+				</div>
+
+				<div class='row'>
+					<div class='col-lg-12'>
+						{{ Form::submit('Gebruikers rol veranderen', array('class' => 'btn btn-primary btn-full')); }}
 					</div>
 				</div>
 
