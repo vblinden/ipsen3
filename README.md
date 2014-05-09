@@ -1,3 +1,11 @@
+# UPDATE
+This is the IPSEN3 assignment we made for the Hogeschool Leiden and it's now publicly available. Thanks to the people below for creating this software. Caution: this software might contain bugs (a lot).
+
+- Deam Kop ([@deam](https://github.com/Deam))
+- Floris Admiraal ([@admiraal](https://github.com/Admiraal))
+- Michiel Mooring ([@gielert](https://github.com/Gielert))
+- Vincent van der Linden ([@vblinden](https://github.com/vblinden))
+
 # LeenMeij Web Application
 
 The fictional LeenMeij vehicle rental company wants to have a web applicaton running besides it's already existing desktop application to lure more domestic and foreign customers to the company. This is a project created for a course from the Hogeschool Leiden in the Netherlands. The web application is made with the [Laravel PHP Framework](http://www.laravel.com), check out the website for the documentation.
